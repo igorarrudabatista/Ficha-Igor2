@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('categoria', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('categoria_id');
-            $table->string('FichaCatSts');
+            
+            $table->string('FichaCatNome')->nullable();
+            $table->string('FichaCatSts')->nullable();
   
             $table->timestamps();
         });

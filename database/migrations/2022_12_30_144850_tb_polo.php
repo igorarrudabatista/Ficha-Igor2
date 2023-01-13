@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('polo', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('PoloNome');
-            $table->string('PoloSts');
+            $table->string('PoloNome')->nullable();
+            $table->string('PoloSts')->nullable();
   
             $table->timestamps();
         });

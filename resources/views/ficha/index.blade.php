@@ -80,11 +80,11 @@
 
                            <td>{{$fichas->id}}</td>
 
-                           <td>{{$fichas->categoria->FichaCatNome ?? 'Sem registros'  }}</td>
+                           <td>{{$fichas->categoria_id->FichaCatNome ?? 'Sem registros'  }}</td>E
                            
-                           <td>{{$fichas->aluno->AlunoNome ?? 'Sem registros'}}</td>
+                           <td>{{$fichas->aluno_id->AlunoNome ?? 'Sem registros'}}</td>
 
-                           <td>{{$fichas->escola->EscolaNome ??  'Sem registros'}}</td>
+                           <td>{{$fichas->escola_id->EscolaNome ??  'Sem registros'}}</td>
 
 
                            
@@ -93,15 +93,15 @@
                             <!-- Button trigger modal -->
 
                             <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-   Tramitar para
-  </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-    <li><a class="dropdown-item" href="{{asset('/ficha/update/Conselho1')}}/{{$fichas->id}}">Conselho 1</a></li>
-    <li><a class="dropdown-item" href="{{asset('/ficha/update/Conselho2')}}/{{$fichas->id}}">Conselho 2</a></li>
-    <li><a class="dropdown-item" href="{{asset('/ficha/update/Conselho3')}}/{{$fichas->id}}">Conselho 3</a></li>
-  </ul>
-</div>
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            Tramitar para
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" href="{{asset('/ficha/update/Conselho1')}}/{{$fichas->id}}">Conselho 1</a></li>
+                                <li><a class="dropdown-item" href="{{asset('/ficha/update/Conselho2')}}/{{$fichas->id}}">Conselho 2</a></li>
+                                <li><a class="dropdown-item" href="{{asset('/ficha/update/Conselho3')}}/{{$fichas->id}}">Conselho 3</a></li>
+                            </ul>
+                            </div>
 
 
                             <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -136,7 +136,7 @@
                            </td>
                            <td>{{$fichas->created_at ??  'Sem registros'}} </td>
                            <td>{{$fichas->updated_at ??  'Sem registros'}} </td>
-                            <td>Editar </td>
+                           <td> <a class="btn btn-warning" href="{{ route('ficha.edit',$fichas->id) }}">Editar</a>
                             <td>Ver </td>
                             
                             <td>

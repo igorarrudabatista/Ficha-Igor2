@@ -15,21 +15,21 @@ return new class extends Migration
     {
         Schema::create('aluno', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('AlunoNome');
-            $table->string('AlunoDataNascimento');
-            $table->string('AlunoCPF');
-            $table->string('AlunoSexo');
-            $table->string('AlunoFiliacao1');
-            $table->string('AlunoFiliacao2');
-            $table->string('AlunoEndereco');
-            $table->string('AlunoNumero');
-            $table->string('AlunoBairro');
-            $table->string('AlunoCEP');
-            $table->string('AlunoCidade');
-            $table->string('AlunoEstado');
-            $table->string('AlunoDDD');
-            $table->string('AlunoTelefone');
-            $table->string('AlunoObs');
+            $table->string('AlunoNome')->nullable();
+            $table->string('AlunoDataNascimento')->nullable();
+            $table->string('AlunoCPF')->nullable();
+            $table->string('AlunoSexo')->nullable();
+            $table->string('AlunoFiliacao1')->nullable();
+            $table->string('AlunoFiliacao2')->nullable();
+            $table->string('AlunoEndereco')->nullable();
+            $table->string('AlunoNumero')->nullable();
+            $table->string('AlunoBairro')->nullable();
+            $table->string('AlunoCEP')->nullable();
+            $table->string('AlunoCidade')->nullable();
+            $table->string('AlunoEstado')->nullable();
+            $table->string('AlunoDDD')->nullable();
+            $table->string('AlunoTelefone')->nullable();
+            $table->string('AlunoObs')->nullable();
      
 
             // $table->foreignId('FichaCatID')->constrained('tb_categoria')->onDelete('cascade');

@@ -1,39 +1,29 @@
 <?php
-    
+
 namespace App\Http\Controllers;
-    
-use App\Models\ESCOLA;
+use App\Models\Categoria;
 use Illuminate\Http\Request;
-    
-class EscolaController extends Controller
-{ 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+class CategoriaController extends Controller
+{
     function __construct()
     {
-         $this->middleware('permission:escola-list|escola-create|escola-edit|escola-delete', ['only' => ['index','show']]);
-         $this->middleware('permission:escola-create', ['only' => ['create','store']]);
-         $this->middleware('permission:escola-edit', ['only' => ['edit','update']]);
-         $this->middleware('permission:escola-delete', ['only' => ['destroy']]);
+         $this->middleware('permission:categoria-list|categoria-create|categoria-edit|categoria-delete', ['only' => ['index','show']]);
+         $this->middleware('permission:categoria-create', ['only' => ['create','store']]);
+         $this->middleware('permission:categoria-edit',   ['only' => ['edit','update']]);
+         $this->middleware('permission:categoria-delete', ['only' => ['destroy']]);
     }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-    
-
     public function index()
     {
-        $escola = ESCOLA::latest()->paginate(5);
-        return view('escola.index',compact('escola'))
+        $categoria = Categoria::latest()->paginate(5);
+        return view('categoria.index',compact('categoria'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
-    
     
 //     /**
 //      * Show the form for creating a new resource.
@@ -42,7 +32,7 @@ class EscolaController extends Controller
 //      */
    public function create()
    {
-       return view('escola.create');
+       return view('categoria.create');
    }
     
 //     /**
@@ -58,10 +48,10 @@ class EscolaController extends Controller
         //     'detail' => 'required',
         // ]);
     
-        ESCOLA::create($request->all());
+        categoria::create($request->all());
     
-         return redirect()->route('escola.index')
-                         ->with('success','Escola cadastrada com sucesso!');
+         return redirect()->route('categoria.index')
+                         ->with('success','Categoria criado com sucesso!');
      }
     
 //     /**
@@ -70,9 +60,9 @@ class EscolaController extends Controller
 //      * @param  \App\Product  $product
 //      * @return \Illuminate\Http\Response
 //      */
-    public function show(ESCOLA $escola)
+    public function show(Categoria $categoria)
     {
-        return view('escola.show',compact('escola'));
+        return view('categoria.show',compact('categoria'));
     }
     
 //     /**
@@ -81,9 +71,9 @@ class EscolaController extends Controller
 //      * @param  \App\Product  $product
 //      * @return \Illuminate\Http\Response
 //      */
-     public function edit(ESCOLA $escola)
+     public function edit(Categoria $categoria)
      {
-         return view('escola.edit',compact('escola'));
+         return view('categoria.edit',compact('categoria'));
      }
     
 //     /**
@@ -93,17 +83,17 @@ class EscolaController extends Controller
 //      * @param  \App\Product  $product
 //      * @return \Illuminate\Http\Response
 //      */
-     public function update(Request $request, ESCOLA $escola)
+     public function update(Request $request, Categoria $categoria)
      {
         //   request()->validate([
         //      'name' => 'required',
         //      'detail' => 'required',
         //  ]);
     
-         $escola->update($request->all());
+         $categoria->update($request->all());
     
-         return redirect()->route('escola.index')
-                         ->with('edit','Escola atualizada com sucesso!');
+         return redirect()->route('categoria.index')
+                         ->with('edit','Atualiazado com sucesso!');
      }
     
 //     /**
@@ -112,11 +102,12 @@ class EscolaController extends Controller
 //      * @param  \App\Product  $product
 //      * @return \Illuminate\Http\Response
 //      */
-     public function destroy(ESCOLA $escola)
+     public function destroy(Categoria $categoria)
      {
-         $escola->delete();
+         $categoria->delete();
     
-         return redirect()->route('escola.index')
-                         ->with('delete','Escola deletada com sucesso!');
+         return redirect()->route('categoria.index')
+                         ->with('delete','Ministério deletado com sucesso!');
      }
  }
+

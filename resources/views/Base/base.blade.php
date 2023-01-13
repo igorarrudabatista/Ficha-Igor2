@@ -55,8 +55,30 @@
 
                     
                 </li>                     
-                
-                <li class='sidebar-title'>Forms &amp; Tables</li>
+                <li class="sidebar-item  has-sub">
+
+                    <a href="#" class='sidebar-link'>
+                        <i data-feather="user" width="20"></i> 
+                        <span>Usuários do Sistema</span>
+                    </a>
+
+                    <ul class="submenu ">
+                        
+                        <li>
+                            <a href="/users">Ver Usuários</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/users/create">Criar Usuários</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/roles">Perfil de Usuários</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class='sidebar-title'>Cadastro &amp; SIstema</li>
                 
                 <li class="sidebar-item  has-sub">
                     
@@ -115,11 +137,17 @@
                     <ul class="submenu ">
                         
                         <li>
-                            <a href="{{asset('/ficha/table')}}">Ver Fichas</a>
+                            <a href="{{asset('/ficha')}}">Ver Fichas</a>
                         </li>
 
                         <li>
                             <a href="{{asset('/ficha/create')}}">Criar Fichas (escola)</a>
+                        </li>  
+                        <li>
+                            <a href="{{asset('/ficha/create')}}">Ficha (Conselho)</a>
+                        </li>  
+                        <li>
+                            <a href="{{asset('/ficha/create')}}">Ficha (Ministerio)</a>
                         </li>  
 
                         <li>
@@ -134,28 +162,85 @@
             
  
 
+               
                 <li class="sidebar-item  has-sub">
 
                     <a href="#" class='sidebar-link'>
-                        <i data-feather="user" width="20"></i> 
-                        <span>Usuários do Sistema</span>
+                        <i data-feather="layers" width="20"></i> 
+                        <span>Ministerio</span>
                     </a>
 
                     <ul class="submenu ">
                         
                         <li>
-                            <a href="/users">Ver Usuários</a>
+                            <a href="/ministerio">Ver Ministerio</a>
                         </li>
                         
                         <li>
-                            <a href="/users/create">Criar Usuários</a>
+                            <a href="/ministerio/create">Criar Ministerio</a>
                         </li>
                         
-                        <li>
-                            <a href="/roles">Perfil de Usuários</a>
-                        </li>
+          
+                    </ul>
+                </li>
+                <li class="sidebar-item  has-sub">
 
+                    <a href="#" class='sidebar-link'>
+                        <i data-feather="layers" width="20"></i> 
+                        <span>Polo</span>
+                    </a>
+
+                    <ul class="submenu ">
                         
+                        <li>
+                            <a href="/polo">Ver Polos</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/polo/create">Criar Polos</a>
+                        </li>
+                        
+          
+                    </ul>
+                </li>
+                <li class="sidebar-item  has-sub">
+
+                    <a href="#" class='sidebar-link'>
+                        <i data-feather="layers" width="20"></i> 
+                        <span>Categoria</span>
+                    </a>
+
+                    <ul class="submenu ">
+                        
+                        <li>
+                            <a href="/categoria">Ver Categoria</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categoria/create">Criar Categoria</a>
+                        </li>
+                        
+          
+                    </ul>
+                </li>
+                <li class="sidebar-item  has-sub">
+
+                    <a href="#" class='sidebar-link'>
+                        <i data-feather="layers" width="20"></i> 
+                        <span>Prazo</span>
+                    </a>
+
+                    <ul class="submenu ">
+                        
+                        <li>
+                            <a href="/prazo">Ver Prazo</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/prazo/create">Criar Prazo</a>
+                        </li>
+                        
+          
                     </ul>
                 </li>
                 <li class="sidebar-item  ">
@@ -338,7 +423,7 @@
                                         <div>
                                             <h6 class='text-bold'>Notificação</h6>
                                             <p class='text-xs'>
-                                                0 Notificações                                             </p>
+                                                5 Notificações                                             </p>
                                         </div>
                                     </li>
                                 </ul>
@@ -387,10 +472,9 @@
                                 <a class="dropdown-item" href="#"><i data-feather="settings"></i> Configurações</a>
                                 <div class="dropdown-divider"></div>
                                 {{-- <form method="POST" action="{{ route('logout') }}">
-                                    @csrf
-                                    <a class="dropdown-item" href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();" ><i data-feather="log-out"></i> Sair</a>                            </div> --}}
+                                    @csrf --}}
+                                    <a class="dropdown-item" href="{{asset('/logout')}}"
+                                    > Sair</a>                            </div> 
                         </li>
                     </ul>
                 </div>

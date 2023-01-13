@@ -10,6 +10,14 @@ use Illuminate\Http\Request;
 class AlunosController extends Controller
 {
 
+    function __construct()
+    {
+         $this->middleware('permission:aluno-list|aluno-create|aluno-edit|aluno-delete', ['only' => ['index','show']]);
+         $this->middleware('permission:aluno-create', ['only' => ['create','store']]);
+         $this->middleware('permission:aluno-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:aluno-delete', ['only' => ['destroy']]);
+    }
+    
     /**
      * Display a listing of the resource.
      *

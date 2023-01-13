@@ -31,8 +31,8 @@ class ALUNO extends Model
         
      ];
 
-    public function TB_FICHA() {
-        return $this->belongsTo(FICHA::class);
+    public function FICHA() {
+        return $this->hasMany(FICHA::class);
         }      
      
 }

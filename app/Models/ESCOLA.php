@@ -25,8 +25,13 @@ protected $table = 'escola';
         'EscolaStatus'
 
     ];
-    // public function users()
-    // {
-    //     return $this->belongsToMany(User::class);
-    // }
+     public function users()
+     {
+         return $this->belongsToMany(User::class);
+     }
+     public function FICHA()
+     {
+         return $this->hasMany(FICHA::class);
+     }
+
 }

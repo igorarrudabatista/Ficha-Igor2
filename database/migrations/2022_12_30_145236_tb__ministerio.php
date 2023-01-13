@@ -15,16 +15,16 @@ return new class extends Migration
     {
         Schema::create('ministerio', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('MinisterioNome');
-            $table->string('MinisterioStatus');
-            $table->string('MinisterioEmail');
-            $table->string('MinisterioDDD');
-            $table->string('MinisterioFone');
-            $table->string('MinisterioEndereco');
-            $table->string('MinisterioEndBairroId');
-            $table->string('MinisterioEndNmr');
-            $table->string('MinisterioCidade');
-            $table->string('MinisterioEstado');
+            $table->string('MinisterioNome')->nullable();
+            $table->string('MinisterioStatus')->nullable();
+            $table->string('MinisterioEmail')->nullable();
+            $table->string('MinisterioDDD')->nullable();
+            $table->string('MinisterioFone')->nullable();
+            $table->string('MinisterioEndereco')->nullable();
+            $table->string('MinisterioEndBairroId')->nullable();
+            $table->string('MinisterioEndNmr')->nullable();
+            $table->string('MinisterioCidade')->nullable();
+            $table->string('MinisterioEstado')->nullable();
   
             $table->timestamps();
         });

@@ -2,38 +2,34 @@
     
 namespace App\Http\Controllers;
     
-use App\Models\ESCOLA;
+use App\Models\Polo;
 use Illuminate\Http\Request;
     
-class EscolaController extends Controller
+class PoloController extends Controller
 { 
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */
+     */ 
     function __construct()
     {
-         $this->middleware('permission:escola-list|escola-create|escola-edit|escola-delete', ['only' => ['index','show']]);
-         $this->middleware('permission:escola-create', ['only' => ['create','store']]);
-         $this->middleware('permission:escola-edit', ['only' => ['edit','update']]);
-         $this->middleware('permission:escola-delete', ['only' => ['destroy']]);
+         $this->middleware('permission:polo-list|polo-create|polo-edit|polo-delete', ['only' => ['index','show']]);
+         $this->middleware('permission:polo-create', ['only' => ['create','store']]);
+         $this->middleware('permission:polo-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:polo-delete', ['only' => ['destroy']]);
     }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-    
-
     public function index()
     {
-        $escola = ESCOLA::latest()->paginate(5);
-        return view('escola.index',compact('escola'))
+        $polo = Polo::latest()->paginate(5);
+        return view('polo.index',compact('polo'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
-    
     
 //     /**
 //      * Show the form for creating a new resource.
@@ -42,7 +38,7 @@ class EscolaController extends Controller
 //      */
    public function create()
    {
-       return view('escola.create');
+       return view('polo.create');
    }
     
 //     /**
@@ -58,10 +54,10 @@ class EscolaController extends Controller
         //     'detail' => 'required',
         // ]);
     
-        ESCOLA::create($request->all());
+        Polo::create($request->all());
     
-         return redirect()->route('escola.index')
-                         ->with('success','Escola cadastrada com sucesso!');
+         return redirect()->route('polo.index')
+                         ->with('success','Polo criado com sucesso!');
      }
     
 //     /**
@@ -70,9 +66,9 @@ class EscolaController extends Controller
 //      * @param  \App\Product  $product
 //      * @return \Illuminate\Http\Response
 //      */
-    public function show(ESCOLA $escola)
+    public function show(Polo $polo)
     {
-        return view('escola.show',compact('escola'));
+        return view('polo.show',compact('polo'));
     }
     
 //     /**
@@ -81,9 +77,9 @@ class EscolaController extends Controller
 //      * @param  \App\Product  $product
 //      * @return \Illuminate\Http\Response
 //      */
-     public function edit(ESCOLA $escola)
+     public function edit(Polo $polo)
      {
-         return view('escola.edit',compact('escola'));
+         return view('polo.edit',compact('polo'));
      }
     
 //     /**
@@ -93,17 +89,17 @@ class EscolaController extends Controller
 //      * @param  \App\Product  $product
 //      * @return \Illuminate\Http\Response
 //      */
-     public function update(Request $request, ESCOLA $escola)
+     public function update(Request $request, Polo $polo)
      {
         //   request()->validate([
         //      'name' => 'required',
         //      'detail' => 'required',
         //  ]);
     
-         $escola->update($request->all());
+         $polo->update($request->all());
     
-         return redirect()->route('escola.index')
-                         ->with('edit','Escola atualizada com sucesso!');
+         return redirect()->route('polo.index')
+                         ->with('edit','Polo Atualiazado com sucesso!');
      }
     
 //     /**
@@ -112,11 +108,11 @@ class EscolaController extends Controller
 //      * @param  \App\Product  $product
 //      * @return \Illuminate\Http\Response
 //      */
-     public function destroy(ESCOLA $escola)
+     public function destroy(Polo $polo)
      {
-         $escola->delete();
+         $polo->delete();
     
-         return redirect()->route('escola.index')
-                         ->with('delete','Escola deletada com sucesso!');
+         return redirect()->route('polo.index')
+                         ->with('delete','Polo deletado com sucesso!');
      }
  }

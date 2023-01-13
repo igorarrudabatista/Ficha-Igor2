@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\CATEGORIA;
 use App\Models\FICHA;
+use App\Models\ESCOLA;
+use App\Models\ALUNO;
 use Illuminate\Http\Request;
     
 class FichaController extends Controller
@@ -25,10 +27,17 @@ class FichaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function index()
     {
-        $ficha = FICHA::latest()->paginate(5);
-        return view('ficha.index',compact('ficha'))
+
+        $ficha = Ficha::with('categoria', 'escola', 'aluno')->get();
+
+        $escola = ESCOLA::latest()->paginate(5);
+        $categoria = CATEGORIA::latest()->paginate(5);
+       // $ficha = FICHA::latest()->paginate(5);
+        return view('ficha.index',compact('ficha','escola','categoria'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
     
@@ -41,10 +50,15 @@ class FichaController extends Controller
    {
 
        //$categoria = CATEGORIA::all(); 
-       $categoria = CATEGORIA::pluck('FichaCatSts');
+    //    $categoria = CATEGORIA::pluck('FichaCatNome');
+    //    $escola = ESCOLA::pluck('EscolaNome');
+    //    $aluno = ALUNO::pluck('AlunoNome');
 
+    $categoria = CATEGORIA::all();
+    $escola = ESCOLA::all();
+    $aluno = ALUNO::all();
 
-       return view('ficha.create', compact('categoria'));
+       return view('ficha.create', compact('categoria','escola','aluno'));
    }
     
 //     /**
@@ -59,7 +73,9 @@ class FichaController extends Controller
         //     'name' => 'required',
         //     'detail' => 'required',
         // ]);
-    
+        // CATEGORIA::create($request->all());
+        // ESCOLA::create($request->all());
+        // ALUNO::create($request->all());
         FICHA::create($request->all());
     
          return redirect()->route('ficha.index')
@@ -85,7 +101,10 @@ class FichaController extends Controller
 //      */
      public function edit(FICHA $ficha)
      {
-         return view('ficha.edit',compact('ficha'));
+        $categoria = CATEGORIA::all();
+        $escola = ESCOLA::all();
+        $aluno = ALUNO::all();
+         return view('ficha.edit',compact('ficha','categoria','escola','aluno'));
      }
     
 //     /**
@@ -121,4 +140,38 @@ class FichaController extends Controller
          return redirect()->route('ficha.index')
                           ->with('delete','Ficha deleta com sucesso!');
      }
+
+     public function Conselho1(Request $request, $id)    {
+
+        $ficha = FICHA::find($id);
+        $conselho1 = 'Conselho1';
+        $ficha -> FichaStatus   = $conselho1;
+        $ficha -> save();
+             
+        //   toast('Status do Orçamento alterado para <b> Venda Realizada! </b> ','success');
+    
+          return redirect('/ficha');
+      }
+    public function Conselho2(Request $request, $id)    {
+    
+        $ficha = FICHA::find($id);
+        $conselho2 = 'Conselho2';
+        $ficha -> FichaStatus   = $conselho2;
+        $ficha -> save();
+             
+        //   toast('Status do Orçamento alterado para <b> Venda Realizada! </b> ','success');
+    
+          return redirect('/ficha');
+      }
+    public function Conselho3(Request $request, $id)    {
+    
+        $ficha = FICHA::find($id);
+        $conselho3 = 'Conselho3';
+        $ficha -> FichaStatus   = $conselho3;
+        $ficha -> save();
+             
+        //   toast('Status do Orçamento alterado para <b> Venda Realizada! </b> ','success');
+    
+          return redirect('/ficha');
+      }
  }

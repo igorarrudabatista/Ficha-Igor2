@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('prazo', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('ParmPerfilAcessoNivel');
-            $table->string('ParmPrazoDias');
+            $table->string('ParmPerfilAcessoNivel')->nullable();
+            $table->string('ParmPrazoDias')->nullable();
 
   
             $table->timestamps();

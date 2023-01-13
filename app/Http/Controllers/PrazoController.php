@@ -2,10 +2,10 @@
     
 namespace App\Http\Controllers;
     
-use App\Models\ESCOLA;
+use App\Models\Prazo;
 use Illuminate\Http\Request;
     
-class EscolaController extends Controller
+class PrazoController extends Controller
 { 
     /**
      * Display a listing of the resource.
@@ -14,26 +14,22 @@ class EscolaController extends Controller
      */
     function __construct()
     {
-         $this->middleware('permission:escola-list|escola-create|escola-edit|escola-delete', ['only' => ['index','show']]);
-         $this->middleware('permission:escola-create', ['only' => ['create','store']]);
-         $this->middleware('permission:escola-edit', ['only' => ['edit','update']]);
-         $this->middleware('permission:escola-delete', ['only' => ['destroy']]);
+         $this->middleware('permission:prazo-list|prazo-create|prazo-edit|prazo-delete', ['only' => ['index','show']]);
+         $this->middleware('permission:prazo-create', ['only' => ['create','store']]);
+         $this->middleware('permission:prazo-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:prazo-delete', ['only' => ['destroy']]);
     }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-    
-
     public function index()
     {
-        $escola = ESCOLA::latest()->paginate(5);
-        return view('escola.index',compact('escola'))
+        $prazo = Prazo::latest()->paginate(5);
+        return view('prazo.index',compact('prazo'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
-    
     
 //     /**
 //      * Show the form for creating a new resource.
@@ -42,7 +38,7 @@ class EscolaController extends Controller
 //      */
    public function create()
    {
-       return view('escola.create');
+       return view('prazo.create');
    }
     
 //     /**
@@ -58,10 +54,10 @@ class EscolaController extends Controller
         //     'detail' => 'required',
         // ]);
     
-        ESCOLA::create($request->all());
+        Prazo::create($request->all());
     
-         return redirect()->route('escola.index')
-                         ->with('success','Escola cadastrada com sucesso!');
+         return redirect()->route('prazo.index')
+                         ->with('success','Prazo criado com sucesso!');
      }
     
 //     /**
@@ -70,9 +66,9 @@ class EscolaController extends Controller
 //      * @param  \App\Product  $product
 //      * @return \Illuminate\Http\Response
 //      */
-    public function show(ESCOLA $escola)
+    public function show(Prazo $prazo)
     {
-        return view('escola.show',compact('escola'));
+        return view('prazo.show',compact('prazo'));
     }
     
 //     /**
@@ -81,9 +77,9 @@ class EscolaController extends Controller
 //      * @param  \App\Product  $product
 //      * @return \Illuminate\Http\Response
 //      */
-     public function edit(ESCOLA $escola)
+     public function edit(Prazo $prazo)
      {
-         return view('escola.edit',compact('escola'));
+         return view('prazo.edit',compact('prazo'));
      }
     
 //     /**
@@ -93,17 +89,17 @@ class EscolaController extends Controller
 //      * @param  \App\Product  $product
 //      * @return \Illuminate\Http\Response
 //      */
-     public function update(Request $request, ESCOLA $escola)
+     public function update(Request $request, Prazo $prazo)
      {
         //   request()->validate([
         //      'name' => 'required',
         //      'detail' => 'required',
         //  ]);
     
-         $escola->update($request->all());
+         $prazo->update($request->all());
     
-         return redirect()->route('escola.index')
-                         ->with('edit','Escola atualizada com sucesso!');
+         return redirect()->route('prazo.index')
+                         ->with('edit','Prazo Atualiazado com sucesso!');
      }
     
 //     /**
@@ -112,11 +108,11 @@ class EscolaController extends Controller
 //      * @param  \App\Product  $product
 //      * @return \Illuminate\Http\Response
 //      */
-     public function destroy(ESCOLA $escola)
+     public function destroy(Prazo $prazo)
      {
-         $escola->delete();
+         $prazo->delete();
     
-         return redirect()->route('escola.index')
-                         ->with('delete','Escola deletada com sucesso!');
+         return redirect()->route('prazo.index')
+                         ->with('delete','Prazo deletado com sucesso!');
      }
  }

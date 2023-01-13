@@ -15,7 +15,7 @@ class TB_FICHA extends Model
     public function tb_ficha(){
         return $this->belongsTo(FICHA::class);
     }
-    public function tb_categoria(){
-        return $this->belongsTo(CATEGORIA::class);
-    }
+    // public function tb_categoria(){
+    //     return $this->belongsTo(CATEGORIA::class);
+    // }
 }

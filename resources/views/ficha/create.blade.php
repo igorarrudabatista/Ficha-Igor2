@@ -29,10 +29,7 @@
                     <div class="card-body">
                         <div class="container">
                           
-
-                              
-
-                                <section class="section">
+                            <section class="section">
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="card">
@@ -70,15 +67,19 @@
                                                                 <div class="col-md-auto ">
                                                                 <B> FICHA DE ESTUDANTE INFREQUENTE / INDISCIPLINADO / INFRATOR - FICAI </B>
                                                                 <br> <br>
-                                                                </div> 
-                                                                <div class="col-sm">
-                                                                </div>
+                                                            </div> 
+                                                            <div class="col-sm">
                                                             </div>
+                                                        </div>
+                                                        {!! Form::open(array('route' => 'ficha.store','method'=>'POST')) !!}
                                                           
                                                     <h5 class="card-title justify-content-md-center">IDENTIFICAÇÃO DA ESCOLA</h5>
                                                 </div>
                                                 <div class="card-body">
-                                                    <code> Lotação: </code> Escola 
+                                                    @foreach ($escola as $escolas)
+
+                                                    <code> Lotação: </code>{!! Form::select('escola_id', [$escolas->EscolaNome], null, ['class' => 'form-control']) !!}
+                                                    @endforeach
                                                    
                                                      <code> Endereço:  </code> Endereço aqui</code> 
                                                     <code>Telefone: </code> 65 99999 <code> Município: </code> Cuiabá <code> UF: </code> MT   </p>
@@ -89,7 +90,11 @@
                                                     <h6 class="card-title">IDENTIFICAÇÃO DO ESTUDANTE</h5>
                                                 </div>
                                                 <div class="card-body">
-                                                    <code> Nome do Aluno: </code> Aluno
+                                                    @foreach ($aluno as $alunos)
+
+                                                    <code> Nome do Aluno: </code> <code> Aluno: </code>{!! Form::select('aluno_id', [$alunos->AlunoNome], null, ['class' => 'form-control']) !!}
+                                                    @endforeach
+
                                                     <code> Endereço: </code> Endereço
                                                     <code> Telefone: </code> Telefone
                                                     <code> Município: </code> Municipio
@@ -98,18 +103,10 @@
                                                     <code> Data de Nascimento: </code> 13/10/1985
                                                     <code> Ano: </code> 6a Série 
                                                     <code> Turno: </code> Matutino 
-
-                                                  
-                                                                                                        </div>
+                                                </div>
                                             </div>
-                                      
-                                   
-                          
-                        
-                          
+                                            <hr>
 
-                                            
-<hr>
 
                                                     <div class="card-content">
                                                         <div class="card-body">
@@ -121,7 +118,7 @@
                                                                         <a class="list-group-item list-group-item-action" id="list-profile-list"
                                                                             data-bs-toggle="list" href="#list-profile" role="tab">Providências da Unidade Escolar</a>
 
-                                                                        <a class="list-group-item list-group-item-action" id="list-messages-list"
+                                                                        {{-- <a class="list-group-item list-group-item-action" id="list-messages-list"
                                                                             data-bs-toggle="list" href="#list-messages" role="tab">Registro de Encaminhamento da SEDUC</a>
 
                                                                         <a class="list-group-item list-group-item-action" id="list-settings-list"
@@ -129,7 +126,7 @@
 
                                                                         <a class="list-group-item list-group-item-action" id="list-settings-ministerio"
                                                                             data-bs-toggle="list" href="#list-ministerio" role="tab">Registro de Encaminhamento do Ministério Público</a>
-                                                                   
+                                                                    --}}
                                                                         <a class="list-group-item list-group-item-action" id="list-settings-finalizar"
                                                                             data-bs-toggle="list" href="#list-finalizar" role="tab">FINALIZAR CADASTRO</a>
                                                                    
@@ -148,15 +145,16 @@
                                                                                     <div class="form-group">
 
                                                                                        
-                                                                                                
-                                                                                                {!! Form::select('FichaCatSts', $categoria, null, ['class' => 'form-control']) !!}
+                                                                    @foreach ($categoria as $categorias)
+             
+                                                                    {!! Form::select('categoria_id', [$categorias->FichaCatNome], null, ['class' => 'form-control']) !!}
 
-                                                                                                
+                                                                        @endforeach                                
                                                                                    
                                                                                     </div>
 
-                                                                                <label for="first-name-column">Nome do Responsável pelo Encmainhento</label>
-                                                                                {!! Form::text('Nome_resp_encaminhamento', null, array('placeholder' => 'Nome do Responsável pelo Encmainhento','class' => 'form-control')) !!}
+                                                                                <label for="first-name-column">Nome do Responsável pelo Encaminhamento</label>
+                                                                                {!! Form::text('Nome_resp_encaminhamento', null, array('placeholder' => 'Nome do Responsável pelo Encaminhamento','class' => 'form-control')) !!}
 
                                                                             </div>
                                                                             <div class="form-group">
@@ -195,7 +193,7 @@
 
                                                                                 <label for="last-name-column">Por quem:</label>
 
-                                                                                {!! Form::select('EscolaStatus', ['Coordenador' => 'Coordenador', 'Professor' => 'Professor', 'Outros' => 'Outros' ], null, ['class' => 'choices form-select']) !!}
+                                                                                {!! Form::select('Porquem_comunica_responsaveis', ['Coordenador' => 'Coordenador', 'Professor' => 'Professor', 'Outros' => 'Outros' ], null, ['class' => 'choices form-select']) !!}
 
                                                                             </div>
                                                                             <div class="form-group col-md-4 col-4">
@@ -248,7 +246,7 @@
                                                                             </section>
                                                                             
                                                                         </div></div>
-                                                                        <div class="tab-pane" id="list-messages" role="tabpanel"
+                                                                        {{-- <div class="tab-pane" id="list-messages" role="tabpanel"
                                                                             aria-labelledby="list-messages-list">
                                                                             <div class="row">
 
@@ -366,12 +364,12 @@
                                                                             </div>
                                                                         </div>
                                                                     </section>
-                                                                    <div class="clearfix">
+                                                                    <div class="clearfix"> 
                                                                         
                                                                         <button class="btn btn-primary float-end"> Salvar</button>
                                                                     </div>
                                                             </div>
-
+--}}
                                                             <div class="tab-pane" id="list-finalizar" role="tabpanel"
                                                             aria-labelledby="list-settings-list">
                                                             <div class="row">
@@ -389,7 +387,7 @@
                                                                             </div>
                                                                         </div> 
                                                                     </div>
-                                                                </div>
+                                                                </div> 
 
                                                               
                                                                

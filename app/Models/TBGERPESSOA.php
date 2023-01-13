@@ -8,9 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class TBGERPESSOA extends Model
 {
     use HasFactory;
-    protected $connection = 'sqlsrv2';
+ //   protected $connection = 'sqlsrv';
 
     protected $table = 'GER.TBGERPESSOA';
+
 
 }
 

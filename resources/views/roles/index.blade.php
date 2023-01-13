@@ -10,7 +10,7 @@
                 <h3>Usuários</h3>
                 <p class="text-subtitle text-muted">
                    <p>Perfis do Sistema.</p>
-            <a class="btn btn-success" href="{{ route('roles.create') }}"> Criar Novo Perfil </a>
+            <a class="btn btn-primary" href="{{ route('roles.create') }}"> Criar Novo Perfil </a>
         
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">

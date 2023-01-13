@@ -113,6 +113,6 @@ class MinisterioController extends Controller
          $ministerio->delete();
     
          return redirect()->route('ministerio.index')
-                         ->with('delete','Product deleted successfully');
+                         ->with('delete','Ministério deletado com sucesso!');
      }
  }

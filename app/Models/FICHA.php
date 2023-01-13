@@ -20,12 +20,17 @@ class FICHA extends Model
         
      ];
 
-    public function categorias() {
-        return $this->belongsToMany(CATEGORIA::class)->withPivot(['Quantidade']);
-        }    
+      public function categoria() {
+          return $this->hasMany(CATEGORIA::class, 'categoria_id');
+          
+          }    
         
     public function escola() {
     return $this->belongsTo(ESCOLA::class);
+            }    
+           
+    public function Aluno() {
+    return $this->belongsTo(ALUNO::class);
             }    
            
      
