@@ -137,21 +137,23 @@
                     <ul class="submenu ">
                         
                         <li>
-                            <a href="{{asset('/ficha')}}">Ver Fichas</a>
+                            <a href="{{asset('/ficha')}}">Ver Fichas (escola) </a>
                         </li>
 
                         <li>
                             <a href="{{asset('/ficha/create')}}">Criar Fichas (escola)</a>
-                        </li>  
+                        </li> 
+                        <hr>
                         <li>
-                            <a href="{{asset('/ficha/create')}}">Ficha (Conselho)</a>
-                        </li>  
+                            <a href="{{asset('/ficha')}}">Fichas(Conselho) </a>
+                        </li>
+                                <hr>
                         <li>
-                            <a href="{{asset('/ficha/create')}}">Ficha (Ministerio)</a>
+                            <a href="{{asset('/ficha')}}">Ficha (Ministerio)</a>
                         </li>  
 
                         <li>
-                            <a href="{{asset('/ficha/form')}}">Minhas Fichas</a>
+                            <a href="{{asset('/ficha/form')}}">Todas Fichas</a>
                         </li>
                         
                         
@@ -238,6 +240,26 @@
                         
                         <li>
                             <a href="/prazo/create">Criar Prazo</a>
+                        </li>
+                        
+          
+                    </ul>
+                </li>
+                <li class="sidebar-item  has-sub">
+
+                    <a href="#" class='sidebar-link'>
+                        <i data-feather="layers" width="20"></i> 
+                        <span>Conselho</span>
+                    </a>
+
+                    <ul class="submenu ">
+                        
+                        <li>
+                            <a href="/conselho">Ver Conselho</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/conselho/create">Criar Conselho</a>
                         </li>
                         
           

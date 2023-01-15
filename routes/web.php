@@ -8,7 +8,7 @@ use App\Http\Controllers\
     HomeController, AlunosController, FichaController, PainelGerencialController,
     UsuariosController, RoleController, UserController, ProductController,
     MinisterioController, PoloController, EscolaController, PessoaController,
-    CategoriaController, PrazoController
+    CategoriaController, PrazoController, ConselhoController
 
     };
 
@@ -88,6 +88,7 @@ Route::get('/usuarios/form_usuarios',                 [UsuariosController::class
     Route::resource('categoria', CategoriaController::class);
     Route::resource('ficha', FichaController::class);
     Route::resource('prazo', PrazoController::class);
+    Route::resource('conselho', ConselhoController::class);
     
     
 

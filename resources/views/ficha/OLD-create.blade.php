@@ -71,22 +71,18 @@
                                                             <div class="col-sm">
                                                             </div>
                                                         </div>
-
-                                                        {!! Form::model($ficha, ['method' => 'PATCH','route' => ['ficha.update', $ficha->id]]) !!}
-
-                                                <h5 class="card-title justify-content-md-center">IDENTIFICAÇÃO DA ESCOLA</h5>
+                                                        {!! Form::open(array('route' => 'ficha.store','method'=>'POST')) !!}
+                                                          
+                                                    <h5 class="card-title justify-content-md-center">IDENTIFICAÇÃO DA ESCOLA</h5>
                                                 </div>
                                                 <div class="card-body">
-                                                    <code> Lotação: </code>
+                                                <code> Lotação: </code>
+                                                 @foreach ($escola as $escolas)
 
-
-                                                    <select name="escola_id" id="escola_id" class="form-control">
-                                                        <option value="" disabled> Selecionar Escola </option>
-                                                        @foreach ($escola as $escolas)
-                                                        <option value="{{ $escolas->id}}"> {{$escolas->EscolaNome}} </option>
-                                                        @endforeach
-                                                    </select>
-                                               
+                                                  {!! Form::select('escola_id', [$escolas], null, ['class' => 'form-control']) !!}
+                                                  
+                                                    @endforeach
+                                                   
                                                      <code> Endereço:  </code> Endereço aqui</code> 
                                                     <code>Telefone: </code> 65 99999 <code> Município: </code> Cuiabá <code> UF: </code> MT   </p>
 
@@ -96,12 +92,10 @@
                                                     <h6 class="card-title">IDENTIFICAÇÃO DO ESTUDANTE</h5>
                                                 </div>
                                                 <div class="card-body">
-                                                <select name="aluno_id" id="aluno_id" class="form-control">
-                                                        <option value="" disabled> Selecionar Aluno </option>
-                                                        @foreach ($aluno as $alunos)
-                                                        <option value="{{ $alunos->id}}"> {{$alunos->AlunoNome}} </option>
-                                                        @endforeach
-                                                    </select>
+                                                    @foreach ($aluno as $alunos)
+
+                                                    <code> Nome do Aluno: </code> <code> Aluno: </code>{!! Form::select('aluno_id', [$alunos->AlunoNome], null, ['class' => 'form-control']) !!}
+                                                    @endforeach
 
                                                     <code> Endereço: </code> Endereço
                                                     <code> Telefone: </code> Telefone
@@ -128,10 +122,8 @@
 
                                                                         {{-- <a class="list-group-item list-group-item-action" id="list-messages-list"
                                                                             data-bs-toggle="list" href="#list-messages" role="tab">Registro de Encaminhamento da SEDUC</a>
-
                                                                         <a class="list-group-item list-group-item-action" id="list-settings-list"
                                                                             data-bs-toggle="list" href="#list-settings" role="tab">Registro de Encaminhamento do Conselho Tutelar</a>
-
                                                                         <a class="list-group-item list-group-item-action" id="list-settings-ministerio"
                                                                             data-bs-toggle="list" href="#list-ministerio" role="tab">Registro de Encaminhamento do Ministério Público</a>
                                                                     --}}
@@ -152,31 +144,29 @@
 
                                                                                     <div class="form-group">
 
-                                                                                    <select name="categoria_id" id="categoria_id" class="form-control">
-                                                                                        <option value="" disabled> Selecionar Aluno </option>
-                                                                                        @foreach ($categoria as $categorias)
-                                                                                        <option value="{{ $categorias->id}}"> {{$categorias->FichaCatNome}} </option>
-                                                                                        @endforeach
-                                                                                    </select>
+                                                                                       
+                                                                    @foreach ($categoria as $categorias)
+             
+                                                                    {!! Form::select('categoria_id', [$categorias->FichaCatNome], null, ['class' => 'form-control']) !!}
 
+                                                                        @endforeach                                
+                                                                                   
                                                                                     </div>
 
                                                                                 <label for="first-name-column">Nome do Responsável pelo Encaminhamento</label>
-                                                                                <input type="text" class="form-control" id="Nome_resp_encaminhamento" name="Nome_resp_encaminhamento" >
-
+                                                                                {!! Form::text('Nome_resp_encaminhamento', null, array('placeholder' => 'Nome do Responsável pelo Encaminhamento','class' => 'form-control')) !!}
 
                                                                             </div>
                                                                             <div class="form-group">
                                                                                 <label for="last-name-column">CPF</label>
-                                                                                <input type="text" class="form-control" id="CPF_resp_encaminhamento" name="CPF_resp_encaminhamento" >
+                                                                                {!! Form::text('CPF_resp_encaminhamento', null, array('placeholder' => 'CPF','class' => 'form-control')) !!}
 
                                                                             </div>
                                                                                   
                                                                             <div class="card-body">
                                                                                 <h4 class="card-title">Escreva o motivo</h4>
                                                                                 <div>
-                                                                                <input type="text" class="form-control" id="Obs_motivo" name="Obs_motivo" >
-
+                                                                                    {!! Form::text('Obs_motivo', null, array('placeholder' => 'Descreva o motivo aqui','class' => 'form-control', 'id' => 'full')) !!}
                                                                             <p><br></p>
                                                                                 </div>
                                                                             </div>
@@ -189,30 +179,27 @@
 
                                                                                 <div class="form-group col-md-4 col-4">
                                                                                 <label for="first-name-column">Data da Comunicação aos Pais</label>
-                                                                                <input type="date" class="form-control" id="Data_comunica_responsaveis" name="Data_comunica_responsaveis" >
-
+                                                                                {!! Form::date('Data_comunica_responsaveis', null, array('placeholder' => 'Data da comunicação','class' => 'form-control')) !!}
 
                                                                                 </div>
                                                                        
                                                                             <div class="form-group col-md-6 col-6">
                                                                                 <label for="last-name-column">Nome </label>
-                                                                                <input type="text" class="form-control" id="Nome_comunica_responsaveis" name="Nome_comunica_responsaveis" >
-
+                                                                                {!! Form::text('Nome_comunica_responsaveis', null, array('placeholder' => 'Nome','class' => 'form-control')) !!}
 
                                                                             </div>
 
                                                                             <div class="form-group col-md-4 col-4">
 
                                                                                 <label for="last-name-column">Por quem:</label>
-                                                                                <input type="text" class="form-control" id="Porquem_comunica_responsaveis" name="Porquem_comunica_responsaveis" >
 
+                                                                                {!! Form::select('Porquem_comunica_responsaveis', ['Coordenador' => 'Coordenador', 'Professor' => 'Professor', 'Outros' => 'Outros' ], null, ['class' => 'choices form-select']) !!}
 
                                                                             </div>
                                                                             <div class="form-group col-md-4 col-4">
 
                                                                                 <label for="last-name-column">CPF</label>
-                                                                                <input type="text" class="form-control" id="CPF_comunica_responsaveis" name="CPF_comunica_responsaveis" >
-
+                                                                                {!! Form::text('CPF_comunica_responsaveis', null, array('placeholder' => 'CPF','class' => 'form-control')) !!}
 
                                                                             </div>
                                                                             <div class="form-group col-md-4 col-4">
@@ -220,8 +207,7 @@
                                                                             <div class="form-group has-icon-left">
                                                                                 <label for="mobile-id-icon">Telefone</label>
                                                                                 <div class="position-relative">
-                                                                                <input type="text" class="form-control" id="Telefone_comunica_responsaveis" name="Telefone_comunica_responsaveis" >
-
+                                                                                {!! Form::text('Telefone_comunica_responsaveis', null, array('placeholder' => 'Telefone','class' => 'form-control')) !!}
 
                                                                                     <!-- <input type="text" class="form-control" placeholder="DDD + Telefone" id="mobile-id-icon"> -->
                                                                                     <div class="form-control-icon">
@@ -232,14 +218,12 @@
                                                                             
                                                                             <div class="form-group col-md-4 col-4">
                                                                                 <label for="last-name-column">Para quem:</label>
-                                                                                <input type="text" class="form-control" id="Paraquem_comunica_responsaveis" name="Paraquem_comunica_responsaveis" >
-
+                                                                                {!! Form::select('Paraquem_comunica_responsaveis', ['Conselho' => 'Conselho', 'Professor' => 'Professor', 'Outros' => 'Outros' ], null, ['class' => 'choices form-select']) !!}
 
                                                                             </div>
                                                                             <div class="form-group col-md-4 col-4">
                                                                                 <label for="last-name-column">Escolha o Conselho</label>
-                                                                                <input type="text" class="form-control" id="Conselho_comunica_responsaveis" name="Conselho_comunica_responsaveis" >
-
+                                                                                {!! Form::select('Conselho_comunica_responsaveis', ['Conselho' => 'Conselho', 'Professor' => 'Professor', 'Outros' => 'Outros' ], null, ['class' => 'choices form-select']) !!}
 
                                                                             </div>
 
@@ -265,13 +249,11 @@
                                                                         {{-- <div class="tab-pane" id="list-messages" role="tabpanel"
                                                                             aria-labelledby="list-messages-list">
                                                                             <div class="row">
-
                                                                                 <div class="form-group col-md-4 col-4">
                                                                                     <label for="first-name-column">Encaminhando para a SEDUC em</label>
                                                                                     <input type="date" id="first-name-column" class="form-control" placeholder="First Name"
                                                                                     name="fname-column">
                                                                                 </div>
-
                                                                                 <div class="form-group col-md-4 col-4">
                                                                                     <label for="last-name-column">CPF</label>
                                                                                     <input type="text" id="last-name-column" class="form-control" placeholder="000.000.000-00"
@@ -304,13 +286,11 @@
                                                                         <div class="tab-pane" id="list-settings" role="tabpanel"
                                                                             aria-labelledby="list-settings-list">
                                                                             <div class="row">
-
                                                                                 <div class="form-group col-md-4 col-4">
                                                                                     <label for="first-name-column">Encaminhando para o Conselho Tutelar em</label>
                                                                                     <input type="date" id="first-name-column" class="form-control" placeholder="First Name"
                                                                                     name="fname-column">
                                                                                 </div>
-
                                                                                 <div class="form-group col-md-4 col-4">
                                                                                     <label for="last-name-column">CPF</label>
                                                                                     <input type="text" id="last-name-column" class="form-control" placeholder="000.000.000-00"
@@ -340,17 +320,14 @@
                                                                                 </div>
                                                                             </section>
                                                                     </div>
-
                                                                     <div class="tab-pane" id="list-ministerio" role="tabpanel"
                                                                     aria-labelledby="list-settings-list">
                                                                     <div class="row">
-
                                                                         <div class="form-group col-md-4 col-4">
                                                                         <label for="first-name-column">Encaminhando Ministério Público em</label>
                                                                         <input type="date" id="first-name-column" class="form-control" placeholder="First Name"
                                                                             name="fname-column">
                                                                         </div>
-
                                                                         <div class="form-group col-md-4 col-4">
                                                                             <label for="last-name-column">CPF</label>
                                                                             <input type="text" id="last-name-column" class="form-control" placeholder="000.000.000-00"
@@ -362,7 +339,6 @@
                                                                         <input type="text" id="last-name-column" class="form-control" placeholder="Nome"
                                                                             name="lname-column">
                                                                     </div>
-
                                                                     <section class="section">
                                                                         <div class="row">
                                                                             <div class="col">

@@ -6,6 +6,7 @@ use App\Models\CATEGORIA;
 use App\Models\FICHA;
 use App\Models\ESCOLA;
 use App\Models\ALUNO;
+use App\Models\Conselho;
 use Illuminate\Http\Request;
     
 class FichaController extends Controller
@@ -32,12 +33,13 @@ class FichaController extends Controller
     public function index()
     {
 
-        $ficha = Ficha::with('categoria', 'escola', 'aluno')->get();
+        $ficha = Ficha::all();
 
         $escola = ESCOLA::latest()->paginate(5);
-        $categoria = CATEGORIA::latest()->paginate(5);
-       // $ficha = FICHA::latest()->paginate(5);
-        return view('ficha.index',compact('ficha','escola','categoria'))
+        $categoria = CATEGORIA::all();
+        $ficha = FICHA::latest()->paginate(5);
+        $conselho = Conselho::latest()->paginate(5);
+        return view('ficha.index',compact('ficha','escola','categoria', 'conselho'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
     

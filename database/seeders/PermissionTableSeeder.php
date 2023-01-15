@@ -62,6 +62,11 @@ class PermissionTableSeeder extends Seeder
             'prazo-create',
             'prazo-edit',
             'prazo-delete',
+            //conselho
+            'conselho-list',
+            'conselho-create',
+            'conselho-edit',
+            'conselho-delete',
             //
         ];
        

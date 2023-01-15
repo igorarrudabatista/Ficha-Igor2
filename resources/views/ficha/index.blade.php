@@ -80,11 +80,11 @@
 
                            <td>{{$fichas->id}}</td>
 
-                           <td>{{$fichas->categoria_id->FichaCatNome ?? 'Sem registros'  }}</td>E
+                           <td>{{$fichas->categoria_id->FichaCatNome ?? ' Registro Não Encontrado'  }}</td>
                            
-                           <td>{{$fichas->aluno_id->AlunoNome ?? 'Sem registros'}}</td>
+                           <td>{{$fichas->aluno_id->AlunoNome ?? ' Registro Não Encontrado'}}</td>
 
-                           <td>{{$fichas->escola_id->EscolaNome ??  'Sem registros'}}</td>
+                           <td>{{$fichas->escola_id->EscolaNome ??  ' Registro Não Encontrado'}}</td>
 
 
                            
@@ -97,9 +97,12 @@
                             Tramitar para
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="{{asset('/ficha/update/Conselho1')}}/{{$fichas->id}}">Conselho 1</a></li>
-                                <li><a class="dropdown-item" href="{{asset('/ficha/update/Conselho2')}}/{{$fichas->id}}">Conselho 2</a></li>
-                                <li><a class="dropdown-item" href="{{asset('/ficha/update/Conselho3')}}/{{$fichas->id}}">Conselho 3</a></li>
+                            @foreach($conselho as $conselhos) 
+
+                                <li><a class="dropdown-item" href="{{asset('/ficha/update/Conselho2')}}/{{$fichas->id}}">{{$conselhos->NomeConselho}}</a></li>
+                                @endforeach
+                                <!-- <li><a class="dropdown-item" href="{{asset('/ficha/update/Conselho2')}}/{{$fichas->id}}">Conselho 2</a></li>
+                                <li><a class="dropdown-item" href="{{asset('/ficha/update/Conselho3')}}/{{$fichas->id}}">Conselho 3</a></li> -->
                             </ul>
                             </div>
 
@@ -137,6 +140,10 @@
                            <td>{{$fichas->created_at ??  'Sem registros'}} </td>
                            <td>{{$fichas->updated_at ??  'Sem registros'}} </td>
                            <td> <a class="btn btn-warning" href="{{ route('ficha.edit',$fichas->id) }}">Editar</a>
+                           {!! Form::open(['method' => 'DELETE','route' => ['ficha.destroy', $fichas->id],'style'=>'display:inline']) !!}
+                           {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+
+                           {!! Form::close() !!}
                             <td>Ver </td>
                             
                             <td>

@@ -13,20 +13,23 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('serie', function (Blueprint $table) {
+        Schema::create('conselho', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('Serie');
+            
+            $table->string('ConselhoNome')->nullable();
+            $table->string('ConselhoStatus')->nullable();
+  
             $table->timestamps();
         });
     }
-   
-     /**
+    /**
      * Reverse the migrations.
      *
      * @return void
      */
     public function down()
     {
-        Schema::dropIfExists('serie');
+        Schema::dropIfExists('conselho');
+
     }
 };
