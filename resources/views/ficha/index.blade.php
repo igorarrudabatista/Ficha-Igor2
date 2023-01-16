@@ -80,11 +80,11 @@
 
                            <td>{{$fichas->id}}</td>
 
-                           <td>{{$fichas->categoria_id->FichaCatNome ?? ' Registro Não Encontrado'  }}</td>
+                           <td>{{$fichas->categoria->FichaCatNome ?? ' Registro Não Encontrado'  }}</td>
                            
-                           <td>{{$fichas->aluno_id->AlunoNome ?? ' Registro Não Encontrado'}}</td>
+                           <td>{{$fichas->aluno->AlunoNome ?? ' Registro Não Encontrado'}}</td>
 
-                           <td>{{$fichas->escola_id->EscolaNome ??  ' Registro Não Encontrado'}}</td>
+                           <td>{{$fichas->escola->EscolaNome ??  ' Registro Não Encontrado'}}</td>
 
 
                            

@@ -8,6 +8,8 @@ use App\Models\ESCOLA;
 use App\Models\ALUNO;
 use App\Models\Conselho;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
     
 class FichaController extends Controller
 { 
@@ -32,16 +34,37 @@ class FichaController extends Controller
 
     public function index()
     {
+        
+        
+        // return view('users.index',compact('users'))
+        //     ->with('i', (request()->input('page', 1) - 1) * 5);
+        
+        $ficha = Ficha::with('categoria', 'escola', 'aluno')->get();
+        $conselho = Conselho::all();
+     // $categoria = CATEGORIA::with('ficha')->get();
+        $escola = ESCOLA::all();
+        $aluno = ALUNO::all();
+    
+    $ficha =  FICHA::whereHas('User', function($query) {
+        return $query->where('id', auth()->id());
+    })->get();
+    
 
-        $ficha = Ficha::all();
 
-        $escola = ESCOLA::latest()->paginate(5);
-        $categoria = CATEGORIA::all();
-        $ficha = FICHA::latest()->paginate(5);
-        $conselho = Conselho::latest()->paginate(5);
-        return view('ficha.index',compact('ficha','escola','categoria', 'conselho'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
-    }
+              return view(
+                'ficha.index',
+                [
+                    'ficha' =>   $ficha,
+                    'escola'       =>   $escola,
+                    'conselho'         =>   $conselho,
+                    'aluno' => $aluno,
+                ]
+            );
+        }
+
+        // return view('ficha.index',compact('ficha','escola','categoria', 'conselho'))
+        //     ->with('i', (request()->input('page', 1) - 1) * 5);
+    
     
 //     /**
 //      * Show the form for creating a new resource.
@@ -79,7 +102,10 @@ class FichaController extends Controller
         // ESCOLA::create($request->all());
         // ALUNO::create($request->all());
         FICHA::create($request->all());
-    
+      //  user_id = auth()->user()->id;
+
+        //$model->updated_by = auth()->user()->id;
+
          return redirect()->route('ficha.index')
                          ->with('success','Ficha criado com sucesso!');
      }

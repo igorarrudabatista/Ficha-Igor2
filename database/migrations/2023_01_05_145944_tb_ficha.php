@@ -57,8 +57,16 @@ return new class extends Migration
         $table->foreign('aluno_id')->references('id')->on('aluno')->onDelete('cascade');
         
 
-        $table->integer('user_id')->nullable()->unsigned();
+        $table->unsignedBigInteger(column:'created_by')->nullable();
+        $table->foreign(columns:'created_by')->references(columns:'id')->on(table: 'users');
+        $table->unsignedBigInteger(column:'updated_by')->nullable();
+        $table->foreign(columns:'updated_by')->references(columns:'id')->on(table: 'users');
+        $table->unsignedBigInteger(column:'deleted_by')->nullable();
+        $table->foreign(columns:'deleted_by')->references(columns:'id')->on(table: 'users');
+        $table->softDeletes();
 
+
+        $table->timestamps();
 // then the foreign key
 // $table->foreign('user_id')->references('id')->on('users');
         // $table->unsignedInteger('criado_por');
@@ -66,7 +74,6 @@ return new class extends Migration
          
 
 
-            $table->timestamps();
         });
     }
 

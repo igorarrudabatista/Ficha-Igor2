@@ -10,7 +10,7 @@ class Categoria extends Model
     use HasFactory;
 
     protected $table = 'categoria';
-
+    protected $primaryKey = 'id';
     // protected $fillable = [
     //     'FichaCatNome',
     //     'FichaCatSts',
@@ -21,6 +21,6 @@ class Categoria extends Model
 
 
     public function FICHA() {
-        return $this->hasMany(FICHA::class);
+        return $this->belongsTo(FICHA::class);
         }   
 }
