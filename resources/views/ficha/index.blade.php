@@ -54,11 +54,9 @@
                             <th>Categoria</th>
                             <th>Nome do Aluno</th>
                             <th>Escola</th>
-                            <th>Tramitar para</th>
                             <th>Data de Abertura</th>
                             <th>Atualizado em</th>
-                            <th>Editar</th>
-                            <th>Visualizar Ficha</th>
+                            <th>Ação</th>
                             <th>Tramitado para</th>
                         </tr>
                     </thead>
@@ -66,7 +64,7 @@
                     <tbody>
                         <tr>
                         <td>
-                            @if ($fichas->FichaStatus != '')
+                            @if ($fichas->status_id != '')
                             <span class="badge bg-success">Tramitado</span>
 
                             @else
@@ -89,7 +87,7 @@
 
                            
                            <!-- <td><span class="badge bg-warning"> Não Tramitada </span> </td> -->
-                           <td>
+                           {{-- <td>
                             <!-- Button trigger modal -->
 
                             <div class="dropdown">
@@ -97,10 +95,12 @@
                             Tramitar para
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            @foreach($conselho as $conselhos) 
-
-                                <li><a class="dropdown-item" href="{{asset('/ficha/update/Conselho2')}}/{{$fichas->id}}">{{$conselhos->NomeConselho}}</a></li>
+                          
+                                @foreach ($users as $user)
+                                    
+                                <li><a class="dropdown-item" href="{{asset('/ficha/update/Conselho2')}}/{{$user->id}}">{{$user->name}}</a></li>
                                 @endforeach
+                    
                                 <!-- <li><a class="dropdown-item" href="{{asset('/ficha/update/Conselho2')}}/{{$fichas->id}}">Conselho 2</a></li>
                                 <li><a class="dropdown-item" href="{{asset('/ficha/update/Conselho3')}}/{{$fichas->id}}">Conselho 3</a></li> -->
                             </ul>
@@ -136,7 +136,10 @@
                                 </div>
                             </div>
                             </div> -->
-                           </td>
+
+
+
+                           </td> --}}
                            <td>{{$fichas->created_at ??  'Sem registros'}} </td>
                            <td>{{$fichas->updated_at ??  'Sem registros'}} </td>
                            <td> <a class="btn btn-warning" href="{{ route('ficha.edit',$fichas->id) }}">Editar</a>
@@ -144,18 +147,16 @@
                            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
 
                            {!! Form::close() !!}
-                            <td>Ver </td>
                             
                             <td>
-                            @if ($fichas->FichaStatus == 'Conselho1')
-
-                            <span class="badge bg-success">Conselho 1</span>
+                            @if ($fichas->status_id != '')
+                            <span class="badge bg-success">{{$fichas->users->name ?? 'Não encontrado'}} <br> {{$fichas->users->email ?? 'Não encontrado'}} </span>
                             
-                            @elseif  ($fichas->FichaStatus == 'Conselho2')
+                            {{-- @elseif  ($fichas->FichaStatus == 'Conselho2')
                             <span class="badge bg-warning">Conselho 2</span>
 
                             @elseif  ($fichas->FichaStatus == 'Conselho3')
-                            <span class="badge bg-primary">Conselho 3</span>
+                            <span class="badge bg-primary">Conselho 3</span> --}}
 
                             @else
                             <span class="badge bg-danger">Não Tramitado</span>

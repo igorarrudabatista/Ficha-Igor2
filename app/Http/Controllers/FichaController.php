@@ -7,6 +7,10 @@ use App\Models\FICHA;
 use App\Models\ESCOLA;
 use App\Models\ALUNO;
 use App\Models\Conselho;
+
+use App\Models\User;
+
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -39,7 +43,8 @@ class FichaController extends Controller
         // return view('users.index',compact('users'))
         //     ->with('i', (request()->input('page', 1) - 1) * 5);
         
-        $ficha = Ficha::with('categoria', 'escola', 'aluno')->get();
+        $ficha = Ficha::with('categoria', 'escola', 'aluno', 'user', 'users')->get();
+        $users = User::all();
         $conselho = Conselho::all();
      // $categoria = CATEGORIA::with('ficha')->get();
         $escola = ESCOLA::all();
@@ -58,6 +63,7 @@ class FichaController extends Controller
                     'escola'       =>   $escola,
                     'conselho'         =>   $conselho,
                     'aluno' => $aluno,
+                    'users' => $users
                 ]
             );
         }
@@ -78,12 +84,13 @@ class FichaController extends Controller
     //    $categoria = CATEGORIA::pluck('FichaCatNome');
     //    $escola = ESCOLA::pluck('EscolaNome');
     //    $aluno = ALUNO::pluck('AlunoNome');
+    $user = User::get();
 
     $categoria = CATEGORIA::all();
     $escola = ESCOLA::all();
     $aluno = ALUNO::all();
 
-       return view('ficha.create', compact('categoria','escola','aluno'));
+       return view('ficha.create', compact('categoria','escola','aluno','user'));
    }
     
 //     /**
@@ -129,10 +136,12 @@ class FichaController extends Controller
 //      */
      public function edit(FICHA $ficha)
      {
+        $user = User::get();
+
         $categoria = CATEGORIA::all();
         $escola = ESCOLA::all();
         $aluno = ALUNO::all();
-         return view('ficha.edit',compact('ficha','categoria','escola','aluno'));
+         return view('ficha.edit',compact('ficha','categoria','escola','aluno', 'user'));
      }
     
 //     /**
@@ -172,23 +181,27 @@ class FichaController extends Controller
      public function Conselho1(Request $request, $id)    {
 
         $ficha = FICHA::find($id);
-        $conselho1 = 'Conselho1';
-        $ficha -> FichaStatus   = $conselho1;
+        //$users = User::findOrFail($id);
+      //  $conselho1 = $users;
+        $ficha -> FichaStatus = $ficha;
         $ficha -> save();
              
         //   toast('Status do Orçamento alterado para <b> Venda Realizada! </b> ','success');
     
           return redirect('/ficha');
       }
-    public function Conselho2(Request $request, $id)    {
+    public function Conselho2(Request $request, $id) 
+       {
     
-        $ficha = FICHA::find($id);
-        $conselho2 = 'Conselho2';
-        $ficha -> FichaStatus   = $conselho2;
-        $ficha -> save();
+   
+
+         $user = FICHA::find($id); 
+         $user -> status_id = $user->id;
+         $user -> save();
              
-        //   toast('Status do Orçamento alterado para <b> Venda Realizada! </b> ','success');
-    
+
+
+
           return redirect('/ficha');
       }
     public function Conselho3(Request $request, $id)    {

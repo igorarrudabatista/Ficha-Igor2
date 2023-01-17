@@ -45,7 +45,11 @@ return new class extends Migration
         $table->string('CPF_ministerio_publico')->nullable();
         $table->string('Obs_ministerio_publico')->nullable();
         
-        $table->string('FichaStatus')->nullable();
+     //   $table->string('FichaStatus')->nullable();
+
+
+         $table->unsignedBigInteger(column:'status_id')->nullable();
+         $table->foreign(columns:'status_id')->references(columns:'id')->on(table: 'users');
 
         $table->unsignedInteger('categoria_id');
         $table->foreign('categoria_id')->references('id')->on('categoria')->onDelete('cascade');
@@ -67,12 +71,6 @@ return new class extends Migration
 
 
         $table->timestamps();
-// then the foreign key
-// $table->foreign('user_id')->references('id')->on('users');
-        // $table->unsignedInteger('criado_por');
-        // $table->foreign('criado_por')->references('id')->on('users');                 
-         
-
 
         });
     }

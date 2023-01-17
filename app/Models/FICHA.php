@@ -23,7 +23,7 @@ class FICHA extends Model
     protected $table = "ficha";
 
      protected $fillable = [
-         'FichaStatus',
+         'status_id',
          'categoria_id',
          'escola_id',
          'aluno_id',
@@ -45,6 +45,9 @@ class FICHA extends Model
 
     public function User() {
     return $this->belongsTo(User::class, 'created_by');
+            }    
+    public function Users() {
+    return $this->belongsTo(User::class, 'status_id');
             }    
            
      

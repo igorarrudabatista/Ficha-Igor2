@@ -135,6 +135,8 @@
                                                                         <a class="list-group-item list-group-item-action" id="list-settings-ministerio"
                                                                             data-bs-toggle="list" href="#list-ministerio" role="tab">Registro de Encaminhamento do Ministério Público</a>
                                                                     --}}
+                                                                        <a class="list-group-item list-group-item-action" id="list-settings-tramitar"
+                                                                            data-bs-toggle="list" href="#list-tramitar" role="tab">Tramitar para</a>
                                                                         <a class="list-group-item list-group-item-action" id="list-settings-finalizar"
                                                                             data-bs-toggle="list" href="#list-finalizar" role="tab">FINALIZAR CADASTRO</a>
                                                                    
@@ -386,10 +388,36 @@
                                                                     </div>
                                                             </div>
 --}}
-                                                            <div class="tab-pane" id="list-finalizar" role="tabpanel"
+                                                            <div class="tab-pane" id="list-tramitar" role="tabpanel"
                                                             aria-labelledby="list-settings-list">
                                                             <div class="row">
 
+                                                                <div class="col-xl-6 col-sm-6 col-12">
+                                                                    <div class="card text-center bg-lighten-2">
+                                                                        <div class="card-content d-flex">
+                                                                            <div class="card-body">
+                                                                                <img src="https://www.onlyoffice.com/blog/wp-content/uploads/2022/09/Blog_fillable_form_in_PDF.jpg" alt="" height="100"
+                                                                                    class="mb-1">
+                                                                                <h4 class="card-title white">Tramitar para</h4>
+                                                                                <select name="status_id" id="status_id" class="form-control">
+                                                                                    <option value="" enable> Selecione </option>
+                                                                                    @foreach ($user as $users)
+
+                                                                                    <option value="{{ $users->id}}"> {{$users->name}} </option>
+                                                                                    @endforeach
+                                                                                </select>
+
+                                                                              
+
+                                                                            </div>
+                                                                        </div> 
+                                                                    </div>
+                                                                </div> 
+                                                            </div>
+                                                            </div>
+                                                                <div class="tab-pane" id="list-finalizar" role="tabpanel"
+                                                                aria-labelledby="list-settings-list">
+                                                                <div class="row">
                                                                 <div class="col-xl-4 col-sm-6 col-12">
                                                                     <div class="card text-center bg-lighten-2">
                                                                         <div class="card-content d-flex">
@@ -404,6 +432,9 @@
                                                                         </div> 
                                                                     </div>
                                                                 </div> 
+
+
+                                               
 
                                                               
                                                                

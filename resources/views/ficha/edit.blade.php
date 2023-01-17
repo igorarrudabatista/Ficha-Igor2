@@ -386,29 +386,54 @@
                                                                     </div>
                                                             </div>
 --}}
-                                                            <div class="tab-pane" id="list-finalizar" role="tabpanel"
-                                                            aria-labelledby="list-settings-list">
-                                                            <div class="row">
+<div class="tab-pane" id="list-finalizar" role="tabpanel"
+aria-labelledby="list-settings-list">
+<div class="row">
 
-                                                                <div class="col-xl-4 col-sm-6 col-12">
-                                                                    <div class="card text-center bg-lighten-2">
-                                                                        <div class="card-content d-flex">
-                                                                            <div class="card-body">
-                                                                                <img src="https://www.onlyoffice.com/blog/wp-content/uploads/2022/09/Blog_fillable_form_in_PDF.jpg" alt="" height="100"
-                                                                                    class="mb-1">
-                                                                                <h4 class="card-title white">Finalize o formulário clicando em Salvar</h4>
-                                                                                <p class="card-text white">Obrigado</p>
-                                                                                <button class="btn btn-primary white"> Salvar</button>
+    <div class="col-xl-4 col-sm-6 col-12">
+        <div class="card text-center bg-lighten-2">
+            <div class="card-content d-flex">
+                <div class="card-body">
+                    <img src="https://www.onlyoffice.com/blog/wp-content/uploads/2022/09/Blog_fillable_form_in_PDF.jpg" alt="" height="100"
+                        class="mb-1">
+                    <h4 class="card-title white">Tramitar para</h4>
+                    <select name="status_id" id="status_id" class="form-control">
+                        <option value="" enable> Selecione </option>
+                        @foreach ($user as $users)
 
-                                                                            </div>
-                                                                        </div> 
-                                                                    </div>
-                                                                </div> 
+                        <option value="{{ $users->id}}"> {{$users->name}} </option>
+                        @endforeach
+                    </select>
 
-                                                              
-                                                               
-                                                    </div>
-                                                                </div>
+                   
+
+                </div>
+            </div> 
+        </div>
+    </div> 
+
+    <div class="col-xl-4 col-sm-6 col-12">
+        <div class="card text-center bg-lighten-2">
+            <div class="card-content d-flex">
+                <div class="card-body">
+                    <img src="https://www.onlyoffice.com/blog/wp-content/uploads/2022/09/Blog_fillable_form_in_PDF.jpg" alt="" height="100"
+                        class="mb-1">
+                    <h4 class="card-title white">Finalize o formulário clicando em Salvar</h4>
+                    <p class="card-text white">Obrigado</p>
+                    <button class="btn btn-primary white"> Salvar</button>
+
+                </div>
+            </div> 
+        </div>
+    </div> 
+
+
+
+
+  
+   
+</div>
+    </div>
                                                             </div>
                                                         </div>
                                                     </div>
