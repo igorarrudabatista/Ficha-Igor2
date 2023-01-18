@@ -122,23 +122,13 @@
                                                                 <div class="col-12 col-sm-12 col-md-4 ">
                                                                     <div class="list-group" role="tablist">
                                                                         <a class="list-group-item list-group-item-action active" id="list-home-list"
-                                                                            data-bs-toggle="list" href="#list-home" role="tab">Motivo do Encaminhamento</a>
+                                                                            data-bs-toggle="list" href="#list-home" role="tab">1. Motivo do Encaminhamento</a>
                                                                         <a class="list-group-item list-group-item-action" id="list-profile-list"
-                                                                            data-bs-toggle="list" href="#list-profile" role="tab">Providências da Unidade Escolar</a>
-
-                                                                        {{-- <a class="list-group-item list-group-item-action" id="list-messages-list"
-                                                                            data-bs-toggle="list" href="#list-messages" role="tab">Registro de Encaminhamento da SEDUC</a>
-
-                                                                        <a class="list-group-item list-group-item-action" id="list-settings-list"
-                                                                            data-bs-toggle="list" href="#list-settings" role="tab">Registro de Encaminhamento do Conselho Tutelar</a>
-
-                                                                        <a class="list-group-item list-group-item-action" id="list-settings-ministerio"
-                                                                            data-bs-toggle="list" href="#list-ministerio" role="tab">Registro de Encaminhamento do Ministério Público</a>
-                                                                    --}}
+                                                                            data-bs-toggle="list" href="#list-profile" role="tab">2. Providências da Unidade Escolar</a>
                                                                         <a class="list-group-item list-group-item-action" id="list-settings-tramitar"
-                                                                            data-bs-toggle="list" href="#list-tramitar" role="tab">Tramitar para</a>
+                                                                            data-bs-toggle="list" href="#list-tramitar" role="tab">3. Tramitar para</a>
                                                                         <a class="list-group-item list-group-item-action" id="list-settings-finalizar"
-                                                                            data-bs-toggle="list" href="#list-finalizar" role="tab">FINALIZAR CADASTRO</a>
+                                                                            data-bs-toggle="list" href="#list-finalizar" role="tab">4. FINALIZAR CADASTRO</a>
                                                                    
                                                                         </div>
                                                                 </div>
@@ -415,6 +405,7 @@
                                                                 </div> 
                                                             </div>
                                                             </div>
+                                                            
                                                                 <div class="tab-pane" id="list-finalizar" role="tabpanel"
                                                                 aria-labelledby="list-settings-list">
                                                                 <div class="row">

@@ -59,11 +59,77 @@ class FichaController extends Controller
               return view(
                 'ficha.index',
                 [
-                    'ficha' =>   $ficha,
-                    'escola'       =>   $escola,
-                    'conselho'         =>   $conselho,
-                    'aluno' => $aluno,
-                    'users' => $users
+                    'ficha'        => $ficha,
+                    'escola'       => $escola,
+                    'conselho'     => $conselho,
+                    'aluno'        => $aluno,
+                    'users'        => $users
+                ]
+            );
+        }
+    public function index_todas_fichas()
+    {
+        
+        
+        // return view('users.index',compact('users'))
+        //     ->with('i', (request()->input('page', 1) - 1) * 5);
+        
+        $ficha = Ficha::with('categoria', 'escola', 'aluno', 'user', 'users')->get();
+        $users = User::all();
+        $conselho = Conselho::all();
+     // $categoria = CATEGORIA::with('ficha')->get();
+        $escola = ESCOLA::all();
+        $aluno = ALUNO::all();
+    
+    // $ficha =  FICHA::whereHas('User', function($query) {
+    //     return $query->where('id', auth()->id());
+    // })->get();
+    
+
+
+              return view(
+                'ficha.index',
+                [
+                    'ficha'        => $ficha,
+                    'escola'       => $escola,
+                    'conselho'     => $conselho,
+                    'aluno'        => $aluno,
+                    'users'        => $users
+                ]
+            );
+        }
+   
+    public function index_atender()
+    {
+        
+        
+        // return view('users.index',compact('users'))
+        //     ->with('i', (request()->input('page', 1) - 1) * 5);
+        
+        $ficha = Ficha::with('categoria', 'escola', 'aluno', 'user', 'users')->get();
+        $users = User::all();
+        $conselho = Conselho::all();
+     // $categoria = CATEGORIA::with('ficha')->get();
+        $escola = ESCOLA::all();
+        $aluno = ALUNO::all();
+    
+    //  $ficha =  FICHA::whereHas('User', function($query) {
+    //      return $query->where('id', auth()->id());
+    //  })->get();
+
+     $ficha =  FICHA::where('status_id', '=', auth()->id())
+     ->get();
+    
+
+
+              return view(
+                'ficha.index2',
+                [
+                    'ficha'        => $ficha,
+                    'escola'       => $escola,
+                    'conselho'     => $conselho,
+                    'aluno'        => $aluno,
+                    'users'        => $users
                 ]
             );
         }

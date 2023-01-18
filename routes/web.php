@@ -38,12 +38,13 @@ Route::get('/base', [HomeController::class, 'home']);
 
 
 ////// FICHAS
-// Route::get('/ficha/table', [FichaController::class, 'home']);
-// Route::get('/ficha/form',  [FichaController::class, 'create']);
+ Route::get('/ficha/atender',  [FichaController::class, 'index_atender']);
+ Route::get('/ficha/fichas',  [FichaController::class, 'index_todas_fichas']);
 
-Route::get('/ficha/update/Conselho1/{id}',           [FichaController::class, 'Conselho1']);
-Route::get('/ficha/update/Conselho2/{id}',           [FichaController::class, 'Conselho2']);
-Route::get('/ficha/update/Conselho3/{id}',           [FichaController::class, 'Conselho3']);
+// Route::get('/ficha/update/Conselho1/{id}',           [FichaController::class, 'Conselho1']);
+// Route::get('/ficha/update/Conselho1/{id}',           [FichaController::class, 'Conselho1']);
+// Route::get('/ficha/update/Conselho2/{id}',           [FichaController::class, 'Conselho2']);
+// Route::get('/ficha/update/Conselho3/{id}',           [FichaController::class, 'Conselho3']);
 
 ////// PAINEL GERENCIAL (DASHBOARD)
 Route::get('/painel', [PainelGerencialController::class, 'dashboard']);

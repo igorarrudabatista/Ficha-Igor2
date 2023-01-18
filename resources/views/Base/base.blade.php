@@ -137,23 +137,21 @@
                     <ul class="submenu ">
                         
                         <li>
-                            <a href="{{asset('/ficha')}}">Ver Fichas (escola) </a>
+                            <a href="{{asset('/ficha')}}">Ver Fichas </a>
                         </li>
 
                         <li>
-                            <a href="{{asset('/ficha/create')}}">Criar Fichas (escola)</a>
+                            <a href="{{asset('/ficha/create')}}">Criar Fichas</a>
                         </li> 
                         <hr>
+                       
+                             
                         <li>
-                            <a href="{{asset('/ficha')}}">Fichas(Conselho) </a>
-                        </li>
-                                <hr>
-                        <li>
-                            <a href="{{asset('/ficha')}}">Ficha (Ministerio)</a>
+                            <a href="{{asset('/ficha/atender')}}">Fichas Tramitadas para mim</a>
                         </li>  
 
                         <li>
-                            <a href="{{asset('/ficha/form')}}">Todas Fichas</a>
+                            <a href="{{asset('/ficha/fichas')}}"> Ver Todas Fichas</a>
                         </li>
                         
                         
