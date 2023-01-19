@@ -31,6 +31,7 @@ class PermissionTableSeeder extends Seeder
             'ficha-list',
             'ficha-create',
             'ficha-edit',
+            'ficha-editconselho',
             'ficha-delete',
             //ministerio
             'ministerio-list',

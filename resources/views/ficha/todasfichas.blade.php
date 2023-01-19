@@ -9,7 +9,7 @@
             <div class="col-12 col-md-6 order-md-1 order-last">
                 <h3>Ficha</h3>
                 <p class="text-subtitle text-muted">
-                   <p> Listagem de Fichas Criadas por você, <b> {{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->name }}}  </b></p>
+                   <p> Listagem de todas as fichas. <b>  </b></p>
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class='breadcrumb-header'>
@@ -55,51 +55,31 @@
                             <th>Escola</th>
                             <th>Data de Abertura</th>
                             <th>Atualizado em</th>
-                            <th>Ação</th>
                             <th>Tramitado para</th>
                         </tr>
                     </thead>
                     @foreach($ficha as $fichas) 
-                   
 
                            <td>{{$fichas->id}}</td>
-
                            <td>{{$fichas->categoria->FichaCatNome ?? ' Registro Não Encontrado'  }}</td>
-                           
                            <td>{{$fichas->aluno->AlunoNome ?? ' Registro Não Encontrado'}}</td>
-
                            <td>{{$fichas->escola->EscolaNome ??  ' Registro Não Encontrado'}}</td>
-
-
-                           
-
-
                            <td>{{$fichas->created_at ??  'Sem registros'}} </td>
                            <td>{{$fichas->updated_at ??  'Sem registros'}} </td>
-                           <td> <a class="btn btn-warning" href="{{ route('ficha.edit',$fichas->id) }}">Editar</a>
-                           {!! Form::open(['method' => 'DELETE','route' => ['ficha.destroy', $fichas->id],'style'=>'display:inline']) !!}
+                           {{-- <td> <a class="btn btn-warning" href="{{ route('ficha.edit',$fichas->id) }}">Editar</a>
+                           {!! Form::open(['method' => 'DELETE','route' => ['ficha.destroy', $fichas->id],'style'=>'display:inline']) !!} --}}
                            {{-- {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!} --}}
-
                            {!! Form::close() !!}
-                            
                             <td>
                             @if ($fichas->status_id != '')
-                            <span class="badge bg-success">{{$fichas->users->name ?? 'Não encontrado'}} <br> {{$fichas->users->email ?? 'Não encontrado'}} </span>
-                            
-                            {{-- @elseif  ($fichas->FichaStatus == 'Conselho2')
-                            <span class="badge bg-warning">Conselho 2</span>
-
-                            @elseif  ($fichas->FichaStatus == 'Conselho3')
-                            <span class="badge bg-primary">Conselho 3</span> --}}
-
+                                <span class="badge bg-success">{{$fichas->users->name ?? 'Não encontrado'}} <br> {{$fichas->users->email ?? 'Não encontrado'}} </span>
                             @else
-                            <span class="badge bg-danger">Não Tramitado</span>
+                                <span class="badge bg-danger">Não Tramitado</span>
                             @endif
-                            
                             </td>
                         </tr>
                         
-                        @endforeach
+                    @endforeach
                     </tbody>
                 </table>
                 

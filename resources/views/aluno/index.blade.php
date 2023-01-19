@@ -70,9 +70,9 @@
                             <td>({{$alunos->AlunoDDD }}) {{$alunos->AlunoTelefone	?? 'Sem registros'  }}</td>
                             
                            <!-- <td> <a class="btn btn-primary" href="{{ route('aluno.show',$alunos->id) }}">Ver</a> -->
-                           <td> <a class="btn btn-warning" href="{{ route('aluno.edit',$alunos->id) }}">Editar</a>
+                           <td> <a class="btn btn-warning btn-sm" href="{{ route('aluno.edit',$alunos->id) }}">Editar</a>
                            {!! Form::open(['method' => 'DELETE','route' => ['aluno.destroy', $alunos->id],'style'=>'display:inline']) !!}
-                           {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!} 
+                           {!! Form::submit('Deletar', ['class' => 'btn btn-danger btn-sm']) !!} 
 
                            {!! Form::close() !!}
                             </td>

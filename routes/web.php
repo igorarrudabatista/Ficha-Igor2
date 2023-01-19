@@ -38,8 +38,9 @@ Route::get('/base', [HomeController::class, 'home']);
 
 
 ////// FICHAS
- Route::get('/ficha/atender',  [FichaController::class, 'index_atender']);
- Route::get('/ficha/fichas',  [FichaController::class, 'index_todas_fichas']);
+Route::get('/ficha/atender',             [FichaController::class, 'index_atender']);
+Route::get('/ficha/todasfichas',         [FichaController::class, 'index_todas_fichas']);
+Route::get('/ficha/editconselho/{id}',   [FichaController::class, 'editconselho']);
 
 // Route::get('/ficha/update/Conselho1/{id}',           [FichaController::class, 'Conselho1']);
 // Route::get('/ficha/update/Conselho1/{id}',           [FichaController::class, 'Conselho1']);
@@ -79,17 +80,17 @@ Route::get('/usuarios/perfil_usuarios',               [RoleController::class, 'p
 Route::get('/usuarios/form_usuarios',                 [UsuariosController::class, 'form_usuarios']);
 
 
-    Route::resource('roles', RoleController::class);
-    Route::resource('users', UserController::class);
-    Route::resource('products', ProductController::class);
-    Route::resource('ministerio', MinisterioController::class);
-    Route::resource('polo',     PoloController::class);
-    Route::resource('aluno', AlunosController::class);
-    Route::resource('escola', EscolaController::class);
-    Route::resource('categoria', CategoriaController::class);
-    Route::resource('ficha', FichaController::class);
-    Route::resource('prazo', PrazoController::class);
-    Route::resource('conselho', ConselhoController::class);
+    Route::resource('roles',        RoleController::class);
+    Route::resource('users',        UserController::class);
+    Route::resource('products',     ProductController::class);
+    Route::resource('ministerio',   MinisterioController::class);
+    Route::resource('polo',         PoloController::class);
+    Route::resource('aluno',        AlunosController::class);
+    Route::resource('escola',       EscolaController::class);
+    Route::resource('categoria',    CategoriaController::class);
+    Route::resource('ficha',        FichaController::class);
+    Route::resource('prazo',        PrazoController::class);
+    Route::resource('conselho',     ConselhoController::class);
     
     
 

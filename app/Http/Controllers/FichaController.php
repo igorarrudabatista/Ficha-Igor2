@@ -24,10 +24,12 @@ class FichaController extends Controller
      */
     function __construct()
     {
-         $this->middleware('permission:ficha-list|ficha-create|ficha-edit|ficha-delete', ['only' => ['index','show']]);
-         $this->middleware('permission:ficha-create', ['only' => ['create','store']]);
-         $this->middleware('permission:ficha-edit', ['only' => ['edit','update']]);
-         $this->middleware('permission:ficha-delete', ['only' => ['destroy']]);
+         $this->middleware('permission:ficha-list|ficha-create|ficha-edit|ficha-editconselho|ficha-delete', 
+                                                               ['only' => ['index','show']]);
+         $this->middleware('permission:ficha-create',          ['only' => ['create','store']]);
+         $this->middleware('permission:ficha-edit',            ['only' => ['edit','update']]);
+         $this->middleware('permission:ficha-editconselho',    ['only' => ['edit','update']]);
+         $this->middleware('permission:ficha-delete',          ['only' => ['destroy']]);
     }
     /**
      * Display a listing of the resource.
@@ -43,7 +45,7 @@ class FichaController extends Controller
         // return view('users.index',compact('users'))
         //     ->with('i', (request()->input('page', 1) - 1) * 5);
         
-        $ficha = Ficha::with('categoria', 'escola', 'aluno', 'user', 'users')->get();
+        $ficha = Ficha::with('categoria', 'escola', 'aluno', 'user', 'users');
         $users = User::all();
         $conselho = Conselho::all();
      // $categoria = CATEGORIA::with('ficha')->get();
@@ -88,7 +90,7 @@ class FichaController extends Controller
 
 
               return view(
-                'ficha.index',
+                'ficha.todasfichas',
                 [
                     'ficha'        => $ficha,
                     'escola'       => $escola,
@@ -146,12 +148,8 @@ class FichaController extends Controller
    public function create()
    {
 
-       //$categoria = CATEGORIA::all(); 
-    //    $categoria = CATEGORIA::pluck('FichaCatNome');
-    //    $escola = ESCOLA::pluck('EscolaNome');
-    //    $aluno = ALUNO::pluck('AlunoNome');
+ 
     $user = User::get();
-
     $categoria = CATEGORIA::all();
     $escola = ESCOLA::all();
     $aluno = ALUNO::all();
@@ -207,8 +205,24 @@ class FichaController extends Controller
         $categoria = CATEGORIA::all();
         $escola = ESCOLA::all();
         $aluno = ALUNO::all();
+        
          return view('ficha.edit',compact('ficha','categoria','escola','aluno', 'user'));
      }
+    
+
+     
+    //  public function editconselho(FICHA $ficha, $id)
+    //  {
+    //     $user = User::get();
+    //     $ficha = Ficha::with('categoria', 'escola', 'aluno', 'user', 'users')->get();
+    //     $categoria = CATEGORIA::all();
+    //     $escola = ESCOLA::all();
+    //     $aluno = ALUNO::all();
+
+    //     return view('ficha.editconselho', ['record' => FICHA::find($id)], compact('ficha','categoria','escola','aluno', 'user'));
+
+    //     //  return view('ficha.editconselho',compact('ficha','categoria','escola','aluno', 'user'));
+    //  }
     
 //     /**
 //      * Update the specified resource in storage.
@@ -218,6 +232,18 @@ class FichaController extends Controller
 //      * @return \Illuminate\Http\Response
 //      */
      public function update(Request $request, FICHA $ficha)
+     {
+        //   request()->validate([
+        //      'name' => 'required',
+        //      'detail' => 'required',
+        //  ]);
+    
+         $ficha->update($request->all());
+    
+         return redirect()->route('ficha.index')
+                          ->with('edit','Atualiazado com sucesso!');
+     }
+     public function update2(Request $request, FICHA $ficha)
      {
         //   request()->validate([
         //      'name' => 'required',
