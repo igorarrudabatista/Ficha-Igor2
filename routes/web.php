@@ -8,9 +8,9 @@ use App\Http\Controllers\
     HomeController, AlunosController, FichaController, PainelGerencialController,
     UsuariosController, RoleController, UserController, ProductController,
     MinisterioController, PoloController, EscolaController, PessoaController,
-    CategoriaController, PrazoController, ConselhoController
-
-    };
+    CategoriaController, PrazoController, ConselhoController,
+    Ficha_Ministerio, Ficha_Conselho, 
+};
 
  Route::get('/escola/teste',      [PessoaController::class, 'index']);
 
@@ -80,27 +80,30 @@ Route::get('/usuarios/perfil_usuarios',               [RoleController::class, 'p
 Route::get('/usuarios/form_usuarios',                 [UsuariosController::class, 'form_usuarios']);
 
 
-    Route::resource('roles',        RoleController::class);
-    Route::resource('users',        UserController::class);
-    Route::resource('products',     ProductController::class);
-    Route::resource('ministerio',   MinisterioController::class);
-    Route::resource('polo',         PoloController::class);
-    Route::resource('aluno',        AlunosController::class);
-    Route::resource('escola',       EscolaController::class);
-    Route::resource('categoria',    CategoriaController::class);
-    Route::resource('ficha',        FichaController::class);
-    Route::resource('prazo',        PrazoController::class);
-    Route::resource('conselho',     ConselhoController::class);
+    Route::resource('roles',            RoleController::class);
+    Route::resource('users',            UserController::class);
+    Route::resource('products',         ProductController::class);
+    Route::resource('ministerio',       MinisterioController::class);
+    Route::resource('polo',             PoloController::class);
+    Route::resource('aluno',            AlunosController::class);
+    Route::resource('escola',           EscolaController::class);
+    Route::resource('categoria',        CategoriaController::class);
+    Route::resource('ficha',            FichaController::class);
+    Route::resource('ficha_ministerio', Ficha_Ministerio::class);
+    //Route::resource('ficha_conselho',   Ficha_Conselho::class);
+    Route::resource('prazo',            PrazoController::class);
+    Route::resource('conselho',         ConselhoController::class);
     
-    
+    Route::get('ficha_conselho/{id}', [Ficha_Conselho::class, 'create']);
+    Route::post('ficha_conselho/{id}', [Ficha_Conselho::class, 'store']);
 
 
 //Route::resource('usuarios', UserController::class);
 
 
 // ---------USUARIOS POST
-Route::post('/usuarios/atribuir_perfil',              [UsuariosController::class, 'atribuir_perfil_usuarios_store']);
-Route::post('/usuarios',                              [UsuariosController::class, 'store_usuarios']);
+// Route::post('/usuarios/atribuir_perfil',              [UsuariosController::class, 'atribuir_perfil_usuarios_store']);
+// Route::post('/usuarios',                              [UsuariosController::class, 'store_usuarios']);
 
 /////LOGOUT
 // Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');

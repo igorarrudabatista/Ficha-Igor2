@@ -77,7 +77,7 @@
                            <td>{{$fichas->created_at ??  'Sem registros'}} </td>
                            <td>{{$fichas->updated_at ??  'Sem registros'}} </td>
 
-                            <td> <a class="btn btn-warning" href="{{ route('ficha.edit',$fichas->id) }}">Atender a ficha</a>
+                            <td> <a class="btn btn-warning" href="{{ route('ficha_conselho.create',$fichas->id) }}">Atender a ficha</a>
                            {!! Form::open(['method' => 'DELETE','route' => ['ficha.destroy', $fichas->id],'style'=>'display:inline']) !!}
                            {{-- {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!} --}}
 
