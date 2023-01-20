@@ -182,7 +182,7 @@ class Ficha_Conselho extends Controller
       
          $ficha_conselho->update($request->all());
     
-         return redirect()->route('ficha_conselho.index')
+         return redirect()->route('ficha.index')
                           ->with('edit','Atualiazado com sucesso!');
      }
      public function update2(Request $request, FICHA $ficha)
