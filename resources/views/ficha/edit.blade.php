@@ -140,120 +140,128 @@
                                                                             
                                                                             <div class="form-group">
 
-                                                                                    <h6>Selecione o Motivo do Encaminhamento:</h6>
+                                                                                <h6>Selecione o Motivo do Encaminhamento:</h6>
 
-                                                                                    <div class="form-group">
+                                                                                <div class="form-group">
 
-                                                                                    <select name="categoria_id" id="categoria_id" class="form-control">
-                                                                                        <option value="" disabled> Selecionar Aluno </option>
-                                                                                        @foreach ($categoria as $categorias)
-                                                                                        <option value="{{ $categorias->id}}"> {{$categorias->FichaCatNome}} </option>
-                                                                                        @endforeach
-                                                                                    </select>
+                                                                                <select name="categoria_id" id="categoria_id" class="form-control">
+                                                                                    <option value="" disabled> Selecionar Aluno </option>
+                                                                                    @foreach ($categoria as $categorias)
+                                                                                    <option value="{{ $categorias->id}}"> {{$categorias->FichaCatNome}} </option>
+                                                                                    @endforeach
+                                                                                </select>
 
-                                                                                    </div>
-
-                                                                                <label for="first-name-column">Nome do Responsável pelo Encaminhamento</label>
-                                                                                <input type="text" class="form-control" id="Nome_resp_encaminhamento" name="Nome_resp_encaminhamento" >
-
-
-                                                                            </div>
-                                                                            <div class="form-group">
-                                                                                <label for="last-name-column">CPF</label>
-                                                                                <input type="text" class="form-control" id="CPF_resp_encaminhamento" name="CPF_resp_encaminhamento" >
-
-                                                                            </div>
-                                                                                  
-                                                                            <div class="card-body">
-                                                                                <h4 class="card-title">Escreva o motivo</h4>
-                                                                                <div>
-                                                                                <input type="text" class="form-control" id="Obs_motivo" name="Obs_motivo" >
-
-                                                                            <p><br></p>
                                                                                 </div>
-                                                                            </div>
+                                                                                
+                                                                                <label for="first-name-column">Nome do Responsável pelo Encaminhamento</label>
+                                                                                {{-- <input type="text" class="form-control"  name="Nome_resp_encaminhamento" > --}}
+                                                                                {!! Form::text('Nome_resp_encaminhamento', null, array('placeholder' => 'Nome Completo do responsável','class' => 'form-control')) !!}
+
+
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="last-name-column">CPF</label>
+                                                                            {{-- <input type="text" class="form-control"  name="CPF_resp_encaminhamento" > --}}
+                                                                            {!! Form::text('CPF_resp_encaminhamento', null, array('placeholder' => 'CPF do responsável','class' => 'form-control')) !!}
+
+                                                                        </div>
                                                                               
+                                                                        <div class="card-body">
+                                                                            <h4 class="card-title">Escreva o motivo</h4>
+                                                                            <div>
+                                                                            {{-- <input type="text" class="form-control" id="Obs_motivo" name="Obs_motivo" > --}}
+                                                                            {!! Form::text('Obs_motivo', null, array('placeholder' => 'Motivo:','class' => 'form-control')) !!}
+
+                                                                        <p><br></p>
+                                                                            </div>
+                                                                        </div>
+                                                                          
+                                                                    </div>
+
+                                                                    <div class="tab-pane" id="list-profile" role="tabpanel"
+                                                                        aria-labelledby="list-profile-list">
+                                                                        <div class="row">
+
+                                                                            <div class="form-group col-md-4 col-4">
+                                                                            <label for="first-name-column">Data da Comunicação aos Pais</label>
+                                                                            {{-- <input type="date" class="form-control" id="Data_comunica_responsaveis" name="Data_comunica_responsaveis" > --}}
+                                                                            {!! Form::date('Data_comunica_responsaveis', null, array('placeholder' => 'Motivo:','class' => 'form-control')) !!}
+
+
+                                                                            </div>
+                                                                   
+                                                                        <div class="form-group col-md-6 col-6">
+                                                                            <label for="last-name-column">Nome </label>
+                                                                            {{-- <input type="text" class="form-control" id="Nome_comunica_responsaveis" name="Nome_comunica_responsaveis" > --}}
+                                                                            {!! Form::text('Nome_comunica_responsaveis', null, array('placeholder' => '','class' => 'form-control')) !!}
+
+
                                                                         </div>
 
-                                                                        <div class="tab-pane" id="list-profile" role="tabpanel"
-                                                                            aria-labelledby="list-profile-list">
+                                                                        <div class="form-group col-md-4 col-4">
+
+                                                                            <label for="last-name-column">Por quem:</label>
+                                                                            {{-- <input type="text" class="form-control" id="Porquem_comunica_responsaveis" name="Porquem_comunica_responsaveis" > --}}
+                                                                            {!! Form::text('Porquem_comunica_responsaveis', null, array('placeholder' => '','class' => 'form-control')) !!}
+
+                                                                        </div>
+                                                                        <div class="form-group col-md-4 col-4">
+
+                                                                            <label for="last-name-column">CPF</label>
+                                                                            {{-- <input type="text" class="form-control" id="CPF_comunica_responsaveis" name="CPF_comunica_responsaveis" > --}}
+                                                                            {!! Form::text('CPF_comunica_responsaveis', null, array('placeholder' => '','class' => 'form-control')) !!}
+
+
+                                                                        </div>
+                                                                        <div class="form-group col-md-4 col-4">
+
+                                                                        <div class="form-group has-icon-left">
+                                                                            <label for="mobile-id-icon">Telefone</label>
+                                                                            <div class="position-relative">
+                                                                            {{-- <input type="text" class="form-control" id="Telefone_comunica_responsaveis" name="Telefone_comunica_responsaveis" > --}}
+                                                                            {!! Form::text('Telefone_comunica_responsaveis', null, array('placeholder' => '','class' => 'form-control')) !!}
+
+
+                                                                                <!-- <input type="text" class="form-control" placeholder="DDD + Telefone" id="mobile-id-icon"> -->
+                                                                                <div class="form-control-icon">
+                                                                                    <i data-feather="phone"></i>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div> </div>
+                                                                        
+                                                                        <div class="form-group col-md-4 col-4">
+                                                                            <label for="last-name-column">Para quem:</label>
+                                                                            {{-- <input type="text" class="form-control" id="Paraquem_comunica_responsaveis" name="Paraquem_comunica_responsaveis" > --}}
+                                                                            {!! Form::text('Paraquem_comunica_responsaveis', null, array('placeholder' => '','class' => 'form-control')) !!}
+
+
+                                                                        </div>
+                                                                        <div class="form-group col-md-4 col-4">
+                                                                            <label for="last-name-column">Escolha o Conselho</label>
+                                                                            <input type="text" class="form-control" id="Conselho_comunica_responsaveis" name="Conselho_comunica_responsaveis" >
+
+
+                                                                        </div>
+
+                                                                        <section class="section">
                                                                             <div class="row">
-
-                                                                                <div class="form-group col-md-4 col-4">
-                                                                                <label for="first-name-column">Data da Comunicação aos Pais</label>
-                                                                                <input type="date" class="form-control" id="Data_comunica_responsaveis" name="Data_comunica_responsaveis" >
-
-
-                                                                                </div>
-                                                                       
-                                                                            <div class="form-group col-md-6 col-6">
-                                                                                <label for="last-name-column">Nome </label>
-                                                                                <input type="text" class="form-control" id="Nome_comunica_responsaveis" name="Nome_comunica_responsaveis" >
-
-
-                                                                            </div>
-
-                                                                            <div class="form-group col-md-4 col-4">
-
-                                                                                <label for="last-name-column">Por quem:</label>
-                                                                                <input type="text" class="form-control" id="Porquem_comunica_responsaveis" name="Porquem_comunica_responsaveis" >
-
-
-                                                                            </div>
-                                                                            <div class="form-group col-md-4 col-4">
-
-                                                                                <label for="last-name-column">CPF</label>
-                                                                                <input type="text" class="form-control" id="CPF_comunica_responsaveis" name="CPF_comunica_responsaveis" >
-
-
-                                                                            </div>
-                                                                            <div class="form-group col-md-4 col-4">
-
-                                                                            <div class="form-group has-icon-left">
-                                                                                <label for="mobile-id-icon">Telefone</label>
-                                                                                <div class="position-relative">
-                                                                                <input type="text" class="form-control" id="Telefone_comunica_responsaveis" name="Telefone_comunica_responsaveis" >
-
-
-                                                                                    <!-- <input type="text" class="form-control" placeholder="DDD + Telefone" id="mobile-id-icon"> -->
-                                                                                    <div class="form-control-icon">
-                                                                                        <i data-feather="phone"></i>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div> </div>
-                                                                            
-                                                                            <div class="form-group col-md-4 col-4">
-                                                                                <label for="last-name-column">Para quem:</label>
-                                                                                <input type="text" class="form-control" id="Paraquem_comunica_responsaveis" name="Paraquem_comunica_responsaveis" >
-
-
-                                                                            </div>
-                                                                            <div class="form-group col-md-4 col-4">
-                                                                                <label for="last-name-column">Escolha o Conselho</label>
-                                                                                <input type="text" class="form-control" id="Conselho_comunica_responsaveis" name="Conselho_comunica_responsaveis" >
-
-
-                                                                            </div>
-
-                                                                            <section class="section">
-                                                                                <div class="row">
-                                                                                    <div class="col">
-                                                                                        <div class="card">
-                                                                                            <div class="card-header">
-                                                                                                Procedimentos Realizados
-                                                                                            </div>
-                                                                                            <div class="card-body">
-                                                                                                <div class="form-group with-title mb-3">
-                                                                                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                                                                                    <label>Escreva aqui</label>
-                                                                                                </div>
+                                                                                <div class="col">
+                                                                                    <div class="card">
+                                                                                        <div class="card-header">
+                                                                                            Procedimentos Realizados
+                                                                                        </div>
+                                                                                        <div class="card-body">
+                                                                                            <div class="form-group with-title mb-3">
+                                                                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                                                                                <label>Escreva aqui</label>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
-                                                                            </section>
-                                                                            
-                                                                        </div></div>
+                                                                            </div>
+                                                                        </section>
+                                                                        
+                                                                    </div></div>
                                                                         {{-- <div class="tab-pane" id="list-messages" role="tabpanel"
                                                                             aria-labelledby="list-messages-list">
                                                                             <div class="row">
@@ -389,13 +397,18 @@ aria-labelledby="list-settings-list">
                     <img src="https://www.onlyoffice.com/blog/wp-content/uploads/2022/09/Blog_fillable_form_in_PDF.jpg" alt="" height="100"
                         class="mb-1">
                     <h4 class="card-title white">Tramitar para</h4>
-                    <select name="status_id" id="status_id" class="form-control">
-                        <option value="" enable> Selecione </option>
-                        @foreach ($user as $users)
 
-                        <option value="{{ $users->id}}"> {{$users->name}} </option>
-                        @endforeach
-                    </select>
+                    {{-- {!! Form::select('status_id', ['Ativa' => 'Ativa', 'Inativa' => 'Inativa'], null, ['class' => 'choices form-select']) !!} --}}
+                    {{-- {!! Form::select('status_id', [$user], null, ['class' => 'choices form-control']) !!} --}}
+                    {!! Form::select('status_id', $user, null, ['class' => 'form-control']) !!}
+
+                    {{-- {{ Form::select('status_id', $users->id, Input::old('status_id')) }} --}}
+
+                     {{-- <select name="status_id" id="status_id" class="form-control"> 
+                       <option value="" enable> Selecione </option> 
+
+                      <option value="{{ $users->id}}"> {{$users->name}} </option> 
+                    </select>--}}
 
                   
 
@@ -425,6 +438,7 @@ aria-labelledby="list-settings-list">
     </div> 
 
 
+    {!! Form::close() !!}
 
 
   

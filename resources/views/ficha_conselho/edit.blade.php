@@ -72,10 +72,13 @@
                                                             </div>
                                                         </div>
 
-                {!! Form::model($ficha_conselho, ['method' => 'PATCH','route' => ['ficha_conselho.update', $ficha_conselho->id]]) !!}
+                                                        {!! Form::model($ficha_conselho, ['method' => 'PATCH','route' => ['ficha_conselho.update', $ficha_conselho->id]]) !!} 
+{{-- 
+                                                             <form action="{{asset('/ficha_conselho/update/')}}/{{$ficha_conselho->id}}" method="POST" enctype="multipart/form-data">
 
-
-                
+                                                            @csrf
+                                                            @method('PUT')  --}}
+         
                                                 <h5 class="card-title justify-content-md-center">IDENTIFICAÇÃO DA ESCOLA</h5>
                                                 </div>
                                                 <div class="card-body">
@@ -145,25 +148,29 @@
 
                                                                                             <div class="form-group col-md-4 col-4">
                                                                                             <label for="first-name-column">Encmaminhado em:</label>
-                                                                                            <input type="date" class="form-control" id="data_encaminhamento" name="data_encaminhamento" >
+                                                                                            {{-- <input type="date" class="form-control" id="Data_comunica_tutelar" name="Data_comunica_tutelar" > --}}
+                                                                                            {!! Form::date('Data_comunica_tutelar', null, array('placeholder' => '','class' => 'form-control')) !!}
 
                                                                                     </div>
 
                                                                                 <label for="first-name-column">Nome do Responsável pelo Encaminhamento</label>
-                                                                                <input type="text" class="form-control" id="Nome_Responsavel" name="Nome_Responsavel" >
+                                                                                {{-- <input type="text" class="form-control" id="Nome_tutelar" name="Nome_tutelar" > --}}
+                                                                                            {!! Form::text('Nome_tutelar', null, array('placeholder' => 'Nome Tutelar','class' => 'form-control')) !!}
 
 
                                                                             </div>
                                                                             <div class="form-group">
                                                                                 <label for="last-name-column">CPF</label>
-                                                                                <input type="text" class="form-control" id="CPF_Responsavel" name="CPF_Responsavel" >
+                                                                                {{-- <input type="text" class="form-control" id="CPF_tutelar" name="CPF_tutelar" > --}}
+                                                                                {!! Form::text('CPF_tutelar', null, array('placeholder' => 'CPF Tutelar','class' => 'form-control')) !!}
+
 
                                                                             </div>
                                                                                   
                                                                             {{-- <div class="card-body">
                                                                                 <h4 class="card-title">Escreva o motivo</h4>
                                                                                 <div>
-                                                                                <input type="text" class="form-control" id="Obs_motivo" name="Obs_motivo">
+                                                                                <input type="text" class="form-control" id="Obs_tutelar" name="Obs_tutelar">
 
                                                                             <p><br></p>
                                                                                 </div>

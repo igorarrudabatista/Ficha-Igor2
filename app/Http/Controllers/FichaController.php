@@ -133,7 +133,7 @@ class FichaController extends Controller
    {
 
  
-    $user = User::get();
+    $user = User::pluck('name','id');
     $categoria = CATEGORIA::all();
     $escola = ESCOLA::all();
     $aluno = ALUNO::all();
@@ -159,7 +159,7 @@ class FichaController extends Controller
 
      public function edit(FICHA $ficha)
      {
-        $user = User::get();
+        $user = User::pluck('name','id');
 
         $categoria = CATEGORIA::all();
         $escola = ESCOLA::all();

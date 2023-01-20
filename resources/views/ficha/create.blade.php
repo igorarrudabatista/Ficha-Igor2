@@ -71,9 +71,11 @@
                                                             <div class="col-sm">
                                                             </div>
                                                         </div>
-                                                        <form action="{{asset('/ficha')}}" method="POST">
-                                                            @csrf
-                                                          
+                                                        {{-- <form action="{{asset('/ficha')}}" method="POST">
+                                                            @csrf --}}
+                                                
+                                                            {!! Form::open(array('route' => 'ficha.store','method'=>'POST')) !!}
+
                                                 <h5 class="card-title justify-content-md-center">IDENTIFICAÇÃO DA ESCOLA</h5>
                                                 </div>
                                                 <div class="card-body">
@@ -152,22 +154,25 @@
                                                                                     </select>
 
                                                                                     </div>
-
-                                                                                <label for="first-name-column">Nome do Responsável pelo Encaminhamento</label>
-                                                                                <input type="text" class="form-control" id="Nome_resp_encaminhamento" name="Nome_resp_encaminhamento" >
+                                                                                    
+                                                                                    <label for="first-name-column">Nome do Responsável pelo Encaminhamento</label>
+                                                                                    {{-- <input type="text" class="form-control"  name="Nome_resp_encaminhamento" > --}}
+                                                                                    {!! Form::text('Nome_resp_encaminhamento', null, array('placeholder' => 'Nome Completo do responsável','class' => 'form-control')) !!}
 
 
                                                                             </div>
                                                                             <div class="form-group">
                                                                                 <label for="last-name-column">CPF</label>
-                                                                                <input type="text" class="form-control" id="CPF_resp_encaminhamento" name="CPF_resp_encaminhamento" >
+                                                                                {{-- <input type="text" class="form-control"  name="CPF_resp_encaminhamento" > --}}
+                                                                                {!! Form::text('CPF_resp_encaminhamento', null, array('placeholder' => 'CPF do responsável','class' => 'form-control')) !!}
 
                                                                             </div>
                                                                                   
                                                                             <div class="card-body">
                                                                                 <h4 class="card-title">Escreva o motivo</h4>
                                                                                 <div>
-                                                                                <input type="text" class="form-control" id="Obs_motivo" name="Obs_motivo" >
+                                                                                {{-- <input type="text" class="form-control" id="Obs_motivo" name="Obs_motivo" > --}}
+                                                                                {!! Form::text('Obs_motivo', null, array('placeholder' => 'Motivo:','class' => 'form-control')) !!}
 
                                                                             <p><br></p>
                                                                                 </div>
@@ -181,14 +186,16 @@
 
                                                                                 <div class="form-group col-md-4 col-4">
                                                                                 <label for="first-name-column">Data da Comunicação aos Pais</label>
-                                                                                <input type="date" class="form-control" id="Data_comunica_responsaveis" name="Data_comunica_responsaveis" >
+                                                                                {{-- <input type="date" class="form-control" id="Data_comunica_responsaveis" name="Data_comunica_responsaveis" > --}}
+                                                                                {!! Form::date('Data_comunica_responsaveis', null, array('placeholder' => 'Motivo:','class' => 'form-control')) !!}
 
 
                                                                                 </div>
                                                                        
                                                                             <div class="form-group col-md-6 col-6">
                                                                                 <label for="last-name-column">Nome </label>
-                                                                                <input type="text" class="form-control" id="Nome_comunica_responsaveis" name="Nome_comunica_responsaveis" >
+                                                                                {{-- <input type="text" class="form-control" id="Nome_comunica_responsaveis" name="Nome_comunica_responsaveis" > --}}
+                                                                                {!! Form::text('Nome_comunica_responsaveis', null, array('placeholder' => '','class' => 'form-control')) !!}
 
 
                                                                             </div>
@@ -196,14 +203,15 @@
                                                                             <div class="form-group col-md-4 col-4">
 
                                                                                 <label for="last-name-column">Por quem:</label>
-                                                                                <input type="text" class="form-control" id="Porquem_comunica_responsaveis" name="Porquem_comunica_responsaveis" >
-
+                                                                                {{-- <input type="text" class="form-control" id="Porquem_comunica_responsaveis" name="Porquem_comunica_responsaveis" > --}}
+                                                                                {!! Form::text('Porquem_comunica_responsaveis', null, array('placeholder' => '','class' => 'form-control')) !!}
 
                                                                             </div>
                                                                             <div class="form-group col-md-4 col-4">
 
                                                                                 <label for="last-name-column">CPF</label>
-                                                                                <input type="text" class="form-control" id="CPF_comunica_responsaveis" name="CPF_comunica_responsaveis" >
+                                                                                {{-- <input type="text" class="form-control" id="CPF_comunica_responsaveis" name="CPF_comunica_responsaveis" > --}}
+                                                                                {!! Form::text('CPF_comunica_responsaveis', null, array('placeholder' => '','class' => 'form-control')) !!}
 
 
                                                                             </div>
@@ -212,7 +220,8 @@
                                                                             <div class="form-group has-icon-left">
                                                                                 <label for="mobile-id-icon">Telefone</label>
                                                                                 <div class="position-relative">
-                                                                                <input type="text" class="form-control" id="Telefone_comunica_responsaveis" name="Telefone_comunica_responsaveis" >
+                                                                                {{-- <input type="text" class="form-control" id="Telefone_comunica_responsaveis" name="Telefone_comunica_responsaveis" > --}}
+                                                                                {!! Form::text('Telefone_comunica_responsaveis', null, array('placeholder' => '','class' => 'form-control')) !!}
 
 
                                                                                     <!-- <input type="text" class="form-control" placeholder="DDD + Telefone" id="mobile-id-icon"> -->
@@ -224,7 +233,8 @@
                                                                             
                                                                             <div class="form-group col-md-4 col-4">
                                                                                 <label for="last-name-column">Para quem:</label>
-                                                                                <input type="text" class="form-control" id="Paraquem_comunica_responsaveis" name="Paraquem_comunica_responsaveis" >
+                                                                                {{-- <input type="text" class="form-control" id="Paraquem_comunica_responsaveis" name="Paraquem_comunica_responsaveis" > --}}
+                                                                                {!! Form::text('Paraquem_comunica_responsaveis', null, array('placeholder' => '','class' => 'form-control')) !!}
 
 
                                                                             </div>
@@ -389,12 +399,11 @@
                                                                                 <img src="https://www.onlyoffice.com/blog/wp-content/uploads/2022/09/Blog_fillable_form_in_PDF.jpg" alt="" height="100"
                                                                                     class="mb-1">
                                                                                 <h4 class="card-title white">Tramitar para</h4>
-                                                                                <select name="status_id" id="status_id" class="form-control">
-                                                                                    <option value="" enable> Selecione </option>
-                                                                                    @foreach ($user as $users)
+                                                                                {!! Form::select('status_id', $user, null, ['class' => 'form-control']) !!}
 
-                                                                                    <option value="{{ $users->id}}"> {{$users->name}} </option>
-                                                                                    @endforeach
+
+                                                                              
+                                                                                
                                                                                 </select>
 
                                                                               

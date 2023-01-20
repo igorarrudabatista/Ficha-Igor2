@@ -27,6 +27,27 @@ class FICHA extends Model
          'categoria_id',
          'escola_id',
          'aluno_id',
+         'Nome_resp_encaminhamento',
+         'CPF_resp_encaminhamento',
+         'Obs_motivo',
+         'Data_comunica_responsaveis',
+         'Nome_comunica_responsaveis',
+         'Porquem_comunica_responsaveis',
+         'CPF_comunica_responsaveis',
+         'Telefone_comunica_responsaveis',
+         'Paraquem_comunica_responsaveis',
+         'Conselho_comunica_responsaveis',
+         //conselho tutelar
+         'Data_comunica_tutelar',
+         'Nome_tutelar',
+         'CPF_tutelar',
+         'Obs_tutelar',
+         ///ministerio
+         'Data_ministerio_publico',
+         'Nome_ministerio_publico',
+         'CPF_ministerio_publico',
+         'CPF_ministerio_publico'
+,
         
      ];
 

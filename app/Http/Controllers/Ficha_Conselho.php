@@ -7,7 +7,6 @@ use App\Models\FICHA;
 use App\Models\ESCOLA;
 use App\Models\ALUNO;
 use App\Models\Conselho;
-use App\Models\Ficha_Conselhos;
 
 use App\Models\User;
 
@@ -25,11 +24,11 @@ class Ficha_Conselho extends Controller
      */
     function __construct()
     {
-         $this->middleware('permission:ficha_conselho-list|ficha_conselho-create|ficha_conselho-edit|ficha_conselho-delete', 
-                                                                        ['only' => ['index','show']]);
-         $this->middleware('permission:ficha_conselho-create',          ['only' => ['create','store']]);
-         $this->middleware('permission:ficha_conselho-edit',            ['only' => ['edit','update']]);
-         $this->middleware('permission:ficha_conselho-delete',          ['only' => ['destroy']]);
+         $this->middleware('permission:ficha-list|ficha-create|ficha-edit|ficha-delete', 
+                                                               ['only' => ['index','show']]);
+         $this->middleware('permission:ficha-create',          ['only' => ['create','store']]);
+         $this->middleware('permission:ficha-edit',            ['only' => ['edit','update']]);
+         $this->middleware('permission:ficha-delete',          ['only' => ['destroy']]);
     }
     /**
      * Display a listing of the resource.
@@ -45,14 +44,14 @@ class Ficha_Conselho extends Controller
         // return view('users.index',compact('users'))
         //     ->with('i', (request()->input('page', 1) - 1) * 5);
         
-        $ficha_conselho = Ficha::with('categoria', 'escola', 'aluno', 'user', 'users');
+        $ficha = Ficha::with('categoria', 'escola', 'aluno', 'user', 'users');
         $users = User::all();
         $conselho = Conselho::all();
      // $categoria = CATEGORIA::with('ficha')->get();
         $escola = ESCOLA::all();
         $aluno = ALUNO::all();
     
-    $ficha_conselho =  FICHA::whereHas('User', function($query) {
+    $ficha =  FICHA::whereHas('User', function($query) {
         return $query->where('id', auth()->id());
     })->get();
     
@@ -61,7 +60,7 @@ class Ficha_Conselho extends Controller
               return view(
                 'ficha.index',
                 [
-                    'ficha'        => $ficha_conselho,
+                    'ficha'        => $ficha,
                     'escola'       => $escola,
                     'conselho'     => $conselho,
                     'aluno'        => $aluno,
@@ -74,7 +73,7 @@ class Ficha_Conselho extends Controller
         
   
         
-        $ficha_conselho = Ficha::with('categoria', 'escola', 'aluno', 'user', 'users')->get();
+        $ficha = Ficha::with('categoria', 'escola', 'aluno', 'user', 'users')->get();
         $users = User::all();
         $conselho = Conselho::all();
         $escola = ESCOLA::all();
@@ -89,7 +88,7 @@ class Ficha_Conselho extends Controller
               return view(
                 'ficha.todasfichas',
                 [
-                    'ficha'        => $ficha_conselho,
+                    'ficha'        => $ficha,
                     'escola'       => $escola,
                     'conselho'     => $conselho,
                     'aluno'        => $aluno,
@@ -101,7 +100,7 @@ class Ficha_Conselho extends Controller
     public function index_atender()
     {
         
-        $ficha_conselho = Ficha::with('categoria', 'escola', 'aluno', 'user', 'users')->get();
+        $ficha = Ficha::with('categoria', 'escola', 'aluno', 'user', 'users')->get();
         $users = User::all();
         $conselho = Conselho::all();
      // $categoria = CATEGORIA::with('ficha')->get();
@@ -112,7 +111,7 @@ class Ficha_Conselho extends Controller
     //      return $query->where('id', auth()->id());
     //  })->get();
 
-     $ficha_conselho =  FICHA::where('status_id', '=', auth()->id())
+     $ficha =  FICHA::where('status_id', '=', auth()->id())
      ->get();
     
 
@@ -120,7 +119,7 @@ class Ficha_Conselho extends Controller
               return view(
                 'ficha.index2',
                 [
-                    'ficha'        => $ficha_conselho,
+                    'ficha'        => $ficha,
                     'escola'       => $escola,
                     'conselho'     => $conselho,
                     'aluno'        => $aluno,
@@ -134,94 +133,68 @@ class Ficha_Conselho extends Controller
    {
 
  
-    // $user = User::get();
-    // $categoria = CATEGORIA::all();
-    // $escola = ESCOLA::all();
-    // $aluno = ALUNO::all();
+    $user = User::get();
+    $categoria = CATEGORIA::all();
+    $escola = ESCOLA::all();
+    $aluno = ALUNO::all();
 
-       return view('ficha_conselho.create');
+       return view('ficha_conselho.create', compact('categoria','escola','aluno','user'));
    }
-  
-
-    public function store(Request $request, $id)
+    
+    public function store(Request $request)
     {
-      $a = $id;
 
-       dd($a);
+        // FICHA::create($request->all());
+        $ficha_conselho =  new FICHA;
 
-        $ficha_conselho =  new Ficha_Conselhos();
-        $ficha_conselho -> ficha_id                  = $request->id;
-        $ficha_conselho -> data_encaminhamento       = $request->data_encaminhamento;
-        $ficha_conselho -> Nome_Responsavel          = $request->Nome_Responsavel;
-        $ficha_conselho -> CPF_Responsavel           = $request->CPF_Responsavel;
-       
-       $ficha_conselho ->save();
+        
+        $ficha_conselho -> Data_comunica_tutelar       = $request->Data_comunica_tutelar;
+        $ficha_conselho -> Nome_tutelar       = $request->Nome_tutelar;
+        $ficha_conselho -> CPF_tutelar       = $request->CPF_tutelar;
 
+        $ficha_conselho->save();
 
          return redirect()->route('ficha_conselho.index')
                          ->with('success','Ficha criado com sucesso!');
      }
     
 
-    public function show(Ficha_Conselho $ficha_conselho)
+    public function show(FICHA $ficha)
     {
-        return view('ficha_conselho.show',compact('ficha_conselho'));
+        return view('ficha_conselho.show',compact('ficha'));
     }
 
-     public function edit(Ficha_Conselho $ficha_conselho)
+     public function edit(FICHA $ficha_conselho)
      {
-        $user = User::get();
+        $user = User::pluck('name','id');
+
         $categoria = CATEGORIA::all();
         $escola = ESCOLA::all();
         $aluno = ALUNO::all();
         
-         return view('ficha_conselho.edit',compact('categoria','escola','aluno', 'user'));
+         return view('ficha_conselho.edit',compact('ficha_conselho','categoria','escola','aluno', 'user'));
      }
     
 
      
-    //  public function editconselho(FICHA $ficha, $id)
-    //  {
-    //     $user = User::get();
-    //     $ficha = Ficha::with('categoria', 'escola', 'aluno', 'user', 'users')->get();
-    //     $categoria = CATEGORIA::all();
-    //     $escola = ESCOLA::all();
-    //     $aluno = ALUNO::all();
-
-    //     return view('ficha.editconselho', ['record' => FICHA::find($id)], compact('ficha','categoria','escola','aluno', 'user'));
-
-    //     //  return view('ficha.editconselho',compact('ficha','categoria','escola','aluno', 'user'));
-    //  }
-    
-//     /**
-//      * Update the specified resource in storage.
-//      *
-//      * @param  \Illuminate\Http\Request  $request
-//      * @param  \App\Product  $product
-//      * @return \Illuminate\Http\Response
-//      */
-     public function update(Request $request, Ficha_Conselhos $ficha_conselho)
+     public function update(Request $request, FICHA $ficha_conselho)
      {
-    
+      
          $ficha_conselho->update($request->all());
     
          return redirect()->route('ficha_conselho.index')
                           ->with('edit','Atualiazado com sucesso!');
      }
-
-
-
-
-     public function update2(Request $request, FICHA $ficha_conselho)
+     public function update2(Request $request, FICHA $ficha)
      {
         //   request()->validate([
         //      'name' => 'required',
         //      'detail' => 'required',
         //  ]);
     
-         $ficha_conselho->update($request->all());
+         $ficha->update($request->all());
     
-         return redirect()->route('ficha_conselho.index')
+         return redirect()->route('ficha.index')
                           ->with('edit','Atualiazado com sucesso!');
      }
     
