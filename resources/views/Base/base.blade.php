@@ -130,12 +130,19 @@
                     <ul class="submenu ">
                         
                         <li>
-                            <a href="{{asset('/ficha')}}">Ver Fichas </a>
+                            <a href="{{asset('/ficha/create')}}">Criar Fichas</a>
+                        </li>
+                        <hr> 
+                        <li>
+                            <a href="{{asset('/ficha')}}">Ver Fichas <b> Escola </b> </a>
+                        </li>
+                        <li>
+                            <a href="{{asset('/ficha_conselho')}}">Ver Fichas <b>  Conselho </b> </a>
+                        </li>
+                        <li>
+                            <a href="{{asset('/ficha_ministerio_publico')}}">Ver Fichas <b> Ministério Público </b> </a>
                         </li>
 
-                        <li>
-                            <a href="{{asset('/ficha/create')}}">Criar Fichas</a>
-                        </li> 
                         <hr>
                        
                              

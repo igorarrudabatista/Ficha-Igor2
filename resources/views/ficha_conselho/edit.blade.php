@@ -132,7 +132,7 @@
                                                                         <a class="list-group-item list-group-item-action" id="list-settings-tramitar"
                                                                             data-bs-toggle="list" href="#list-tramitar" role="tab">2. Tramitar</a>
                                                                         <a class="list-group-item list-group-item-action" id="list-settings-finalizar"
-                                                                            data-bs-toggle="list" href="#list-finalizar" role="tab">3. FINALIZAR CADASTRO</a>
+                                                                            data-bs-toggle="list" href="#list-finalizar" role="tab">3. FINALIZAR </a>
                                                                    
                                                                         </div>
                                                                 </div>
@@ -167,92 +167,73 @@
 
                                                                             </div>
                                                                                   
-                                                                            {{-- <div class="card-body">
+                                                                           <div class="card-body">
                                                                                 <h4 class="card-title">Escreva o motivo</h4>
                                                                                 <div>
                                                                                 <input type="text" class="form-control" id="Obs_tutelar" name="Obs_tutelar">
 
                                                                             <p><br></p>
                                                                                 </div>
-                                                                            </div> --}}
+                                                                            </div>
                                                                               
                                                                         </div>
 
                                                                     </div>
 
 
-                                                                    {{-- <div class="tab-pane" id="list-ministerio" role="tabpanel"
-                                                                    aria-labelledby="list-settings-list">
-                                                                    <div class="row">
-
-                                                                        <div class="form-group col-md-4 col-4">
-                                                                        <label for="first-name-column">Encaminhando Ministério Público em</label>
-                                                                        <input type="date" id="first-name-column" class="form-control" placeholder="First Name"
-                                                                            name="fname-column">
-                                                                        </div>
-
-                                                                        <div class="form-group col-md-4 col-4">
-                                                                            <label for="last-name-column">CPF</label>
-                                                                            <input type="text" id="last-name-column" class="form-control" placeholder="000.000.000-00"
-                                                                                name="lname-column">
-                                                                        </div> 
-                                                                    </div>
-                                                                    <div class="form-group col-md-6 col-6">
-                                                                        <label for="last-name-column">Nome </label>
-                                                                        <input type="text" id="last-name-column" class="form-control" placeholder="Nome"
-                                                                            name="lname-column">
-                                                                    </div>
-
-                                                                    <section class="section">
-                                                                        <div class="row">
-                                                                            <div class="col">
-                                                                                <div class="card">
-                                                                                    <div class="card-header">
-                                                                                        Procedimentos Realizados
-                                                                                    </div>
-                                                                                    <div class="card-body">
-                                                                                        <div class="form-group with-title mb-3">
-                                                                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                                                                            <label>Escreva aqui</label>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </section>
-                                                                    <div class="clearfix"> 
-                                                                        
-                                                                        <button class="btn btn-primary float-end"> Salvar</button>
-                                                                    </div>
-                                                            </div> --}}
-
                                                             <div class="tab-pane" id="list-tramitar" role="tabpanel"
                                                             aria-labelledby="list-settings-list">
                                                             <div class="row">
 
-                                                                <div class="col-xl-6 col-sm-6 col-12">
+                                                                <div class="col-xl-12 col-sm-12 col-12">
                                                                     <div class="card text-center bg-lighten-2">
                                                                         <div class="card-content d-flex">
                                                                             <div class="card-body">
                                                                                 <img src="https://www.onlyoffice.com/blog/wp-content/uploads/2022/09/Blog_fillable_form_in_PDF.jpg" alt="" height="100"
                                                                                     class="mb-1">
-                                                                                <h4 class="card-title white">Tramitar para</h4>
-                                                                                {{-- <select name="status_id" id="status_id" class="form-control">
-                                                                                    <option value="" enable> Selecione </option>
-                                                                                    @foreach ($user as $users)
+                                                                                <h4 class="card-title white">Tramitar para Escola</h4>
+                                                                                
+                                                                                 {!! Form::select('status_id', $perfil_escola, null, ['class' => 'form-control']) !!} 
+                                                                           <br>        
+                                                                                 <!-- {!! Form::select('status_id', $perfil, null, ['class' => 'form-control', 'id' => 'escolha']) !!}
+                                                                                
+                                                                                 {!! Form::select('status_id', $perfis, null, ['class' => 'form-control', 'id' => 'escolha']) !!}  -->
+                                                                                <button class="btn btn-primary white"> Salvar</button>
 
-                                                                                    <option value="{{ $users->id}}"> {{$users->name}} </option>
-                                                                                    @endforeach
-                                                                                </select> --}}
-
+                                                                              
                                                                               
 
                                                                             </div>
                                                                         </div> 
                                                                     </div>
                                                                 </div> 
-                                                            </div>
-                                                            </div>
+
+                                                                 <!-- <div class="col-xl-12 col-sm-12 col-12">
+                                                                    <div class="card text-center bg-lighten-2">
+                                                                        <div class="card-content d-flex">
+                                                                            <div class="card-body">
+                                                                                <img src="https://www.onlyoffice.com/blog/wp-content/uploads/2022/09/Blog_fillable_form_in_PDF.jpg" alt="" height="100"
+                                                                                    class="mb-1">
+                                                                                <h4 class="card-title white">Tramitar para Ministério Público</h4>
+                                                                                
+                                                                                 {!! Form::select('status_id', $perfil_MP, null, ['class' => 'form-control', 'id' => 'escolha']) !!} 
+                                                                           <br>        
+                                                                             {!! Form::select('status_id', $perfil, null, ['class' => 'form-control', 'id' => 'escolha']) !!}
+                                                                                
+                                                                                 {!! Form::select('status_id', $perfis, null, ['class' => 'form-control', 'id' => 'escolha']) !!}  -->
+                                                                               <!--   <button class="btn btn-primary white"> Salvar</button>
+
+                                                                              
+                                                                              
+
+                                                                            </div>
+                                                                        </div> 
+                                                                    </div>
+                                                                </div>   -->
+
+                                                                </div>
+                                                                        </div>
+                                                   
                                                             
                                                                 <div class="tab-pane" id="list-finalizar" role="tabpanel"
                                                                 aria-labelledby="list-settings-list">
@@ -264,7 +245,6 @@
                                                                                 <img src="https://www.onlyoffice.com/blog/wp-content/uploads/2022/09/Blog_fillable_form_in_PDF.jpg" alt="" height="100"
                                                                                     class="mb-1">
                                                                                 <h4 class="card-title white">Finalize o formulário clicando em Salvar</h4>
-                                                                                <p class="card-text white">Obrigado</p>
                                                                                 <button class="btn btn-primary white"> Salvar</button>
 
                                                                             </div>
@@ -286,9 +266,7 @@
                                             </div>
                                         </div>
                                     </section>
-                                    <!-- List group navigation ends -->
 
 
 <script src="{{asset('/js/pages/form-editor.js')}}"></script>
-
 @endsection

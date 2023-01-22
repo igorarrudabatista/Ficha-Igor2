@@ -7,9 +7,9 @@ use App\Models\FICHA;
 use App\Models\ESCOLA;
 use App\Models\ALUNO;
 use App\Models\Conselho;
+use Spatie\Permission\Models\Role;
 
 use App\Models\User;
-
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -40,25 +40,27 @@ class Ficha_Conselho extends Controller
     public function index()
     {
         
-        
-        // return view('users.index',compact('users'))
-        //     ->with('i', (request()->input('page', 1) - 1) * 5);
-        
         $ficha = Ficha::with('categoria', 'escola', 'aluno', 'user', 'users');
         $users = User::all();
         $conselho = Conselho::all();
-     // $categoria = CATEGORIA::with('ficha')->get();
         $escola = ESCOLA::all();
         $aluno = ALUNO::all();
-    
-    $ficha =  FICHA::whereHas('User', function($query) {
-        return $query->where('id', auth()->id());
-    })->get();
-    
+        
+        
+                   // $ficha =  FICHA::whereHas('User', function($query) {
+            //     return $query->where('id', auth()->id());
+            // })->get();
+
+            //    $ficha  =   User::whereHas("roles", function($q){ $q->where("name", "Escola"); })->get();
+
+
+        // User::whereHas('role', function(Builder $query) {
+        //     return $query->name === 'Conselho';
+        //  });
 
 
               return view(
-                'ficha.index',
+                'ficha_conselho.index',
                 [
                     'ficha'        => $ficha,
                     'escola'       => $escola,
@@ -164,15 +166,23 @@ class Ficha_Conselho extends Controller
         return view('ficha_conselho.show',compact('ficha'));
     }
 
-     public function edit(FICHA $ficha_conselho)
+
+
+    public function edit(FICHA $ficha_conselho)
      {
         $user = User::pluck('name','id');
+        $perfis = Role::all()->pluck('name');
+        $perfil =Role::whereNotIn('name', ['Admin', 'Conselho'])->pluck('name');
 
+        $perfil_escola= User::role('Escola')->pluck('name', 'id');
+        $perfil_MP= User::role('Ministério Público')->pluck('name','id');
         $categoria = CATEGORIA::all();
         $escola = ESCOLA::all();
         $aluno = ALUNO::all();
+
         
-         return view('ficha_conselho.edit',compact('ficha_conselho','categoria','escola','aluno', 'user'));
+        
+         return view('ficha_conselho.edit',compact('perfil_escola','perfil_MP','perfil','perfis','ficha_conselho','categoria','escola','aluno', 'user'));
      }
     
 
