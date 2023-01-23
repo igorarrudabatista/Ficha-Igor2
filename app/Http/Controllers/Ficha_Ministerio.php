@@ -7,9 +7,9 @@ use App\Models\FICHA;
 use App\Models\ESCOLA;
 use App\Models\ALUNO;
 use App\Models\Conselho;
+use Spatie\Permission\Models\Role;
 
 use App\Models\User;
-
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -40,94 +40,37 @@ class Ficha_Ministerio extends Controller
     public function index()
     {
         
-        
-        // return view('users.index',compact('users'))
-        //     ->with('i', (request()->input('page', 1) - 1) * 5);
-        
-        $ficha_ministerio = Ficha::with('categoria', 'escola', 'aluno', 'user', 'users');
-        $users = User::all();
-        $conselho = Conselho::all();
-     // $categoria = CATEGORIA::with('ficha')->get();
-        $escola = ESCOLA::all();
-        $aluno = ALUNO::all();
-    
-    $ficha_ministerio =  FICHA::whereHas('User', function($query) {
-        return $query->where('id', auth()->id());
-    })->get();
-    
-
-
-              return view(
-                'ficha.index',
-                [
-                    'ficha'        => $ficha_ministerio,
-                    'escola'       => $escola,
-                    'conselho'     => $conselho,
-                    'aluno'        => $aluno,
-                    'users'        => $users
-                ]
-            );
-        }
-    public function index_todas_fichas()
-    {
-        
-  
-        
-        $ficha_ministerio = Ficha::with('categoria', 'escola', 'aluno', 'user', 'users')->get();
-        $users = User::all();
-        $conselho = Conselho::all();
-        $escola = ESCOLA::all();
-        $aluno = ALUNO::all();
-    
-    // $ficha =  FICHA::whereHas('User', function($query) {
-    //     return $query->where('id', auth()->id());
-    // })->get();
-    
-
-
-              return view(
-                'ficha.todasfichas',
-                [
-                    'ficha'        => $ficha_ministerio,
-                    'escola'       => $escola,
-                    'conselho'     => $conselho,
-                    'aluno'        => $aluno,
-                    'users'        => $users
-                ]
-            );
-        }
    
-    public function index_atender()
-    {
+            
+            $ficha = Ficha::with('categoria', 'escola', 'aluno', 'user', 'users')->get();
+            $users = User::all();
+            $conselho = Conselho::all();
+         // $categoria = CATEGORIA::with('ficha')->get();
+            $escola = ESCOLA::all();
+            $aluno = ALUNO::all();
         
-        $ficha_ministerio = Ficha::with('categoria', 'escola', 'aluno', 'user', 'users')->get();
-        $users = User::all();
-        $conselho = Conselho::all();
-     // $categoria = CATEGORIA::with('ficha')->get();
-        $escola = ESCOLA::all();
-        $aluno = ALUNO::all();
+        //  $ficha =  FICHA::whereHas('User', function($query) {
+        //      return $query->where('id', auth()->id());
+        //  })->get();
     
-    //  $ficha =  FICHA::whereHas('User', function($query) {
-    //      return $query->where('id', auth()->id());
-    //  })->get();
-
-     $ficha_ministerio =  FICHA::where('status_id', '=', auth()->id())
-     ->get();
+         $ficha =  FICHA::where('status_id', '=', auth()->id())
+         ->get();
+        
     
-
-
-              return view(
-                'ficha.index2',
-                [
-                    'ficha'        => $ficha_ministerio,
-                    'escola'       => $escola,
-                    'conselho'     => $conselho,
-                    'aluno'        => $aluno,
-                    'users'        => $users
-                ]
-            );
-        }
-
+    
+                  return view(
+                    'ficha_ministerio.index',
+                    [
+                        'ficha'        => $ficha,
+                        'escola'       => $escola,
+                        'conselho'     => $conselho,
+                        'aluno'        => $aluno,
+                        'users'        => $users
+                    ]
+                );
+            }
+    
+   
   
    public function create()
    {
@@ -138,14 +81,21 @@ class Ficha_Ministerio extends Controller
     $escola = ESCOLA::all();
     $aluno = ALUNO::all();
 
-       return view('ficha.create', compact('categoria','escola','aluno','user'));
+       return view('ficha_ministerio.create', compact('categoria','escola','aluno','user'));
    }
     
     public function store(Request $request)
     {
 
-        FICHA::create($request->all());
+        // FICHA::create($request->all());
+        $ficha_ministerio =  new FICHA;
 
+        
+        $ficha_ministerio -> Data_comunica_tutelar       = $request->Data_comunica_tutelar;
+        $ficha_ministerio -> Nome_tutelar       = $request->Nome_tutelar;
+        $ficha_ministerio -> CPF_tutelar       = $request->CPF_tutelar;
+
+        $ficha_ministerio->save();
 
          return redirect()->route('ficha_ministerio.index')
                          ->with('success','Ficha criado com sucesso!');
@@ -154,64 +104,48 @@ class Ficha_Ministerio extends Controller
 
     public function show(FICHA $ficha)
     {
-        return view('ficha_ministerio.show',compact('ficha_ministerio'));
+        return view('ficha_ministerio.show',compact('ficha'));
     }
 
-     public function edit(FICHA $ficha)
-     {
-        $user = User::get();
 
+
+    public function edit(FICHA $ficha_ministerio)
+     {
+        $user = User::pluck('name','id');
+        $perfis = Role::all()->pluck('name');
+        $perfil =Role::whereNotIn('name', ['Admin', 'Conselho'])->pluck('name');
+
+        $perfil_escola= User::role('Escola')->pluck('name', 'id');
+        $perfil_MP= User::role('Ministério Público')->pluck('name','id');
         $categoria = CATEGORIA::all();
         $escola = ESCOLA::all();
         $aluno = ALUNO::all();
+
         
-         return view('ficha_ministerio.edit',compact('ficha_ministerio','categoria','escola','aluno', 'user'));
+        
+         return view('ficha_ministerio.edit',compact('ficha_ministerio','perfil_escola','perfil_MP','perfil','perfis','categoria','escola','aluno', 'user'));
      }
     
 
      
-    //  public function editconselho(FICHA $ficha, $id)
-    //  {
-    //     $user = User::get();
-    //     $ficha = Ficha::with('categoria', 'escola', 'aluno', 'user', 'users')->get();
-    //     $categoria = CATEGORIA::all();
-    //     $escola = ESCOLA::all();
-    //     $aluno = ALUNO::all();
-
-    //     return view('ficha.editconselho', ['record' => FICHA::find($id)], compact('ficha','categoria','escola','aluno', 'user'));
-
-    //     //  return view('ficha.editconselho',compact('ficha','categoria','escola','aluno', 'user'));
-    //  }
-    
-//     /**
-//      * Update the specified resource in storage.
-//      *
-//      * @param  \Illuminate\Http\Request  $request
-//      * @param  \App\Product  $product
-//      * @return \Illuminate\Http\Response
-//      */
      public function update(Request $request, FICHA $ficha_ministerio)
      {
-        //   request()->validate([
-        //      'name' => 'required',
-        //      'detail' => 'required',
-        //  ]);
-    
+      
          $ficha_ministerio->update($request->all());
     
          return redirect()->route('ficha_ministerio.index')
                           ->with('edit','Atualiazado com sucesso!');
      }
-     public function update2(Request $request, FICHA $ficha_ministerio)
+     public function update2(Request $request, FICHA $ficha)
      {
         //   request()->validate([
         //      'name' => 'required',
         //      'detail' => 'required',
         //  ]);
     
-         $ficha_ministerio->update($request->all());
+         $ficha->update($request->all());
     
-         return redirect()->route('ficha_ministerio.index')
+         return redirect()->route('ficha.index')
                           ->with('edit','Atualiazado com sucesso!');
      }
     
@@ -221,21 +155,21 @@ class Ficha_Ministerio extends Controller
 //      * @param  \App\Product  $product
 //      * @return \Illuminate\Http\Response
 //      */
-     public function destroy(FICHA $ficha_ministerio)
+     public function destroy(FICHA $ficha)
      {
-         $ficha_ministerio->delete();
+         $ficha->delete();
     
-         return redirect()->route('ficha_ministerio.index')
+         return redirect()->route('ficha.index')
                           ->with('delete','Ficha deleta com sucesso!');
      }
 
      public function Conselho1(Request $request, $id)    {
 
-        $ficha_ministerio = FICHA::find($id);
+        $ficha = FICHA::find($id);
         //$users = User::findOrFail($id);
       //  $conselho1 = $users;
-        $ficha_ministerio -> FichaStatus = $ficha_ministerio;
-        $ficha_ministerio -> save();
+        $ficha -> FichaStatus = $ficha;
+        $ficha -> save();
              
         //   toast('Status do Orçamento alterado para <b> Venda Realizada! </b> ','success');
     

@@ -89,7 +89,7 @@ Route::get('/usuarios/form_usuarios',                 [UsuariosController::class
     Route::resource('escola',           EscolaController::class);
     Route::resource('categoria',        CategoriaController::class);
     Route::resource('ficha',            FichaController::class);
-    // Route::resource('ficha_ministerio', Ficha_Ministerio::class);
+    Route::resource('ficha_ministerio', Ficha_Ministerio::class);
      Route::resource('ficha_conselho',   Ficha_Conselho::class);
     Route::resource('prazo',            PrazoController::class);
     Route::resource('conselho',         ConselhoController::class);

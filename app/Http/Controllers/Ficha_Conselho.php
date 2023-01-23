@@ -24,11 +24,11 @@ class Ficha_Conselho extends Controller
      */
     function __construct()
     {
-         $this->middleware('permission:ficha-list|ficha-create|ficha-edit|ficha-delete', 
+         $this->middleware('permission:ficha_conselho-list|ficha_conselho-create|ficha_conselho-edit|ficha_conselho-delete', 
                                                                ['only' => ['index','show']]);
-         $this->middleware('permission:ficha-create',          ['only' => ['create','store']]);
-         $this->middleware('permission:ficha-edit',            ['only' => ['edit','update']]);
-         $this->middleware('permission:ficha-delete',          ['only' => ['destroy']]);
+         $this->middleware('permission:ficha_conselho-create',          ['only' => ['create','store']]);
+         $this->middleware('permission:ficha_conselho-edit',            ['only' => ['edit','update']]);
+         $this->middleware('permission:ficha_conselho-delete',          ['only' => ['destroy']]);
     }
     /**
      * Display a listing of the resource.
@@ -38,68 +38,6 @@ class Ficha_Conselho extends Controller
 
 
     public function index()
-    {
-        
-        $ficha = Ficha::with('categoria', 'escola', 'aluno', 'user', 'users');
-        $users = User::all();
-        $conselho = Conselho::all();
-        $escola = ESCOLA::all();
-        $aluno = ALUNO::all();
-        
-        
-                   // $ficha =  FICHA::whereHas('User', function($query) {
-            //     return $query->where('id', auth()->id());
-            // })->get();
-
-            //    $ficha  =   User::whereHas("roles", function($q){ $q->where("name", "Escola"); })->get();
-
-
-        // User::whereHas('role', function(Builder $query) {
-        //     return $query->name === 'Conselho';
-        //  });
-
-
-              return view(
-                'ficha_conselho.index',
-                [
-                    'ficha'        => $ficha,
-                    'escola'       => $escola,
-                    'conselho'     => $conselho,
-                    'aluno'        => $aluno,
-                    'users'        => $users
-                ]
-            );
-        }
-    public function index_todas_fichas()
-    {
-        
-  
-        
-        $ficha = Ficha::with('categoria', 'escola', 'aluno', 'user', 'users')->get();
-        $users = User::all();
-        $conselho = Conselho::all();
-        $escola = ESCOLA::all();
-        $aluno = ALUNO::all();
-    
-    // $ficha =  FICHA::whereHas('User', function($query) {
-    //     return $query->where('id', auth()->id());
-    // })->get();
-    
-
-
-              return view(
-                'ficha.todasfichas',
-                [
-                    'ficha'        => $ficha,
-                    'escola'       => $escola,
-                    'conselho'     => $conselho,
-                    'aluno'        => $aluno,
-                    'users'        => $users
-                ]
-            );
-        }
-   
-    public function index_atender()
     {
         
         $ficha = Ficha::with('categoria', 'escola', 'aluno', 'user', 'users')->get();
@@ -119,7 +57,7 @@ class Ficha_Conselho extends Controller
 
 
               return view(
-                'ficha.index2',
+                'ficha_conselho.index',
                 [
                     'ficha'        => $ficha,
                     'escola'       => $escola,
@@ -130,6 +68,7 @@ class Ficha_Conselho extends Controller
             );
         }
 
+    
   
    public function create()
    {
