@@ -6,6 +6,11 @@ use App\Models\TBGERPESSOA;
 use App\Models\ALUNO;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
+use PhpParser\Builder\Function_;
+use PhpParser\Node\Expr\FuncCall;
+
+use Illuminate\Support\Facades\Http;
+
 
 class AlunosController extends Controller
 {
@@ -114,4 +119,32 @@ class AlunosController extends Controller
          return redirect()->route('aluno.index')
                          ->with('delete','Aluno deletado com sucesso!');
      }
+
+
+     public function getAllStudents() {
+        $students = Aluno::get()->toJson(JSON_PRETTY_PRINT);
+        return response($students, 200);
+      }
+
+
+
+      public Function search() {
+
+            $search = request('search');
+            $response = Http::post('http://consultaficai.des.seduc.mt.gov.br/rest/retornalistaalunos', [
+            'chaveautenticacao' => '10221210000',
+            'cpf' =>  $search
+            ]);
+
+
+            $data = json_decode($response); // convert JSON into objects 
+
+      return view('painel.consulta_aluno', ['search' => $search, 'data' =>$data]);
+
+              //dd($search);
+
+      }
+
+
+
 }

@@ -7,7 +7,7 @@
     <div class="page-title">
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Ficha</h3>
+                <h3>Minhas Fichas</h3>
                 <p class="text-subtitle text-muted">
                    <p> Listagem de Fichas Criadas por você, <b> {{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->name }}}  </b></p>
             </div>

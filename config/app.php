@@ -211,5 +211,7 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
+    
+    'guzzle_test_url' => env('GUZZLE_TEST_URL'),
 
 ];

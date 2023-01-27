@@ -51,9 +51,10 @@ Route::get('/ficha/editconselho/{id}',   [FichaController::class, 'editconselho'
 Route::get('/painel', [PainelGerencialController::class, 'dashboard']);
 
 Route::get('/painel/index', [PainelGerencialController::class, 'index']);
-Route::get('/painel/cadastro/index', [PainelGerencialController::class, 'cadastro_menu']);
-Route::get('/painel/consulta_ficha', [PainelGerencialController::class, 'consulta_ficha']);
-Route::get('/painel/consulta_aluno', [PainelGerencialController::class, 'consulta_aluno']);
+Route::get('/painel/cadastro/index',  [PainelGerencialController::class, 'cadastro_menu']);
+Route::get('/painel/consulta_ficha',  [PainelGerencialController::class, 'consulta_ficha']);
+Route::get('/painel/consulta_aluno',  [AlunosController::class, 'search']);
+Route::post('/painel/consulta_aluno/', [AlunosController::class, 'search']);
 
 Route::get('/painel/cadastro/cadastro_aluno',      [PainelGerencialController::class, 'cadastro_aluno']);
 //Route::get('/painel/cadastro/cadastro_categoria',  [PainelGerencialController::class, 'cadastro_categoria']);
