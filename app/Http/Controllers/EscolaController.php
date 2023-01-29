@@ -3,8 +3,15 @@
 namespace App\Http\Controllers;
     
 use App\Models\ESCOLA;
+use App\Models\FICHA;
 use Illuminate\Http\Request;
-    
+use Illuminate\Support\Facades\Auth;
+
+
+
+use App\Models\User;
+
+
 class EscolaController extends Controller
 { 
     /**
@@ -30,8 +37,33 @@ class EscolaController extends Controller
     public function index()
     {
         $escola = ESCOLA::latest()->paginate(5);
-        return view('escola.index',compact('escola'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+
+
+        //$ficha = Ficha::with('categoria', 'escola', 'aluno', 'user', 'users')->get();
+   //  $ficha =  FICHA::get();
+          $ficha =  FICHA::where('status_id', '=', 'Auth()user()->id');
+
+   
+          
+        //   $ficha =  FICHA::where('status_id', '=', auth()->id())
+        //     ->get();
+
+          
+    
+
+
+          return view(
+            'escola.index',
+            [
+                'ficha'        => $ficha,
+                'escola'       => $escola,
+                
+                
+            ]
+        );
+
+      //  return view('escola.index',compact('escola','ficha','user'));
+           
     }
     
     

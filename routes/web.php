@@ -26,26 +26,14 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-////// BASE
-Route::get('/base', [HomeController::class, 'home']);
+Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');  
     
-    
-// ////// Alunos
-//     Route::get('/aluno/index',  [AlunosController::class, 'index']);
-//     Route::get('/aluno/create', [AlunosController::class, 'create']);
-
 
 ////// FICHAS
 Route::get('/ficha/atender',             [FichaController::class, 'index_atender']);
 Route::get('/ficha/todasfichas',         [FichaController::class, 'index_todas_fichas']);
 Route::get('/ficha/editconselho/{id}',   [FichaController::class, 'editconselho']);
 
-// Route::get('/ficha/update/Conselho1/{id}',           [FichaController::class, 'Conselho1']);
-// Route::get('/ficha/update/Conselho1/{id}',           [FichaController::class, 'Conselho1']);
-// Route::get('/ficha/update/Conselho2/{id}',           [FichaController::class, 'Conselho2']);
-// Route::get('/ficha/update/Conselho3/{id}',           [FichaController::class, 'Conselho3']);
 
 ////// PAINEL GERENCIAL (DASHBOARD)
 Route::get('/painel', [PainelGerencialController::class, 'dashboard']);
@@ -66,14 +54,6 @@ Route::get('/painel/cadastro/cadastro_prazo',      [PainelGerencialController::c
 Route::get('/painel/cadastro/cadastro_serie',      [PainelGerencialController::class, 'cadastro_serie']);
 
 
-// ---------USUARIOS GET
-// Route::get('/usuarios/index',               [UsuariosController::class, 'index']);
-// Route::get('/usuarios/show',                [UsuariosController::class, 'show']);
-// Route::get('/usuarios/create',              [UsuariosController::class, 'create']);
-// Route::get('/usuarios/edit',                [UsuariosController::class, 'edit']);
-
-
-
 Route::get('/usuarios/atribuir_perfil_usuarios',      [RoleController::class, 'atribuir_perfil_usuarios']);
 
 
@@ -91,7 +71,7 @@ Route::get('/usuarios/form_usuarios',                 [UsuariosController::class
     Route::resource('categoria',        CategoriaController::class);
     Route::resource('ficha',            FichaController::class);
     Route::resource('ficha_ministerio', Ficha_Ministerio::class);
-     Route::resource('ficha_conselho',   Ficha_Conselho::class);
+    Route::resource('ficha_conselho',   Ficha_Conselho::class);
     Route::resource('prazo',            PrazoController::class);
     Route::resource('conselho',         ConselhoController::class);
     

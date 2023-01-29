@@ -42,10 +42,10 @@
                 </div>
             </div>
                 @endif
-                <table class='table table-striped' id="table1">
+                
+       <table class='table table-striped' id="table1">
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Código da Escola</th>
                             <th>Nome da Escola</th>
                             <th>Cidade</th>
@@ -59,7 +59,6 @@
 
                     <tbody>
                         <tr>
-                            <td>{{ ++$i }}</td>
                             <td>{{$escolas->EscolaCod ?? 'Não encontrado' }}  </td>
                             <td>{{$escolas->EscolaNome ?? 'Não encontrado' }}  </td>
                             <td>{{$escolas->EscolaCidade	?? 'Sem registros'  }} - {{$escolas->EscolaEstado	?? 'Sem registros'  }}</td>
