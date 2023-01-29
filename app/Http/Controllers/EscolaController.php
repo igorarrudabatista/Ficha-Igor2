@@ -36,14 +36,18 @@ class EscolaController extends Controller
 
     public function index()
     {
-        $escola = ESCOLA::latest()->paginate(5);
+        $escola = ESCOLA::get();
 
 
         //$ficha = Ficha::with('categoria', 'escola', 'aluno', 'user', 'users')->get();
    //  $ficha =  FICHA::get();
           $ficha =  FICHA::where('status_id', '=', 'Auth()user()->id');
+          $user =   Auth::user()->id;
 
-   
+          if ($ficha ) {
+           $true = 1;
+
+          }
           
         //   $ficha =  FICHA::where('status_id', '=', auth()->id())
         //     ->get();
@@ -57,6 +61,8 @@ class EscolaController extends Controller
             [
                 'ficha'        => $ficha,
                 'escola'       => $escola,
+                'user'         => $user,
+                'true'         => $true
                 
                 
             ]
