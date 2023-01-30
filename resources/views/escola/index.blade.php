@@ -1,4 +1,7 @@
+@include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
+
 @extends('base.base')
+
 @section('content')
 
 
@@ -26,22 +29,35 @@
         
             <div class="card-body">
                 @if ($message = Session::get('success'))
-                <div class="alert alert-success">
-                    <p>{{ $message }}</p>
-                </div>
+                <div class="alert alert-success alert-dismissible">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Mensagem:</strong> {{ $message }}
+  </div>
+</div>
             
                 @elseif ($message = Session::get('edit'))
-                   <div class="alert alert-warning">
-                        <p>{{ $message }}</p>
-                    </div>
+                <div class="alert alert-warning alert-dismissible">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Mensagem:</strong> {{ $message }}
+  </div>
+</div>
 
                 @elseif ($message = Session::get('delete'))
-                    <div class="alert alert-danger">
-                        <p>{{ $message }}</p>
-                    </div>
-                </div>
-            </div>
+                <div class="alert alert-danger alert-dismissible">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Mensagem:</strong> {{ $message }}
+  </div>
+</div>
                 @endif
+
+
+                <div>
+        @if (session()->has('message'))
+            <div class="alert alert-success">
+                {{ session('message') }}
+            </div>
+        @endif
+    </div>
                 
        <table class='table table-striped' id="table1">
                     <thead>

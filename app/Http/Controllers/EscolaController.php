@@ -6,8 +6,7 @@ use App\Models\ESCOLA;
 use App\Models\FICHA;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
-
+use RealRashid\SweetAlert\Facades\Alert;
 
 use App\Models\User;
 
@@ -153,7 +152,9 @@ class EscolaController extends Controller
      public function destroy(ESCOLA $escola)
      {
          $escola->delete();
-    
+         
+         toast('Your Post as been submited!','success');
+
          return redirect()->route('escola.index')
                          ->with('delete','Escola deletada com sucesso!');
      }
