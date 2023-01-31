@@ -19,16 +19,8 @@
         </div>
 
     </div>
-    @if (count($errors) > 0)
-    <div class="alert alert-danger">
-        <strong>Whoops!</strong> There were some problems with your input.<br><br>
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+    <form action="{{asset('/aluno/create')}}" method="GET" enctype="multipart/form-data">
+
 
 <section id="multiple-column-form">
     <div class="row match-height">
@@ -43,6 +35,32 @@
                     <h3>Cadastro de Aluno</h3>
                     <p></p>
                 </div>
+                    <label for="first-name-column">CPF</label>
+                    <input type="text" id="search" class="form-control" name="search" placeholder="CPF do Aluno">
+
+        
+
+                <div class="clearfix">
+                    <button class="btn btn-primary float-end">Pesquisar</button>
+                </div>
+
+                @if ($search)
+
+                @foreach ($data->alunos as $result)  
+                <p><b> Código INEP:  </b>   {{ $result->GedAluIdINEP }} - Sexo: {{ $result->GerPesSexo }}</p> 
+                <p><b> Nome do Aluno:</b>   {{ $result->NomeAluno }}</p> 
+                <p><b> Data Nascimento:</b> {{ $result->DataNascAluno }}</p> 
+                <p><b> Filiação 1:</b>      {{ $result->GerPesNomPai }}</p> 
+                <p><b> Filiação 2:</b>      {{ $result->GerPesNomMae }}</p> 
+                <p><b> Endereço:</b>        {{ $result->GerPesEnd }} - {{ $result->GerPesCmpLog }} - 
+                {{ $result->GerPesBairro }}  {{ $result->GerPesCEP }}</p> 
+            
+            
+            <button class="btn btn-warning float-end">Limpar pesquisa</button> </a>
+            <button class="btn btn-primary float">Limpar pesquisa</button> </a>
+          
+
+                    </form>
 
                 {!! Form::open(array('route' => 'aluno.store','method'=>'POST')) !!}
 
@@ -54,7 +72,7 @@
                                 <div class="col-md-6 col-12">
                                    
                                         <label for="first-name-column">Nome do Aluno</label>
-                                        {!! Form::text('AlunoNome', null, array('placeholder' => 'Nome Completo','class' => 'form-control')) !!}
+                                        {!! Form::text('AlunoNome', $result->NomeAluno, array('placeholder' => 'Nome Completo','class' => 'form-control')) !!}
 
                                         <!-- <input type="text" id="first-name-column" name="name" class="form-control" placeholder="Nome completo"> -->
                                    </div>
@@ -64,7 +82,7 @@
                                         <label for="email-id-column">Data de Nascimento</label>
                                         <div class="position-relative">
 
-                                        {!! Form::date('AlunoDataNascimento', null, array('placeholder' => 'Data de Nascimento','class' => 'form-control')) !!}
+                                        {!! Form::date('AlunoDataNascimento', $result->DataNascAluno, array('placeholder' => 'Data de Nascimento','class' => 'form-control')) !!}
 
                                             <div class="form-control-icon">
                                                 <i data-feather="mail"></i>
@@ -80,7 +98,7 @@
                                         <label for="email-id-column">CPF</label>
                                         <div class="position-relative">
 
-                                        {!! Form::text('AlunoCPF', null, array('placeholder' => 'CPF','class' => 'form-control')) !!}
+                                        {!! Form::text('AlunoCPF', $result->GerPesCPF, array('placeholder' => 'CPF','class' => 'form-control')) !!}
 
                                          
                                             
@@ -94,9 +112,14 @@
                                         <label for="email-id-column">Sexo</label>
                                         <div class="position-relative">
 
-                                        {!! Form::text('AlunoSexo', null, array('placeholder' => 'Sexo','class' => 'form-control')) !!}
+                                        {!! Form::text('AlunoSexo', $result->GerPesSexo, array('placeholder' => 'Sexo','class' => 'form-control' )) !!}
 
-                                         
+                                        @endforeach 
+
+                                        @else
+            
+                                        @endif
+
                                             
                                     </div>
                                 </div>
@@ -107,7 +130,7 @@
                                     <div class="form-group has-icon-left">
                                         <label for="email-id-column">Nome da Mãe</label>
                                         <div class="position-relative">
-                                        {!! Form::text('AlunoFiliacao1', null, array('placeholder' => 'Nome da Mãe','class' => 'form-control')) !!}
+                                        {!! Form::text('AlunoFiliacao1',  $result->GerPesNomMae, array('placeholder' => 'Nome da Mãe','class' => 'form-control')) !!}
                                         </div>
                                     </div>
                                 </div>
@@ -116,7 +139,7 @@
                                     <div class="form-group has-icon-left">
                                         <label for="email-id-column">Nome do Pai</label>
                                         <div class="position-relative">
-                                        {!! Form::text('AlunoFiliacao2', null, array('placeholder' => 'Nome do Pai','class' => 'form-control')) !!}
+                                        {!! Form::text('AlunoFiliacao2', $result->GerPesNomPai, array('placeholder' => 'Nome do Pai','class' => 'form-control')) !!}
                                         </div>
                                     </div>
                                 </div>
@@ -125,7 +148,7 @@
                                     <div class="form-group has-icon-left">
                                         <label for="email-id-column">Endereço</label>
                                         <div class="position-relative">
-                                        {!! Form::text('AlunoEndereco', null, array('placeholder' => 'Endereço','class' => 'form-control')) !!}
+                                        {!! Form::text('AlunoEndereco', $result->GerPesEnd, array('placeholder' => 'Endereço','class' => 'form-control')) !!}
                                         </div>
                                     </div>
                                 </div>
@@ -134,7 +157,7 @@
                                     <div class="form-group has-icon-left">
                                         <label for="email-id-column">Número</label>
                                         <div class="position-relative">
-                                        {!! Form::text('AlunoNumero', null, array('placeholder' => 'N°','class' => 'form-control')) !!}
+                                        {!! Form::text('AlunoNumero', $result->GerPesCmpLog, array('placeholder' => 'N°','class' => 'form-control')) !!}
                                         </div>
                                     </div>
                                 </div>
@@ -142,7 +165,7 @@
                                     <div class="form-group has-icon-left">
                                         <label for="email-id-column">Bairro</label>
                                         <div class="position-relative">
-                                        {!! Form::text('AlunoBairro', null, array('placeholder' => 'Bairro','class' => 'form-control')) !!}
+                                        {!! Form::text('AlunoBairro',  $result->GerPesBairro, array('placeholder' => 'Bairro','class' => 'form-control')) !!}
                                         </div>
                                     </div>
                                 </div>
@@ -150,7 +173,7 @@
                                     <div class="form-group has-icon-left">
                                         <label for="email-id-column">CEP</label>
                                         <div class="position-relative">
-                                        {!! Form::text('AlunoCEP', null, array('placeholder' => 'CEP','class' => 'form-control')) !!}
+                                        {!! Form::text('AlunoCEP', $result->GerPesCEP, array('placeholder' => 'CEP','class' => 'form-control')) !!}
                                         </div>
                                     </div>
                                 </div>
@@ -175,7 +198,7 @@
                                     <div class="form-group has-icon-left">
                                         <label for="email-id-column">DDD</label>
                                         <div class="position-relative">
-                                        {!! Form::text('AlunoDDD', null, array('placeholder' => 'DDD','class' => 'form-control')) !!}
+                                        {!! Form::text('AlunoDDD', $result->GerPesTelResDDD, array('placeholder' => 'DDD','class' => 'form-control')) !!}
                                         </div>
                                     </div>
                                 </div>
@@ -184,7 +207,7 @@
                                     <div class="form-group has-icon-left">
                                         <label for="email-id-column">Telefone</label>
                                         <div class="position-relative">
-                                        {!! Form::text('AlunoTelefone', null, array('placeholder' => 'Telefone','class' => 'form-control')) !!}
+                                        {!! Form::text('AlunoTelefone', $result->GerPesTelCel, array('placeholder' => 'Telefone','class' => 'form-control')) !!}
                                         </div>
                                     </div>
                                 </div>

@@ -4,7 +4,7 @@
 
 <div id="auth">       
            
-            <form action="{{asset('/painel/consulta_aluno')}}" method="GET" enctype="multipart/form-data">
+            <form action="{{asset('/API/CEP')}}" method="GET" enctype="multipart/form-data">
 
     <div class="container">
         <div class="row">
@@ -13,8 +13,8 @@
                     <div class="card-body">
                         <div class="text-center mb-5">
                             <img src="{{asset('/images/search-student.png')}}" height="48" class='mb-4'>
-                            <h3>Consulta de Alunos</h3>
-                            <p> Utilize o campo de CPF para localizar o aluno </p>
+                            <h3>Consulta de CEP</h3>
+                            <p> Utilize o campo de CEP para localizar  </p>
                         </div>
                         <form action="index.html">
                             <div class="form-group">
@@ -22,8 +22,8 @@
                             </div>
     
                             <div class="form-group">
-                                <label for="first-name-column">CPF</label>
-                                <input type="text" id="search" class="form-control" name="search" placeholder="CPF do Aluno">
+                                <label for="first-name-column">CEP</label>
+                                <input type="text" id="search" class="form-control" name="search" placeholder="Digite o CEP aqui">
                             </div>
     
                                {{--  <div class="form-group">
@@ -37,19 +37,17 @@
 <br>
                             @if ($search)
 
-                            @foreach ($data->alunos as $result)  
-                                <p><b> Código INEP:  </b>   {{ $result->GedAluIdINEP }} - Sexo: {{ $result->GerPesSexo }}</p> 
-                                <p><b> Nome do Aluno:</b>   {{ $result->NomeAluno }}</p> 
-                                <p><b> Data Nascimento:</b> {{ $result->DataNascAluno }}</p> 
-                                <p><b> Filiação 1:</b>      {{ $result->GerPesNomPai }}</p> 
-                                <p><b> Filiação 2:</b>      {{ $result->GerPesNomMae }}</p> 
-                                <p><b> Endereço:</b>        {{ $result->GerPesEnd }} - {{ $result->GerPesCmpLog }} - 
-                                {{ $result->GerPesBairro }}  {{ $result->GerPesCEP }}</p> 
+                                <p><b> Cidade:  </b>   {{ $data->city }}</p> 
+                                <p><b> Estado:</b>   {{ $data->state }}</p> 
+                                <p><b> Bairro:</b> {{ $data->neighborhood }}</p> 
+                                <p><b> Rua:</b>      {{ $data->street }}</p> 
+                                <p><b> Serviço:</b>      {{ $data->service }}</p> 
+                                <p><b> Longitude:</b>      {{ $data->location->coordinates->longitude }}
+                                <b>    Latitude:</b>      {{ $data->location->coordinates->latitude }}</p> 
+              
 
-                            @endforeach 
 
                             <button class="btn btn-warning float-end">Limpar pesquisa</button> </a>
-                            <button class="btn btn-primary float">Limpar pesquisa</button> </a>
                             @else
                          
                                       @endif

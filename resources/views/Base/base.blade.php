@@ -36,10 +36,16 @@
                                 <span>Dashboard</span>
                             </a>
                         </li>
-                        <li class="sidebar-item has-sub ">
+                        <li class="sidebar-item ">
                             <a href="{{asset('/painel/index')}}" class='sidebar-link'>
                                 <i data-feather="layout" width="20"></i>
                                 <span>Painel Gerencial</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item has-sub ">
+                            <a href="{{asset('/painel/index')}}" class='sidebar-link'>
+                                <i data-feather="layout" width="20"></i>
+                                <span>Cadastros Básicos</span>
                             </a>
                             <ul class="submenu ">
                                 <li class="sidebar-item  has-sub">
@@ -256,6 +262,20 @@
                             <a href="{{asset('/painel')}}" class='sidebar-link'>
                                 <i data-feather="file" width="20"></i>
                                 <span>Reportar violência Escolar</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item  ">
+                            {{-- active --}}
+                            <a href="{{asset('/API/CEP')}}" class='sidebar-link'>
+                                <i data-feather="file" width="20"></i>
+                                <span>API - CEP</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item  ">
+                            {{-- active --}}
+                            <a href="{{asset('/API/CNPJ')}}" class='sidebar-link'>
+                                <i data-feather="file" width="20"></i>
+                                <span>API - CNPJ</span>
                             </a>
                         </li>
 
@@ -3469,5 +3489,29 @@
 <script src="{{asset('vendors/simple-datatables/simple-datatables.js')}}"></script>
 <script src="{{asset('/js/vendors.js')}}"></script>
 <script src="{{asset('/js/main.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+<script type="text/javascript">
+ 
+    $('.show_confirm').click(function(event) {
+         var form =  $(this).closest("form");
+         var name = $(this).data("name");
+         event.preventDefault();
+         swal({
+             title: `Gostaria de deletar este registro?`,
+             text: "Esta ação não haverá volta",
+             icon: "warning",
+             buttons: true,
+             dangerMode: true,
+         })
+         .then((willDelete) => {
+           if (willDelete) {
+             form.submit();
+           }
+         });
+     });
+ 
+</script>
+
+@include('sweetalert::alert')
 
 </html>

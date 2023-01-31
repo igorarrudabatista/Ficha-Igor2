@@ -5,11 +5,11 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\
     {
-    HomeController, AlunosController, FichaController, PainelGerencialController,
+    HomeController, AlunosController, APIController, FichaController, PainelGerencialController,
     UsuariosController, RoleController, UserController, ProductController,
     MinisterioController, PoloController, EscolaController, PessoaController,
     CategoriaController, PrazoController, ConselhoController,
-    Ficha_Ministerio, Ficha_Conselho, 
+    Ficha_Ministerio, Ficha_Conselho
 };
 
  Route::get('/escola/teste',      [PessoaController::class, 'index']);
@@ -33,6 +33,13 @@ Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.
 Route::get('/ficha/atender',             [FichaController::class, 'index_atender']);
 Route::get('/ficha/todasfichas',         [FichaController::class, 'index_todas_fichas']);
 Route::get('/ficha/editconselho/{id}',   [FichaController::class, 'editconselho']);
+
+
+/// API
+Route::get('/API/CEP/',   [APIController::class, 'cep']);
+Route::get('/API/CNPJ/',   [APIController::class, 'cnpj']);
+
+
 
 
 ////// PAINEL GERENCIAL (DASHBOARD)

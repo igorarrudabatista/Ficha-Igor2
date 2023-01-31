@@ -32,7 +32,7 @@ class AlunosController extends Controller
     {
         $aluno = ALUNO::latest()->paginate(5);
         return view('aluno.index',compact('aluno'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+            ->with('i');
     }
     
 //     /**
@@ -42,7 +42,20 @@ class AlunosController extends Controller
 //      */
    public function create()
    {
-       return view('aluno.create');
+
+    $search = request('search');
+    $response = Http::post('http://consultaficai.des.seduc.mt.gov.br/rest/retornalistaalunos', [
+    'chaveautenticacao' => '10221210000',
+    'cpf' =>  $search
+]);
+$result = '';
+
+
+    $data = json_decode($response); // convert JSON into objects 
+
+    return view('aluno.create', ['search' => $search, 'data' =>$data, 'result' =>$result]);
+
+     //  return view('aluno.create');
    }
     
 //     /**
