@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
     
 use App\Models\Conselho;
 use Illuminate\Http\Request;
+use App\Models\FICHA;
+
     
 class ConselhoController extends Controller
 { 
@@ -26,8 +28,10 @@ class ConselhoController extends Controller
      */
     public function index()
     {
+        $userCount  =  FICHA::where('status_id', '=', auth()->id())
+        ->count();
         $conselho = Conselho::latest()->paginate(5);
-        return view('conselho.index',compact('conselho'))
+        return view('conselho.index',compact('conselho', 'userCount'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
     
@@ -38,7 +42,12 @@ class ConselhoController extends Controller
 //      */
    public function create()
    {
-       return view('conselho.create');
+    $userCount  =  FICHA::where('status_id', '=', auth()->id())
+    ->count();
+       return view('conselho.create',compact('userCount'));
+
+
+
    }
     
 //     /**

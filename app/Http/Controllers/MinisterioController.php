@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
     
 use App\Models\Ministerio;
 use Illuminate\Http\Request;
-    
+use App\Models\FICHA;
+
 class MinisterioController extends Controller
 { 
     /**
@@ -26,8 +27,10 @@ class MinisterioController extends Controller
      */
     public function index()
     {
+        $userCount  =  FICHA::where('status_id', '=', auth()->id())
+        ->count();
         $ministerio = Ministerio::latest()->paginate(5);
-        return view('ministerio.index',compact('ministerio'))
+        return view('ministerio.index',compact('ministerio', 'userCount'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
     
@@ -37,8 +40,10 @@ class MinisterioController extends Controller
 //      * @return \Illuminate\Http\Response
 //      */
    public function create()
-   {
-       return view('ministerio.create');
+   { $userCount  =  FICHA::where('status_id', '=', auth()->id())
+    ->count();
+
+       return view('ministerio.create',compact('userCount'));
    }
     
 //     /**

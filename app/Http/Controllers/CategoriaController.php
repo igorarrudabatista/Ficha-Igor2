@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Categoria;
 use Illuminate\Http\Request;
+use App\Models\FICHA;
 
 class CategoriaController extends Controller
 {
@@ -20,27 +21,22 @@ class CategoriaController extends Controller
      */
     public function index()
     {
+        $userCount  =  FICHA::where('status_id', '=', auth()->id())
+        ->count();
         $categoria = Categoria::latest()->paginate(5);
-        return view('categoria.index',compact('categoria'))
+        return view('categoria.index',compact('categoria', 'userCount'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
     
-//     /**
-//      * Show the form for creating a new resource.
-//      *
-//      * @return \Illuminate\Http\Response
-//      */
+
    public function create()
    {
-       return view('categoria.create');
+    $userCount  =  FICHA::where('status_id', '=', auth()->id())
+    ->count();
+       return view('categoria.create',compact('userCount'));
    }
     
-//     /**
-//      * Store a newly created resource in storage.
-//      *
-//      * @param  \Illuminate\Http\Request  $request
-//      * @return \Illuminate\Http\Response
-//      */
+
     public function store(Request $request)
     {
         // request()->validate([
@@ -54,35 +50,17 @@ class CategoriaController extends Controller
                          ->with('success','Categoria criado com sucesso!');
      }
     
-//     /**
-//      * Display the specified resource.
-//      *
-//      * @param  \App\Product  $product
-//      * @return \Illuminate\Http\Response
-//      */
+
     public function show(Categoria $categoria)
     {
         return view('categoria.show',compact('categoria'));
     }
-    
-//     /**
-//      * Show the form for editing the specified resource.
-//      *
-//      * @param  \App\Product  $product
-//      * @return \Illuminate\Http\Response
-//      */
+
      public function edit(Categoria $categoria)
      {
          return view('categoria.edit',compact('categoria'));
      }
-    
-//     /**
-//      * Update the specified resource in storage.
-//      *
-//      * @param  \Illuminate\Http\Request  $request
-//      * @param  \App\Product  $product
-//      * @return \Illuminate\Http\Response
-//      */
+
      public function update(Request $request, Categoria $categoria)
      {
         //   request()->validate([
@@ -96,12 +74,7 @@ class CategoriaController extends Controller
                          ->with('edit','Atualiazado com sucesso!');
      }
     
-//     /**
-//      * Remove the specified resource from storage.
-//      *
-//      * @param  \App\Product  $product
-//      * @return \Illuminate\Http\Response
-//      */
+
      public function destroy(Categoria $categoria)
      {
          $categoria->delete();

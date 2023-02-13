@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
     
 use App\Models\Prazo;
 use Illuminate\Http\Request;
-    
+use App\Models\FICHA;
+
 class PrazoController extends Controller
 { 
     /**
@@ -26,8 +27,11 @@ class PrazoController extends Controller
      */
     public function index()
     {
+        $userCount  =  FICHA::where('status_id', '=', auth()->id())
+    ->count();
+        
         $prazo = Prazo::latest()->paginate(5);
-        return view('prazo.index',compact('prazo'))
+        return view('prazo.index',compact('prazo', 'userCount'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
     
@@ -38,7 +42,9 @@ class PrazoController extends Controller
 //      */
    public function create()
    {
-       return view('prazo.create');
+    $userCount  =  FICHA::where('status_id', '=', auth()->id())
+    ->count();
+       return view('prazo.create',compact('userCount'));
    }
     
 //     /**

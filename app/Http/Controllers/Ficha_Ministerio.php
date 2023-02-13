@@ -40,8 +40,8 @@ class Ficha_Ministerio extends Controller
     public function index()
     {
         
-   
-            
+             $userCount  =  FICHA::where('status_id', '=', auth()->id())
+                ->count();            
             $ficha = Ficha::with('categoria', 'escola', 'aluno', 'user', 'users')->get();
             $users = User::all();
             $conselho = Conselho::all();
@@ -65,7 +65,8 @@ class Ficha_Ministerio extends Controller
                         'escola'       => $escola,
                         'conselho'     => $conselho,
                         'aluno'        => $aluno,
-                        'users'        => $users
+                        'users'        => $users,
+                        'userCount'    => $userCount
                     ]
                 );
             }
@@ -75,13 +76,14 @@ class Ficha_Ministerio extends Controller
    public function create()
    {
 
- 
+    $userCount  =  FICHA::where('status_id', '=', auth()->id())
+    ->count();
     $user = User::get();
     $categoria = CATEGORIA::all();
     $escola = ESCOLA::all();
     $aluno = ALUNO::all();
 
-       return view('ficha_ministerio.create', compact('categoria','escola','aluno','user'));
+       return view('ficha_ministerio.create', compact('categoria','escola','aluno','user', 'userCount'));
    }
     
     public function store(Request $request)

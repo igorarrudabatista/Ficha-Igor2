@@ -13,11 +13,12 @@ use App\Http\Controllers\
 };
 
  Route::get('/escola/teste',      [PessoaController::class, 'index']);
+//  Route::get('/base/base',      [PainelGerencialController::class, 'dashboard']);
 
 
-Route::get('/painel', function () {
-    return view('painel');
-})->middleware(['auth', 'verified'])->name('painel');
+// Route::get('/painel', function () {
+//     return view('painel');
+// })->middleware(['auth', 'verified'])->name('painel');
 
 Route::get('/perfil', [ProfileController::class, 'edit'])->name('profile.edit');
 
@@ -37,7 +38,8 @@ Route::get('/ficha/editconselho/{id}',   [FichaController::class, 'editconselho'
 
 /// API
 Route::get('/API/CEP/',   [APIController::class, 'cep']);
-Route::get('/API/CNPJ/',   [APIController::class, 'cnpj']);
+Route::get('/API/CNPJ/',  [APIController::class, 'cnpj']);
+Route::get('/API/FILMES/',[APIController::class, 'filmes']);
 
 
 

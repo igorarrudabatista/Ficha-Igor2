@@ -9,6 +9,9 @@ use Illuminate\Http\Request;
 use PhpParser\Builder\Function_;
 use PhpParser\Node\Expr\FuncCall;
 
+use App\Models\FICHA;
+
+
 use Illuminate\Support\Facades\Http;
 
 
@@ -30,8 +33,10 @@ class AlunosController extends Controller
      */
     public function index()
     {
+        $userCount  =  FICHA::where('status_id', '=', auth()->id())
+        ->count();
         $aluno = ALUNO::latest()->paginate(5);
-        return view('aluno.index',compact('aluno'))
+        return view('aluno.index',compact('aluno', 'userCount'))
             ->with('i');
     }
     
@@ -42,6 +47,8 @@ class AlunosController extends Controller
 //      */
    public function create()
    {
+    $userCount  =  FICHA::where('status_id', '=', auth()->id())
+    ->count();
 
     $search = request('search');
     $response = Http::post('http://consultaficai.des.seduc.mt.gov.br/rest/retornalistaalunos', [
@@ -53,7 +60,11 @@ $result = '';
 
     $data = json_decode($response); // convert JSON into objects 
 
-    return view('aluno.create', ['search' => $search, 'data' =>$data, 'result' =>$result]);
+    return view('aluno.create', [
+                'search' => $search,
+                 'data' =>$data,
+                 'result' =>$result,
+                'userCount' => $userCount]);
 
      //  return view('aluno.create');
    }
@@ -143,6 +154,8 @@ $result = '';
 
       public Function search() {
 
+        $userCount  =  FICHA::where('status_id', '=', auth()->id())
+        ->count(); 
             $search = request('search');
             $response = Http::post('http://consultaficai.des.seduc.mt.gov.br/rest/retornalistaalunos', [
             'chaveautenticacao' => '10221210000',
@@ -152,7 +165,10 @@ $result = '';
 
             $data = json_decode($response); // convert JSON into objects 
 
-      return view('painel.consulta_aluno', ['search' => $search, 'data' =>$data]);
+      return view('painel.consulta_aluno', ['search' => $search,
+                                            'data' =>$data,
+                                            'userCount' => $userCount
+                                        ]);
 
               //dd($search);
 

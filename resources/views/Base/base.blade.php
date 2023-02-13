@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>FICAI </title>
     <link rel="stylesheet" href="{{asset('/css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{asset('vendors/chartjs/Chart.min.css')}}">
     <link rel="stylesheet" href="{{asset('vendors/simple-datatables/style.css')}}">
@@ -302,24 +302,42 @@
                                 <div class="d-lg-inline-block">
                                     <i data-feather="bell"></i>
                                 </div>
+                                
                             </a>
                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-large">
-                                <ul class="list-group rounded-none">
-                                    <li class="list-group-item border-0 align-items-start">
-                                        <div class="avatar bg-primary me-2">
-                                            <span class="avatar-content"><i data-feather="info"></i></span>
+
+                                     
+                                        <div class="row">
+                                            <div class="col-12 col-md-10 offset-md-1">
+                                                <div class="pricing">
+                                                    <div class="row align-items-center">
+                                                       
+                                                        <div class="col-md-12 px-0">
+                                                            <div class="card card-highlighted">
+                                                                <div class="card-header text-center">
+                                                                    <h4 class='card-title'>Você tem:</h4>
+                                                                </div>
+                                                                <h1 class="price text-white">{{$userCount}}</h1>
+                                                              
+                                                                <ul>
+                                                                    <li>Fichas tramitadas para você!</li>
+                                                                </ul>
+                                                                <div class="card-footer">
+                                                                    <button onclick="location.href='/ficha/atender'" class="btn btn-outline-white btn-block">Ver Fichas</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                   
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div>
+                                     {{-- Você tem {{$userCount}} Fichas Tramitadas para você --}}
+                                     
 
-
-                                           <h4> 
-
-                                                <b> <big> 5 </big> <br> <h5>   Fichas tramitadas para você! </h5> </p></b> </h4>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
+                                  
+                              
+         
                         <li class="dropdown nav-icon me-2">
                             <a href="#" data-bs-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                                 <div class="d-lg-inline-block">
@@ -339,15 +357,8 @@
                                         </div>
                                     </li>
                                 </ul>
-                                {{-- <a class="dropdown-item" href="#"><i data-feather="user"></i> Minha Conta</a> --}}
-                                {{-- <a class="dropdown-item active" href="#"><i data-feather="mail"></i> Mensagens</a> --}}
-                                {{-- <a class="dropdown-item" href="#"><i data-feather="settings"></i> Configurações</a> --}}
-                                {{-- <div class="dropdown-divider"></div> --}}
-                                {{-- <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <a class="dropdown-item" href="route('logout')" onclick="event.preventDefault();
-                                            this.closest('form').submit();"><i data-feather="log-out"></i> Sair</a> --}}
-                            </div>
+                            
+                            </div> 
                         </li>
                         <li class="dropdown">
                             <a href="#" data-bs-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">

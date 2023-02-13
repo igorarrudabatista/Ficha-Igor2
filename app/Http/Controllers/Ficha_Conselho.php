@@ -39,7 +39,8 @@ class Ficha_Conselho extends Controller
 
     public function index()
     {
-        
+        $userCount  =  FICHA::where('status_id', '=', auth()->id())
+        ->count();
         $ficha = Ficha::with('categoria', 'escola', 'aluno', 'user', 'users')->get();
         $users = User::all();
         $conselho = Conselho::all();
@@ -63,7 +64,8 @@ class Ficha_Conselho extends Controller
                     'escola'       => $escola,
                     'conselho'     => $conselho,
                     'aluno'        => $aluno,
-                    'users'        => $users
+                    'users'        => $users,
+                    'userCount'    => $userCount
                 ]
             );
         }
@@ -73,13 +75,14 @@ class Ficha_Conselho extends Controller
    public function create()
    {
 
- 
+    $userCount  =  FICHA::where('status_id', '=', auth()->id())
+    ->count();
     $user = User::get();
     $categoria = CATEGORIA::all();
     $escola = ESCOLA::all();
     $aluno = ALUNO::all();
 
-       return view('ficha_conselho.create', compact('categoria','escola','aluno','user'));
+       return view('ficha_conselho.create', compact('categoria','escola','aluno','user' , 'userCount'));
    }
     
     public function store(Request $request)
@@ -109,6 +112,8 @@ class Ficha_Conselho extends Controller
 
     public function edit(FICHA $ficha_conselho)
      {
+        $userCount  =  FICHA::where('status_id', '=', auth()->id())
+        ->count();
         $user = User::pluck('name','id');
         $perfis = Role::all()->pluck('name');
         $perfil =Role::whereNotIn('name', ['Admin', 'Conselho'])->pluck('name');
@@ -121,7 +126,7 @@ class Ficha_Conselho extends Controller
 
         
         
-         return view('ficha_conselho.edit',compact('perfil_escola','perfil_MP','perfil','perfis','ficha_conselho','categoria','escola','aluno', 'user'));
+         return view('ficha_conselho.edit',compact('userCount','perfil_escola','perfil_MP','perfil','perfis','ficha_conselho','categoria','escola','aluno', 'user'));
      }
     
 

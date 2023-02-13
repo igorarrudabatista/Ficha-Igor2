@@ -32,14 +32,15 @@ class Ficha_ConselhoController extends Controller
 
     public function index()
     {
-
+        $userCount  =  FICHA::where('status_id', '=', auth()->id())
+        ->count();
         $ficha = Ficha::all();
 
         $escola = ESCOLA::latest()->paginate(5);
         $categoria = CATEGORIA::all();
         $ficha = FICHA::latest()->paginate(5);
         $conselho = Conselho::latest()->paginate(5);
-        return view('ficha.index',compact('ficha','escola','categoria', 'conselho'))
+        return view('ficha.index',compact('ficha','escola','categoria', 'conselho', 'userCount'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
     
@@ -51,16 +52,14 @@ class Ficha_ConselhoController extends Controller
    public function create()
    {
 
-       //$categoria = CATEGORIA::all(); 
-    //    $categoria = CATEGORIA::pluck('FichaCatNome');
-    //    $escola = ESCOLA::pluck('EscolaNome');
-    //    $aluno = ALUNO::pluck('AlunoNome');
+    $userCount  =  FICHA::where('status_id', '=', auth()->id())
+        ->count();
 
     $categoria = CATEGORIA::all();
     $escola = ESCOLA::all();
     $aluno = ALUNO::all();
 
-       return view('ficha.create', compact('categoria','escola','aluno'));
+       return view('ficha.create', compact('categoria','escola','aluno', 'userCount'));
    }
     
 //     /**
@@ -103,10 +102,12 @@ class Ficha_ConselhoController extends Controller
 //      */
      public function edit(FICHA $ficha)
      {
+        $userCount  =  FICHA::where('status_id', '=', auth()->id())
+        ->count();
         $categoria = CATEGORIA::all();
         $escola = ESCOLA::all();
         $aluno = ALUNO::all();
-         return view('ficha.edit',compact('ficha','categoria','escola','aluno'));
+         return view('ficha.edit',compact('userCount','ficha','categoria','escola','aluno'));
      }
     
 //     /**

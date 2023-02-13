@@ -35,6 +35,8 @@ class EscolaController extends Controller
 
     public function index()
     {
+        $userCount  =  FICHA::where('status_id', '=', auth()->id())
+        ->count();
         $escola = ESCOLA::get();
 
 
@@ -61,7 +63,8 @@ class EscolaController extends Controller
                 'ficha'        => $ficha,
                 'escola'       => $escola,
                 'user'         => $user,
-                'true'         => $true
+                'true'         => $true,
+                'userCount'    => $userCount
                 
                 
             ]
@@ -79,7 +82,9 @@ class EscolaController extends Controller
 //      */
    public function create()
    {
-       return view('escola.create');
+    $userCount  =  FICHA::where('status_id', '=', auth()->id())
+    ->count();
+       return view('escola.create', compact('userCount'));
    }
     
 //     /**
@@ -120,7 +125,9 @@ class EscolaController extends Controller
 //      */
      public function edit(ESCOLA $escola)
      {
-         return view('escola.edit',compact('escola'));
+        $userCount  =  FICHA::where('status_id', '=', auth()->id())
+        ->count();
+         return view('escola.edit',compact('escola','userCount'));
      }
     
 //     /**

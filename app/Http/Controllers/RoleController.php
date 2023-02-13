@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use DB;
+use App\Models\FICHA;
+
     
 class RoleController extends Controller
 {
@@ -29,8 +31,10 @@ class RoleController extends Controller
      */
     public function index(Request $request)
     {
+        $userCount  =  FICHA::where('status_id', '=', auth()->id())
+        ->count(); 
         $roles = Role::orderBy('id','DESC')->paginate(5);
-        return view('roles.index',compact('roles'))
+        return view('roles.index',compact('roles', 'userCount'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
     
@@ -41,8 +45,10 @@ class RoleController extends Controller
      */
     public function create()
     {
+        $userCount  =  FICHA::where('status_id', '=', auth()->id())
+        ->count(); 
         $permission = Permission::get();
-        return view('roles.create',compact('permission'));
+        return view('roles.create',compact('permission', 'userCount'));
     }
     
     /**
@@ -88,13 +94,15 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
+        $userCount  =  FICHA::where('status_id', '=', auth()->id())
+        ->count(); 
         $role = Role::find($id);
         $permission = Permission::get();
         $rolePermissions = DB::table("role_has_permissions")->where("role_has_permissions.role_id",$id)
             ->pluck('role_has_permissions.permission_id','role_has_permissions.permission_id')
             ->all();
     
-        return view('roles.edit',compact('role','permission','rolePermissions'));
+        return view('roles.edit',compact('role','permission','rolePermissions', 'userCount'));
     }
     
     /**

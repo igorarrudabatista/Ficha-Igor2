@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
     
 use App\Models\Polo;
 use Illuminate\Http\Request;
+use App\Models\FICHA;
+
     
 class PoloController extends Controller
 { 
@@ -26,8 +28,10 @@ class PoloController extends Controller
      */
     public function index()
     {
+        $userCount  =  FICHA::where('status_id', '=', auth()->id())
+        ->count();
         $polo = Polo::latest()->paginate(5);
-        return view('polo.index',compact('polo'))
+        return view('polo.index',compact('polo', 'userCount'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
     
@@ -38,7 +42,9 @@ class PoloController extends Controller
 //      */
    public function create()
    {
-       return view('polo.create');
+    $userCount  =  FICHA::where('status_id', '=', auth()->id())
+    ->count();
+       return view('polo.create',compact('userCount'));
    }
     
 //     /**
