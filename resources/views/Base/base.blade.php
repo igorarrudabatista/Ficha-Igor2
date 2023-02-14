@@ -259,7 +259,7 @@
 
                         <li class="sidebar-item  ">
                             {{-- active --}}
-                            <a href="{{asset('/painel')}}" class='sidebar-link'>
+                            <a href="{{asset('/violencia_escolar')}}" class='sidebar-link'>
                                 <i data-feather="file" width="20"></i>
                                 <span>Reportar violência Escolar</span>
                             </a>
@@ -363,7 +363,7 @@
                         <li class="dropdown">
                             <a href="#" data-bs-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                                 <div class="avatar me-1">
-                                    <img src="{{asset('images/avatar/avatar-s-1.png')}}" alt="" srcset="">
+                                    <img src="{{asset('images/avatar/wolverine.png')}}" alt="" srcset="">
                                 </div>
                                 <div class="d-none d-md-block d-lg-inline-block">Olá, {{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->name }}} </div>
                             </a>

@@ -80,6 +80,11 @@ class PermissionTableSeeder extends Seeder
             'conselho-create',
             'conselho-edit',
             'conselho-delete',
+            //violencia
+            'violencia-list',
+            'violencia-create',
+            'violencia-edit',
+            'violencia-delete',
             //
         ];
        
