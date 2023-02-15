@@ -52,4 +52,7 @@ class User extends Authenticatable
     public function FICHA() {
         return $this->belongsTo(FICHA::class);
         }   
+    public function Agenda() {
+        return $this->belongsTo(Agenda::class);
+        }   
 }

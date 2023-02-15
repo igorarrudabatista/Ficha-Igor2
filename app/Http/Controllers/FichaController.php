@@ -50,9 +50,9 @@ class FichaController extends Controller
         $escola = ESCOLA::all();
         $aluno = ALUNO::all();
     
-    $ficha =  FICHA::whereHas('User', function($query) {
+        $ficha =  FICHA::whereHas('User', function($query) {
         return $query->where('id', auth()->id());
-    })->get();
+        })->get();
     
 
 

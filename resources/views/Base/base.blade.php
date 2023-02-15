@@ -36,6 +36,20 @@
                                 <span>Dashboard</span>
                             </a>
                         </li>
+                        <li class="sidebar-item  ">
+                            {{-- active --}}
+                            <a href="{{asset('/Agenda')}}" class='sidebar-link'>
+                                <i data-feather="home" width="20"></i>
+                                <span>Agenda</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item  ">
+                            {{-- active --}}
+                            <a href="{{asset('/Agenda/calendar-event')}}" class='sidebar-link'>
+                                <i data-feather="home" width="20"></i>
+                                <span>Agenda2</span>
+                            </a>
+                        </li>
                         <li class="sidebar-item ">
                             <a href="{{asset('/painel/index')}}" class='sidebar-link'>
                                 <i data-feather="layout" width="20"></i>
@@ -395,7 +409,9 @@
             </footer>
         </div>
     </div>
-
+    @stack('scripts')
+</body>
+</html>
     <script>
         /*! jQuery v2.1.3 | (c) 2005, 2014 jQuery Foundation, Inc. | jquery.org/license */ ! function(a, b) {
             "object" == typeof module && "object" == typeof module.exports ? module.exports = a.document ? b(a, !0) : function(a) {

@@ -5,11 +5,12 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\
     {
+    AgendaController,
     HomeController, AlunosController, APIController, FichaController, PainelGerencialController,
     UsuariosController, RoleController, UserController, ProductController,
     MinisterioController, PoloController, EscolaController, PessoaController,
     CategoriaController, PrazoController, ConselhoController,
-    Ficha_Ministerio, Ficha_Conselho, ViolenciaController
+    Ficha_Ministerio, Ficha_Conselho, ViolenciaController, CalenderController
 };
 
  Route::get('/escola/teste',      [PessoaController::class, 'index']);
@@ -87,7 +88,11 @@ Route::get('/usuarios/form_usuarios',                 [UsuariosController::class
     
       Route::get('ficha_conselho/{id}', [Ficha_Conselho::class, 'create']);
       Route::post('ficha_conselho/{id}', [Ficha_Conselho::class, 'store']);
+      Route::get('Agenda', [AgendaController::class, '__invoke']);
 
+    Route::get('Agenda/calendar-event', [CalenderController::class, 'index']);
+    Route::post('Agenda/calendar-crud-ajax', [CalenderController::class, 'calendarEvents']);
+      
 
 //Route::resource('usuarios', UserController::class);
 
