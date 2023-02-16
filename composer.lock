@@ -1445,16 +1445,16 @@
         },
         {
             "name": "league/commonmark",
-            "version": "2.3.8",
+            "version": "2.3.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/commonmark.git",
-                "reference": "c493585c130544c4e91d2e0e131e6d35cb0cbc47"
+                "reference": "c1e114f74e518daca2729ea8c4bf1167038fa4b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/c493585c130544c4e91d2e0e131e6d35cb0cbc47",
-                "reference": "c493585c130544c4e91d2e0e131e6d35cb0cbc47",
+                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/c1e114f74e518daca2729ea8c4bf1167038fa4b5",
+                "reference": "c1e114f74e518daca2729ea8c4bf1167038fa4b5",
                 "shasum": ""
             },
             "require": {
@@ -1547,7 +1547,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-12-10T16:02:17+00:00"
+            "time": "2023-02-15T14:07:24+00:00"
         },
         {
             "name": "league/config",
@@ -5652,26 +5652,26 @@
         },
         {
             "name": "wildside/userstamps",
-            "version": "2.2.0",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WildsideUK/Laravel-Userstamps.git",
-                "reference": "a54e057de179cd575ef839935d068cf21ce85960"
+                "reference": "371cfbf5fda1872cc487888c6a8ac01e3e8249aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WildsideUK/Laravel-Userstamps/zipball/a54e057de179cd575ef839935d068cf21ce85960",
-                "reference": "a54e057de179cd575ef839935d068cf21ce85960",
+                "url": "https://api.github.com/repos/WildsideUK/Laravel-Userstamps/zipball/371cfbf5fda1872cc487888c6a8ac01e3e8249aa",
+                "reference": "371cfbf5fda1872cc487888c6a8ac01e3e8249aa",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "^5.2|^6.0|^7.0|^8.0|^9.0",
+                "illuminate/support": "^5.2|^6.0|^7.0|^8.0|^9.0|^10.0",
                 "php": ">=5.5.9"
             },
             "require-dev": {
-                "illuminate/database": "^5.2|^6.0|^7.0|^8.0|^9.0",
-                "orchestra/testbench": "^3.1|^4.0|^5.0|^6.0|^7.0",
-                "phpunit/phpunit": "^5.0|^6.0|^7.0|^8.4|^9.0"
+                "illuminate/database": "^5.2|^6.0|^7.0|^8.0|^9.0|^10.0",
+                "orchestra/testbench": "^3.1|^4.0|^5.0|^6.0|^7.0|^8.0",
+                "phpunit/phpunit": "^5.0|^6.0|^7.0|^8.4|^9.0|^10.0"
             },
             "type": "library",
             "autoload": {
@@ -5701,9 +5701,9 @@
             ],
             "support": {
                 "issues": "https://github.com/WildsideUK/Laravel-Userstamps/issues",
-                "source": "https://github.com/WildsideUK/Laravel-Userstamps/tree/2.2.0"
+                "source": "https://github.com/WildsideUK/Laravel-Userstamps/tree/2.3.0"
             },
-            "time": "2022-02-09T08:47:54+00:00"
+            "time": "2023-02-15T09:35:24+00:00"
         }
     ],
     "packages-dev": [

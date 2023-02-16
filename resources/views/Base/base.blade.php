@@ -17,6 +17,11 @@
     <link rel="stylesheet" href="{{asset('/vendors/quill/quill.bubble.css')}}">
     <link rel="stylesheet" href="{{asset('/vendors/quill/quill.snow.css')}}">
     <link rel="stylesheet" href="{{asset('/vendors/perfect-scrollbar/perfect-scrollbar.css')}}">
+    
+
+
+
+
 </head>
 
 <body>
@@ -38,18 +43,12 @@
                         </li>
                         <li class="sidebar-item  ">
                             {{-- active --}}
-                            <a href="{{asset('/Agenda')}}" class='sidebar-link'>
+                            <a href="{{asset('/calendar/index#')}}" class='sidebar-link'>
                                 <i data-feather="home" width="20"></i>
                                 <span>Agenda</span>
                             </a>
                         </li>
-                        <li class="sidebar-item  ">
-                            {{-- active --}}
-                            <a href="{{asset('/Agenda/calendar-event')}}" class='sidebar-link'>
-                                <i data-feather="home" width="20"></i>
-                                <span>Agenda2</span>
-                            </a>
-                        </li>
+                       
                         <li class="sidebar-item ">
                             <a href="{{asset('/painel/index')}}" class='sidebar-link'>
                                 <i data-feather="layout" width="20"></i>
@@ -3505,8 +3504,18 @@
         });
     </script>
 </body>
+
+<script src="{{asset('/js/calendar/jquery.min.js')}}"></script>
+<script src="{{asset('/js/calendar/jquery-ui.min.js')}}"></script>
+<script src="{{asset('/js/calendar/moment.min.js')}}"></script>
+<script src="{{asset('/js/calendar/fullcalendar.min.js')}}"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+
+
 <script src="{{asset('/js/feather-icons/feather.min.js')}}"></script>
-<script src=" {{asset('/vendors/perfect-scrollbar/perfect-scrollbar.min.js')}} "></script>
+<script src="{{asset('/vendors/perfect-scrollbar/perfect-scrollbar.min.js')}} "></script>
 <script src="{{asset('/js/app.js')}}"></script>
 <script src="{{asset('/vendors/chartjs/Chart.min.js')}}"></script>
 <script src="{{asset('/vendors/apexcharts/apexcharts.min.js')}}"></script>
@@ -3517,6 +3526,8 @@
 <script src="{{asset('/js/vendors.js')}}"></script>
 <script src="{{asset('/js/main.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+
+
 <script type="text/javascript">
  
     $('.show_confirm').click(function(event) {

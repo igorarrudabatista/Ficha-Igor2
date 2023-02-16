@@ -10,7 +10,7 @@ use App\Http\Controllers\
     UsuariosController, RoleController, UserController, ProductController,
     MinisterioController, PoloController, EscolaController, PessoaController,
     CategoriaController, PrazoController, ConselhoController,
-    Ficha_Ministerio, Ficha_Conselho, ViolenciaController, CalenderController
+    Ficha_Ministerio, Ficha_Conselho, ViolenciaController, CalendarController
 };
 
  Route::get('/escola/teste',      [PessoaController::class, 'index']);
@@ -88,11 +88,12 @@ Route::get('/usuarios/form_usuarios',                 [UsuariosController::class
     
       Route::get('ficha_conselho/{id}', [Ficha_Conselho::class, 'create']);
       Route::post('ficha_conselho/{id}', [Ficha_Conselho::class, 'store']);
-      Route::get('Agenda', [AgendaController::class, '__invoke']);
-
-    Route::get('Agenda/calendar-event', [CalenderController::class, 'index']);
-    Route::post('Agenda/calendar-crud-ajax', [CalenderController::class, 'calendarEvents']);
       
+      
+    Route::get('calendar/index', [CalendarController::class, 'index'])->name('calendar.index');
+    Route::post('calendar', [CalendarController::class, 'store'])->name('calendar.store');
+    Route::patch('calendar/update/{id}', [CalendarController::class, 'update'])->name('calendar.update');
+    Route::delete('calendar/destroy/{id}', [CalendarController::class, 'destroy'])->name('calendar.destroy');  
 
 //Route::resource('usuarios', UserController::class);
 

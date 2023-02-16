@@ -6,22 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Agenda extends Model
-
-
 {
     use HasFactory;
-    protected $table = 'Agenda';
+    protected $table = 'agenda'; 
 
-    protected $fillable = [
-            'start_time',
-            'finish_time',
-            'comments',
-            'users',
-            
-     ];
+    protected $fillable = ['title', 'start_date', 'end_date'];
 
-    public function Users() {
-        return $this->BelongsTo(User::class, 'users');
-        }      
-     
 }
