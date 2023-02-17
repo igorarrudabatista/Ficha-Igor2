@@ -86,6 +86,8 @@ Route::get('/usuarios/form_usuarios',                 [UsuariosController::class
     Route::resource('conselho',                  ConselhoController::class);
     Route::resource('violencia_escolar',         ViolenciaController::class);
     
+      Route::get('google', [Ficha_Conselho::class, 'google']);
+
       Route::get('ficha_conselho/{id}', [Ficha_Conselho::class, 'create']);
       Route::post('ficha_conselho/{id}', [Ficha_Conselho::class, 'store']);
       

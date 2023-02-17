@@ -89,7 +89,9 @@ class AlunosController extends Controller
 
      public function edit(ALUNO $aluno)
      {
-         return view('aluno.edit',compact('aluno'));
+        $userCount  =  FICHA::where('status_id', '=', auth()->id())
+        ->count();
+         return view('aluno.edit',compact('aluno','userCount'));
      }
 
      public function update(Request $request, ALUNO $aluno)

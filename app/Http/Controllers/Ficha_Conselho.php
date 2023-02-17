@@ -36,6 +36,12 @@ class Ficha_Conselho extends Controller
      * @return \Illuminate\Http\Response
      */
 
+public function google() {
+
+return view('google.index');
+
+}
+
 
     public function index()
     {
