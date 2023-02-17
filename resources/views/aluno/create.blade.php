@@ -47,19 +47,10 @@
                 @if ($search)
 
                 @foreach ($data->alunos as $result)  
-                <p><b> Código INEP:  </b>   {{ $result->GedAluIdINEP }} - Sexo: {{ $result->GerPesSexo }}</p> 
-                <p><b> Nome do Aluno:</b>   {{ $result->NomeAluno }}</p> 
-                <p><b> Data Nascimento:</b> {{ $result->DataNascAluno }}</p> 
-                <p><b> Filiação 1:</b>      {{ $result->GerPesNomPai }}</p> 
-                <p><b> Filiação 2:</b>      {{ $result->GerPesNomMae }}</p> 
-                <p><b> Endereço:</b>        {{ $result->GerPesEnd }} - {{ $result->GerPesCmpLog }} - 
-                {{ $result->GerPesBairro }}  {{ $result->GerPesCEP }}</p> 
+           
             
             
-            <button class="btn btn-warning float-end">Limpar pesquisa</button> </a>
-            <button class="btn btn-primary float">Limpar pesquisa</button> </a>
-          
-
+     
                     </form>
 
                 {!! Form::open(array('route' => 'aluno.store','method'=>'POST')) !!}
@@ -114,11 +105,7 @@
 
                                         {!! Form::text('AlunoSexo', $result->GerPesSexo, array('placeholder' => 'Sexo','class' => 'form-control' )) !!}
 
-                                        @endforeach 
-
-                                        @else
-            
-                                        @endif
+                                  
 
                                             
                                     </div>
@@ -211,7 +198,7 @@
                                         </div>
                                     </div>
                                 </div>
-                         
+                    
                                 <div class="col-md-6 col-12">
                                     <div class="form-group has-icon-left">
                                   
@@ -235,6 +222,12 @@
                                     <button type="submit" class="btn btn-primary me-1 mb-1">Registrar Usuário</button>
                                 </div>
                             </div>
+
+                            @endforeach 
+
+                            @else
+
+                            @endif
                             {!! Form::close() !!}
                             
                         </form>

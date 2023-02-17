@@ -40,11 +40,7 @@ class AlunosController extends Controller
             ->with('i');
     }
     
-//     /**
-//      * Show the form for creating a new resource.
-//      *
-//      * @return \Illuminate\Http\Response
-//      */
+
    public function create()
    {
     $userCount  =  FICHA::where('status_id', '=', auth()->id())
@@ -52,29 +48,25 @@ class AlunosController extends Controller
 
     $search = request('search');
     $response = Http::post('http://consultaficai.des.seduc.mt.gov.br/rest/retornalistaalunos', [
-    'chaveautenticacao' => '10221210000',
-    'cpf' =>  $search
-]);
-$result = '';
+        'chaveautenticacao' => '10221210000',
+        'cpf' =>  $search
+    ]);
+
+
+    $result = '';
 
 
     $data = json_decode($response); // convert JSON into objects 
 
     return view('aluno.create', [
-                'search' => $search,
-                 'data' =>$data,
+                 'search'    => $search,
+                 'data'   =>$data,
                  'result' =>$result,
-                'userCount' => $userCount]);
+                 'userCount' => $userCount]);
 
-     //  return view('aluno.create');
    }
     
-//     /**
-//      * Store a newly created resource in storage.
-//      *
-//      * @param  \Illuminate\Http\Request  $request
-//      * @return \Illuminate\Http\Response
-//      */
+
     public function store(Request $request)
     {
         // request()->validate([
@@ -88,35 +80,18 @@ $result = '';
                          ->with('success','Aluno cadastrado com sucesso!');
      }
     
-//     /**
-//      * Display the specified resource.
-//      *
-//      * @param  \App\Product  $product
-//      * @return \Illuminate\Http\Response
-//      */
-    public function show(ALUNO $aluno)
-    {
-        return view('aluno.show',compact('aluno'));
-    }
+
+    // public function show(ALUNO $aluno)
+    // {
+    //     return view('aluno.show',compact('aluno'));
+    // }
     
-//     /**
-//      * Show the form for editing the specified resource.
-//      *
-//      * @param  \App\Product  $product
-//      * @return \Illuminate\Http\Response
-//      */
+
      public function edit(ALUNO $aluno)
      {
          return view('aluno.edit',compact('aluno'));
      }
-    
-//     /**
-//      * Update the specified resource in storage.
-//      *
-//      * @param  \Illuminate\Http\Request  $request
-//      * @param  \App\Product  $product
-//      * @return \Illuminate\Http\Response
-//      */
+
      public function update(Request $request, ALUNO $aluno)
      {
         //   request()->validate([
@@ -130,12 +105,7 @@ $result = '';
                          ->with('edit','Aluno atualizado com sucesso!');
      }
     
-//     /**
-//      * Remove the specified resource from storage.
-//      *
-//      * @param  \App\Product  $product
-//      * @return \Illuminate\Http\Response
-//      */
+
      public function destroy(ALUNO $aluno)
      {
          $aluno->delete();
@@ -165,8 +135,8 @@ $result = '';
 
             $data = json_decode($response); // convert JSON into objects 
 
-      return view('painel.consulta_aluno', ['search' => $search,
-                                            'data' =>$data,
+      return view('painel.consulta_aluno', ['search'    => $search,
+                                            'data'      =>$data,
                                             'userCount' => $userCount
                                         ]);
 

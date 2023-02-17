@@ -44,7 +44,7 @@
                         <li class="sidebar-item  ">
                             {{-- active --}}
                             <a href="{{asset('/calendar/index#')}}" class='sidebar-link'>
-                                <i data-feather="home" width="20"></i>
+                                <i data-feather="calendar" width="20"></i>
                                 <span>Agenda</span>
                             </a>
                         </li>
@@ -291,8 +291,16 @@
                                 <span>API - CNPJ</span>
                             </a>
                         </li>
-
-
+                        
+                        
+                        <hr>
+                        <li class="sidebar-item  ">
+                            {{-- active --}}
+                            <a href="{{asset('#')}}" class='sidebar-link'>
+                                <i data-feather="coffee" width="20"></i>
+                                <span>Suporte</span>
+                            </a>
+                        </li>
 
 
 
