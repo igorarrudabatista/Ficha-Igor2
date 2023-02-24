@@ -48,11 +48,11 @@ class User extends Authenticatable
     //     return $this->belongsToMany(Product::class);
     // }
 
+    public function Agenda() {
+        return $this->belongsTo(Agenda::class);
+        }   
     
     public function FICHA() {
         return $this->belongsTo(FICHA::class);
-        }   
-    public function Agenda() {
-        return $this->belongsTo(Agenda::class);
         }   
 }

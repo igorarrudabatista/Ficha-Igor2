@@ -144,8 +144,11 @@ class FichaController extends Controller
 
          
 
+    $ficha = Ficha::with('categoria', 'escola', 'aluno', 'user', 'users')->get();
     $userCount  =  FICHA::where('status_id', '=', auth()->id())
     ->count();
+    
+
     $user = User::pluck('name','id');
     $categoria = CATEGORIA::all();
     $escola = ESCOLA::all();
@@ -186,7 +189,6 @@ class FichaController extends Controller
                                           'escola',
                                           'aluno', 
                                           'user', 
-                                          'userCount',
                                           'userCount',
                                         ));
      }

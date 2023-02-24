@@ -1,75 +1,93 @@
 @extends('base.base')
 @section('content')
 
-
-
 <div class="main-content container-fluid">
     <div class="page-title">
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Usuários</h3>
-                <p class="text-subtitle text-muted">
-                   <p>Perfis do Sistema.</p>
-            <a class="btn btn-success" href="{{ route('roles.create') }}"> Criar Novo Perfil </a>
-        
+                <!-- <a class="btn btn-primary" href="{{ route('conselho.index') }}"> Back</a> -->
+
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class='breadcrumb-header'>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Painel Gerencial</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Editar Perfis</li>
-                    </ol>
+                   
                 </nav>
             </div>
         </div>
-    </div>
 
-    <section class="section">
-        <div class="card">
-            <div class="card-header">
-            </div>
-            <div class="card-body">
-            @if (count($errors) > 0)
+    </div>
+    @if (count($errors) > 0)
     <div class="alert alert-danger">
         <strong>Whoops!</strong> There were some problems with your input.<br><br>
         <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
         </ul>
     </div>
 @endif
-{!! Form::model($role, ['method' => 'PATCH','route' => ['roles.update', $role->id]]) !!}
-                
-<div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong>Name:</strong>
-            {!! Form::text('name', null, array('placeholder' => 'Nome do Perfil','class' => 'form-control')) !!}
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong>Permissões:</strong>
-            <br/>
-            @foreach($permission as $value)
-                <label>{{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, array('class' => 'name')) }}
-                {{ $value->name }}</label>
-            <br/>
-            @endforeach
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-        <button type="submit" class="btn btn-primary">Salvar</button>
-    </div>
-</div>
-{!! Form::close() !!}
-@endsection
-                
+
+<section id="multiple-column-form">
+    <div class="row match-height">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+
+                </div>
+
+                <div class="text-center mb-5">
+                    <img src="{{asset('/images/search-student.png')}}" height="48" class='mb-4'>
+                    <h3>Cadastro de Perfil</h3>
+                </div>
+
+                {!! Form::model($role, ['method' => 'PATCH','route' => ['roles.update', $role->id]]) !!}
+
+
+                <div class="card-content">
+                    <div class="card-body">
+                        <form class="form">
+                            <div class="row">
+                                <div class="col-md-6 col-12">
+                                   
+                                        <label for="first-name-column"><strong> Nome do Perfil </strong></label>
+                                        {!! Form::text('name', null, array('placeholder' => 'Nome do Perfil','class' => 'form-control')) !!}
+
+                                        <!-- <input type="text" id="first-name-column" name="name" class="form-control" placeholder="Nome completo"> -->
+                                   </div>
+
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group has-icon-left">
+                                        <label for="email-id-column"><strong> Permissão </strong></label>
+                                        <div class="position-relative">
+
+                                            @foreach($permission as $value)
+                                            <label>{{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, array('class' => 'name')) }}
+                                            {{ $value->name }}</label>
+                                        <br/>
+                                        @endforeach
+                                                   
+                                    </div>
+                                </div>
+                                </div>
+                                </div>
+                                <a class="btn btn-primary" href="{{ route('roles.index') }}"> Voltar </a>
+
+                                <div class="col-12 d-flex justify-content-end">
+                                    
+                                    <button type="submit" class="btn btn-primary me-1 mb-1">Salvar</button>
+                                </div>
+                            </div>
+                            {!! Form::close() !!}
+                            
+                        </form>
+                        
+                    </div>
+                </div>
             </div>
         </div>
-        
-    </section>
-</div>
+    </div>
 
+        </div>
 
+</section>
+@endsection

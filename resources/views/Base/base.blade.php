@@ -234,6 +234,10 @@
                                         <span>Criar Fichas </span>
                                 </a>
                            
+                                <a href="{{asset('/ficha')}}" class='sidebar-link'>
+                                    <i data-feather="search" width="20"></i>
+                                        <span>Fichas - criadas por mim </span>
+                                </a>
                                 <a href="{{asset('/ficha/todasfichas')}}" class='sidebar-link'>
                                     <i data-feather="search" width="20"></i>
                                         <span>Ver todas Fichas </span>
