@@ -305,6 +305,20 @@
                                 <span>Suporte</span>
                             </a>
                         </li>
+                        <li class="sidebar-item  ">
+                            {{-- active --}}
+                            <a href="{{asset('/Objetos/piano')}}" class='sidebar-link'>
+                                <i data-feather="cloud" width="20"></i>
+                                <span>Toque piano</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item  ">
+                            {{-- active --}}
+                            <a href="{{asset('/Objetos/teclado2')}}" class='sidebar-link'>
+                                <i data-feather="smile" width="20"></i>
+                                <span>Treine a sua digitação </span>
+                            </a>
+                        </li>
 
 
 

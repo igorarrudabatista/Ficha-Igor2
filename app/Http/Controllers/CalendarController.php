@@ -12,23 +12,38 @@ class CalendarController extends Controller
     {
         $userCount  =  FICHA::where('status_id', '=', auth()->id())
         ->count();
+
+        
         $events = array();
         $bookings = Agenda::all();
+        // $bookings->Agenda::where('created_by', '=', auth()->id())
+        //  ->get();
+         $bookings = Agenda::where('created_by', '=', auth()->id())
+         ->get();
+        
         foreach($bookings as $booking) {
             $color = null;
-            if($booking->title == 'Test') {
+            if($booking->title == 'Feriado') {
                 $color = '#924ACE';
             }
-            if($booking->title == 'Test 1') {
+            if($booking->title == 'Final de Semana') {
                 $color = '#68B01A';
             }
 
+            $booking->created_by = auth()->id();
+
+
+            // $user =  Agenda::where('created_by', '=', auth()->id())
+            // ->get();
+
             $events[] = [
-                'id'    => $booking->id,
-                'title' => $booking->title,
-                'start' => $booking->start_date,
-                'end'   => $booking->end_date,
-                'color' => $color
+                'id'        => $booking->id,
+                'title'     => $booking->title,
+                'start'     => $booking->start_date,
+                'end'       => $booking->end_date,
+                'color'     => $color,
+                'criado'    => $bookings
+
             ];
         }
         return view('calendar.index', ['events'    => $events,
@@ -37,18 +52,20 @@ class CalendarController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|string'
+            'title' => 'required|string',
         ]);
+        $user = auth()->id();
 
         $booking = Agenda::create([
-            'title' => $request->title,
+            'title'      => $request->title,
             'start_date' => $request->start_date,
-            'end_date' => $request->end_date,
+            'end_date'   => $request->end_date,
+            'criado'     => $request->$user,
         ]);
 
         $color = null;
 
-        if($booking->title == 'Test') {
+        if($booking->title == 'Aniversário') {
             $color = '#924ACE';
         }
 

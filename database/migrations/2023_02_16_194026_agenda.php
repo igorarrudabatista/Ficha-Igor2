@@ -18,6 +18,16 @@ return new class extends Migration
             $table->string('title');
             $table->dateTime('start_date');
             $table->dateTime('end_date');
+
+            
+
+            $table->unsignedBigInteger(column:'created_by')->nullable();
+            $table->foreign(columns:'created_by')->references(columns:'id')->on(table: 'users');
+            $table->unsignedBigInteger(column:'updated_by')->nullable();
+            $table->foreign(columns:'updated_by')->references(columns:'id')->on(table: 'users');
+            $table->unsignedBigInteger(column:'deleted_by')->nullable();
+            $table->foreign(columns:'deleted_by')->references(columns:'id')->on(table: 'users');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

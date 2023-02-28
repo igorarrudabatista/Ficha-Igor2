@@ -10,7 +10,8 @@ use App\Http\Controllers\
     UsuariosController, RoleController, UserController, ProductController,
     MinisterioController, PoloController, EscolaController, PessoaController,
     CategoriaController, PrazoController, ConselhoController,
-    Ficha_Ministerio, Ficha_Conselho, ViolenciaController, CalendarController
+    Ficha_Ministerio, Ficha_Conselho, ViolenciaController, CalendarController,
+    ObjetosController
 };
 
  Route::get('/escola/teste',      [PessoaController::class, 'index']);
@@ -106,6 +107,12 @@ Route::get('/usuarios/form_usuarios',                 [UsuariosController::class
 
 /////LOGOUT
 // Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+
+Route::get('/Objetos/piano',                 [ObjetosController::class, 'piano']);
+Route::get('/Objetos/teclado1',                 [ObjetosController::class, 'teclado']);
+Route::get('/Objetos/teclado2',                 [ObjetosController::class, 'teclado2']);
+
+
 
 
 Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])

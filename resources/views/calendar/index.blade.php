@@ -14,8 +14,6 @@
     <script src="{{asset('/js/calendar/jquery-ui.min.js')}}"></script>
     <script src="{{asset('/js/calendar/moment.min.js')}}"></script>
     <script src="{{asset('/js/calendar/fullcalendar.min.js')}}"></script>
-
-
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
@@ -87,7 +85,7 @@
                             url:"{{ route('calendar.store') }}",
                             type:"POST",
                             dataType:'json',
-                            data:{ title, start_date, end_date  },
+                            data:{ title, start_date, end_date },
                             success:function(response)
                             {
                                 $('#bookingModal').modal('hide')
@@ -95,7 +93,8 @@
                                     'title': response.title,
                                     'start' : response.start,
                                     'end'  : response.end,
-                                    'color' : response.color
+                                    'color' : response.color,
+                                    'criado' : response.criado
                                 });
                             },
                             error:function(error)
@@ -129,7 +128,7 @@
                 },
                 eventClick: function(event){
                     var id = event.id;
-                    if(confirm('Are you sure want to remove it')){
+                    if(confirm('Deseja deletar este evento da sua agenda?')){
                         $.ajax({
                             url:"{{ route('calendar.destroy', '') }}" +'/'+ id,
                             type:"DELETE",
@@ -154,9 +153,7 @@
             $("#bookingModal").on("hidden.bs.modal", function () {
                 $('#saveBtn').unbind();
             });
-            $('.fc-event').css('font-size', '14px');
-            $('.fc-event').css('width', '120px');
-            $('.fc-event').css('border-radius', '10%');
+     
         });
     </script>
 
