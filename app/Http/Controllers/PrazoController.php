@@ -30,7 +30,7 @@ class PrazoController extends Controller
         $userCount  =  FICHA::where('status_id', '=', auth()->id())
     ->count();
         
-        $prazo = Prazo::latest()->paginate(5);
+        $prazo = Prazo::latest()->paginate(10);
         return view('prazo.index',compact('prazo', 'userCount'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }

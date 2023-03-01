@@ -10,6 +10,9 @@
                 <h3>Minhas Fichas</h3>
                 <p class="text-subtitle text-muted">
                    <p> Listagem de Fichas Criadas por você, <b> {{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->name }}}  </b></p>
+                   <a class="btn btn-primary" href="{{ route('ficha.create') }}"> Criar nova Ficha</a>
+
+
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class='breadcrumb-header'>

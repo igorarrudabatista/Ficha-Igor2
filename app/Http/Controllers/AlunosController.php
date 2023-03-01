@@ -35,7 +35,7 @@ class AlunosController extends Controller
     {
         $userCount  =  FICHA::where('status_id', '=', auth()->id())
         ->count();
-        $aluno = ALUNO::latest()->paginate(5);
+        $aluno = ALUNO::paginate(10);
         return view('aluno.index',compact('aluno', 'userCount'))
             ->with('i');
     }
