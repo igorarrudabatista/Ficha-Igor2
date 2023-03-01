@@ -10,6 +10,8 @@
                 <h3>Cadastro de Conselho</h3>
                 <p class="text-subtitle text-muted">
                    <p>Cadastre as informações do Conselho.</p>
+                   <a class="btn btn-primary" href="{{ route('conselho.create') }}"> Cadastrar Conselho</a>
+
         
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">

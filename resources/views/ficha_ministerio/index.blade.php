@@ -9,6 +9,7 @@
             <div class="col-12 col-md-6 order-md-1 order-last">
                 <h3>Atendimento - Ministério Público</h3>
                 <p class="text-subtitle text-muted">
+
                    <p> Listagem de Fichas Tramitadas para você, <b> {{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->name }}}  </b></p>
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">

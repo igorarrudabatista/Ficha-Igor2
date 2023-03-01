@@ -44,7 +44,8 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h3 class="text-center mt-10">Calendário</h3>
+                <h3 class="text-center mt-10">Calendário Pessoal</h3>
+                <p class="text-center mt-10" > <strong> Apenas você consegue criar e visualizar os seus eventos. </strong></p>
                 <div class="col-md-12  mt-5 mb-5">
 
                     <div id="calendar">

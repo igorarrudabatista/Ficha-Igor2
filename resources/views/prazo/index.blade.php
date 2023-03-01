@@ -10,6 +10,8 @@
                 <h3>Cadastro de Prazos</h3>
                 <p class="text-subtitle text-muted">
                    <p>Cadastre as informações de Prazos.</p>
+                   <a class="btn btn-primary" href="{{ route('prazo.create') }}"> Cadastrar Prazos</a>
+
         
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">

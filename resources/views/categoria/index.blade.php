@@ -10,6 +10,8 @@
                 <h3>Cadastro de Categoria</h3>
                 <p class="text-subtitle text-muted">
                    <p>Cadastre as informações da Categoria.</p>
+                   <a class="btn btn-primary" href="{{ route('categoria.create') }}"> Cadastrar Categoria</a>
+
         
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">

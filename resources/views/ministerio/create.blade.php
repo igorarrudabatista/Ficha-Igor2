@@ -8,7 +8,6 @@
                 <h3>Cadastro de Ministério</h3>
                 <!-- <a class="btn btn-primary" href="{{ route('users.index') }}"> Back</a> -->
 
-                <p class="text-subtitle text-muted">There's a lot of form layout that you can use</p>
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class='breadcrumb-header'>
@@ -42,7 +41,7 @@
 
                 <div class="text-center mb-5">
                     <img src="{{asset('/images/search-student.png')}}" height="48" class='mb-4'>
-                    <h3>Cadastro de Informções do Ministério</h3>
+                    <h3>Cadastro de Informações do Ministério</h3>
                     <p></p>
                 </div>
 

@@ -320,6 +320,14 @@
                             </a>
                         </li>
 
+                        <li class="sidebar-item  ">
+                            {{-- active --}}
+                            <a href="{{asset('/Escolas/index')}}" class='sidebar-link'>
+                                <i data-feather="smile" width="20"></i>
+                                <span>Escolas</span>
+                            </a>
+                        </li>
+
 
 
                       
