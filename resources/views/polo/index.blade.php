@@ -10,6 +10,8 @@
                 <h3>Cadastro de Polo</h3>
                 <p class="text-subtitle text-muted">
                    <p>Cadastre as informações do Polo.</p>
+                   <a class="btn btn-primary" href="{{ route('polo.create') }}"> Cadastrar Polo </a>
+
         
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
@@ -54,20 +56,35 @@
                             <th>ID</th>
                             <th>Nome</th>
                             <th>Status</th>
+                            <th>Data de Criação </th>
+                            <th>Data de Atualização </th>
+                            <th>Ações </th>
               
                           
                         </tr>
                     </thead>
+
                     @foreach ($polo as $key => $polos)
 
-                    <tbody>
-                        <tr>
-               
-                           <td>{{ ++$i }}</td>
+                           <td>{{$polos->id }}</td>
 
-                           <td>{{$polos->PoloNome?? 'Sem registros'  }}</td>
+                           <td>{{$polos->PoloNome ?? 'Sem registros'  }}</td>
                            
-                           <td>{{$polos->polostatus ?? 'Sem registros'}}</td>
+                            <td>
+                           @if ($polos->PoloSts == 'Ativa')
+                           <span class="badge bg-success">Ativa</span>
+
+                           @else
+
+                           <span class="badge bg-danger">Inativa</span>
+
+
+                           @endif
+
+                            </td>
+
+
+
 
                         
                            <td>{{$polos->created_at ??  'Sem registros'}} </td>

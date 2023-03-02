@@ -68,13 +68,23 @@
                     <tbody>
                         <tr>
                
-                           <td>{{ ++$i }}</td>
+                           <td>{{$conselhos->id }}</td>
 
                            <td>{{$conselhos->ConselhoNome?? 'Sem registros'  }}</td>
                            
-                           <td>{{$conselhos->ConselhoStatus ?? 'Sem registros'}}</td>
 
-                        
+                        <td>
+                            @if ($conselhos->ConselhoStatus == 'Ativa')
+                            <span class="badge bg-success">Ativa</span>
+ 
+                            @else
+ 
+                            <span class="badge bg-danger">Inativa</span>
+ 
+ 
+                            @endif
+                            
+                        </td>
                            <td>{{$conselhos->created_at ??  'Sem registros'}} </td>
                            <td>{{$conselhos->updated_at ??  'Sem registros'}} </td>
                            <td> <a class="btn btn-warning" href="{{ route('conselho.edit',$conselhos->id) }}">Editar</a>

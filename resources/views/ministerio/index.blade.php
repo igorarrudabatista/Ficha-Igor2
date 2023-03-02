@@ -65,10 +65,9 @@
                     </thead>
                     @foreach ($ministerio as $key => $ministerios)
 
-                    <tbody>
-                        <tr>
+                    
                
-                           <td>{{ ++$i }}</td>
+                           <td>{{$ministerios->id }}</td>
 
                            <td>{{$ministerios->MinisterioNome?? 'Sem registros'  }}</td>
                            
@@ -84,16 +83,14 @@
                            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
 
                            {!! Form::close() !!}
- </td>
+            </td>
 
-
-                            
-                                            </tr>
+            </tr>
                         
-                        @endforeach
-
-                        
-                    </tbody>
+                                            
+    @endforeach
+                                            
+    </tbody>
                 </table>
                 
             </div>

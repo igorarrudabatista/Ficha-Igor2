@@ -68,6 +68,7 @@ class FichaController extends Controller
                 ]
             );
         }
+        
     public function index_todas_fichas()
     {
         

@@ -65,6 +65,11 @@ class PermissionTableSeeder extends Seeder
             'aluno-create',
             'aluno-edit',
             'aluno-delete',
+            //tb_categoria
+            'cat-list',
+            'cat-create',
+            'cat-edit',
+            'cat-delete',
             //categoria
             'categoria-list',
             'categoria-create',
@@ -85,7 +90,7 @@ class PermissionTableSeeder extends Seeder
             'violencia-create',
             'violencia-edit',
             'violencia-delete',
-            //
+            
         ];
        
         foreach ($permissions as $permission) {

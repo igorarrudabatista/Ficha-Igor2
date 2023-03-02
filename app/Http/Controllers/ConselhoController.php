@@ -88,7 +88,9 @@ class ConselhoController extends Controller
 //      */
      public function edit(Conselho $conselho)
      {
-         return view('conselho.edit',compact('conselho'));
+        $userCount  =  FICHA::where('status_id', '=', auth()->id())
+        ->count();
+         return view('conselho.edit',compact('conselho', 'userCount'));
      }
     
 //     /**

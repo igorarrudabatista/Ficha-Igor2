@@ -73,8 +73,6 @@
                     </thead>
                     @foreach ($escola as $key => $escolas)
 
-                    <tbody>
-                        <tr>
                             <td>{{$escolas->EscolaCod ?? 'Não encontrado' }}  </td>
                             <td>{{$escolas->EscolaNome ?? 'Não encontrado' }}  </td>
                             <td>{{$escolas->EscolaCidade	?? 'Sem registros'  }} - {{$escolas->EscolaEstado	?? 'Sem registros'  }}</td>
@@ -103,10 +101,10 @@
                            {!! Form::close() !!}
                             </td>
                         </tr>
-                     @endforeach        
-                            </td>
-                        </tr>
-                      
+                    </td>
+                </tr>
+                
+                @endforeach        
                     </tbody>
                 </table>
             </div>

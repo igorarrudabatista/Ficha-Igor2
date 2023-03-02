@@ -31,15 +31,24 @@ class AlunosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     
     public function index()
     {
         $userCount  =  FICHA::where('status_id', '=', auth()->id())
-        ->count();
-        $aluno = ALUNO::paginate(10);
-        return view('aluno.index',compact('aluno', 'userCount'))
-            ->with('i');
-    }
-    
+            ->count();
+
+        $aluno = ALUNO::get();
+
+        return view(
+            'aluno.index',
+            [
+                
+                'aluno'        => $aluno,
+                'userCount'    => $userCount
+            ]
+        );
+    }   
 
    public function create()
    {
@@ -69,38 +78,23 @@ class AlunosController extends Controller
 
     public function store(Request $request)
     {
-        // request()->validate([
-        //     'name' => 'required',
-        //     'detail' => 'required',
-        // ]);
-    
+      
         ALUNO::create($request->all());
     
          return redirect()->route('aluno.index')
                          ->with('success','Aluno cadastrado com sucesso!');
-     }
-    
+    }
+        
 
-    // public function show(ALUNO $aluno)
-    // {
-    //     return view('aluno.show',compact('aluno'));
-    // }
-    
-
-     public function edit(ALUNO $aluno)
-     {
+    public function edit(ALUNO $aluno)
+    {
         $userCount  =  FICHA::where('status_id', '=', auth()->id())
         ->count();
          return view('aluno.edit',compact('aluno','userCount'));
-     }
+    }
 
-     public function update(Request $request, ALUNO $aluno)
-     {
-        //   request()->validate([
-        //      'name' => 'required',
-        //      'detail' => 'required',
-        //  ]);
-    
+    public function update(Request $request, ALUNO $aluno)
+    {
          $aluno->update($request->all());
     
          return redirect()->route('aluno.index')
@@ -141,9 +135,6 @@ class AlunosController extends Controller
                                             'data'      =>$data,
                                             'userCount' => $userCount
                                         ]);
-
-              //dd($search);
-
       }
 
 

@@ -37,25 +37,15 @@ class EscolaController extends Controller
     {
         $userCount  =  FICHA::where('status_id', '=', auth()->id())
         ->count();
+
         $escola = ESCOLA::get();
-
-
-        //$ficha = Ficha::with('categoria', 'escola', 'aluno', 'user', 'users')->get();
-   //  $ficha =  FICHA::get();
-          $ficha =  FICHA::where('status_id', '=', 'Auth()user()->id');
-          $user =   Auth::user()->id;
+        $ficha =  FICHA::where('status_id', '=', 'Auth()user()->id');
+        $user =   Auth::user()->id;
 
           if ($ficha ) {
            $true = 1;
 
           }
-          
-        //   $ficha =  FICHA::where('status_id', '=', auth()->id())
-        //     ->get();
-
-          
-    
-
 
           return view(
             'escola.index',
@@ -70,16 +60,9 @@ class EscolaController extends Controller
             ]
         );
 
-      //  return view('escola.index',compact('escola','ficha','user'));
            
     }
     
-    
-//     /**
-//      * Show the form for creating a new resource.
-//      *
-//      * @return \Illuminate\Http\Response
-//      */
    public function create()
    {
     $userCount  =  FICHA::where('status_id', '=', auth()->id())
@@ -87,18 +70,10 @@ class EscolaController extends Controller
        return view('escola.create', compact('userCount'));
    }
     
-//     /**
-//      * Store a newly created resource in storage.
-//      *
-//      * @param  \Illuminate\Http\Request  $request
-//      * @return \Illuminate\Http\Response
-//      */
+
     public function store(Request $request)
     {
-        // request()->validate([
-        //     'name' => 'required',
-        //     'detail' => 'required',
-        // ]);
+
     
         ESCOLA::create($request->all());
     
@@ -106,56 +81,30 @@ class EscolaController extends Controller
                          ->with('success','Escola cadastrada com sucesso!');
      }
     
-//     /**
-//      * Display the specified resource.
-//      *
-//      * @param  \App\Product  $product
-//      * @return \Illuminate\Http\Response
-//      */
+
     public function show(ESCOLA $escola)
     {
         return view('escola.show',compact('escola'));
     }
     
-//     /**
-//      * Show the form for editing the specified resource.
-//      *
-//      * @param  \App\Product  $product
-//      * @return \Illuminate\Http\Response
-//      */
+
      public function edit(ESCOLA $escola)
      {
         $userCount  =  FICHA::where('status_id', '=', auth()->id())
         ->count();
          return view('escola.edit',compact('escola','userCount'));
      }
-    
-//     /**
-//      * Update the specified resource in storage.
-//      *
-//      * @param  \Illuminate\Http\Request  $request
-//      * @param  \App\Product  $product
-//      * @return \Illuminate\Http\Response
-//      */
+
      public function update(Request $request, ESCOLA $escola)
      {
-        //   request()->validate([
-        //      'name' => 'required',
-        //      'detail' => 'required',
-        //  ]);
-    
+
          $escola->update($request->all());
     
          return redirect()->route('escola.index')
                          ->with('edit','Escola atualizada com sucesso!');
      }
     
-//     /**
-//      * Remove the specified resource from storage.
-//      *
-//      * @param  \App\Product  $product
-//      * @return \Illuminate\Http\Response
-//      */
+
      public function destroy(ESCOLA $escola)
      {
          $escola->delete();

@@ -54,8 +54,8 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Perfil de Acesso</th>
-                            <th>Dias</th>
+                            <th>Nome do Prazo</th>
+                            <th>Dias do Prazo</th>
                             <th>Data de Criação</th>
                             <th>Data de Atualização</th>
                             <th>Ações</th>
@@ -67,15 +67,13 @@
                     <tbody>
                         <tr>
                
-                           <td>{{ ++$i }}</td>
+                           <td>{{$prazos->id }}</td>
 
                            <td>{{$prazos->ParmPerfilAcessoNivel?? 'Sem registros'  }}</td>
                            
                            <td>{{$prazos->ParmPrazoDias ?? 'Sem registros'}}</td>
 
-                           <td>
-        
-        </td>
+          
                            <td>{{$prazos->created_at ??  'Sem registros'}} </td>
                            <td>{{$prazos->updated_at ??  'Sem registros'}} </td>
                            <td> <a class="btn btn-warning" href="{{ route('prazo.edit',$prazos->id) }}">Editar</a>

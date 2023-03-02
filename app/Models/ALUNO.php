@@ -11,8 +11,7 @@ class ALUNO extends Model
 {
     use HasFactory;
     protected $table = 'aluno';
-
-     protected $fillable = [
+    protected $fillable = [
          'AlunoNome',
          'AlunoDataNascimento',
          'AlunoCPF',

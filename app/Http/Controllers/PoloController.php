@@ -30,7 +30,18 @@ class PoloController extends Controller
     {
         $userCount  =  FICHA::where('status_id', '=', auth()->id())
         ->count();
-        $polo = Polo::latest()->paginate(5);
+        $polo = Polo::get();
+
+        
+        return view(
+            'polo.index',
+            [
+                'polo'        => $polo,
+                'userCount'   => $userCount
+                
+                
+            ]
+        );
         return view('polo.index',compact('polo', 'userCount'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -85,7 +96,9 @@ class PoloController extends Controller
 //      */
      public function edit(Polo $polo)
      {
-         return view('polo.edit',compact('polo'));
+        $userCount  =  FICHA::where('status_id', '=', auth()->id())
+        ->count();
+         return view('polo.edit',compact('polo', 'userCount'));
      }
     
 //     /**

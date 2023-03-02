@@ -2,23 +2,24 @@
     
 namespace App\Http\Controllers;
     
-use App\Models\Ministerio;
+use App\Models\Cat;
 use Illuminate\Http\Request;
 use App\Models\FICHA;
 
-class MinisterioController extends Controller
+    
+class CatController extends Controller
 { 
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */
+     */ 
     function __construct()
     {
-         $this->middleware('permission:ministerio-list|ministerio-create|ministerio-edit|ministerio-delete', ['only' => ['index','show']]);
-         $this->middleware('permission:ministerio-create', ['only' => ['create','store']]);
-         $this->middleware('permission:ministerio-edit', ['only' => ['edit','update']]);
-         $this->middleware('permission:ministerio-delete', ['only' => ['destroy']]);
+         $this->middleware('permission:cat-list|cat-create|cat-edit|cat-delete', ['only' => ['index','show']]);
+         $this->middleware('permission:cat-create', ['only' => ['create','store']]);
+         $this->middleware('permission:cat-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:cat-delete', ['only' => ['destroy']]);
     }
     /**
      * Display a listing of the resource.
@@ -29,19 +30,19 @@ class MinisterioController extends Controller
     {
         $userCount  =  FICHA::where('status_id', '=', auth()->id())
         ->count();
+        $cat = Cat::get();
 
-        $ministerio = Ministerio::get();
-
+        
         return view(
-            'ministerio.index',
+            'cat.index',
             [
-                'ministerio'   => $ministerio,
-                'userCount'    => $userCount
+                'cat'        => $cat,
+                'userCount'   => $userCount
                 
                 
             ]
         );
-       
+   
     }
     
 //     /**
@@ -50,10 +51,10 @@ class MinisterioController extends Controller
 //      * @return \Illuminate\Http\Response
 //      */
    public function create()
-   { $userCount  =  FICHA::where('status_id', '=', auth()->id())
+   {
+    $userCount  =  FICHA::where('status_id', '=', auth()->id())
     ->count();
-
-       return view('ministerio.create',compact('userCount'));
+       return view('cat.create',compact('userCount'));
    }
     
 //     /**
@@ -69,10 +70,10 @@ class MinisterioController extends Controller
         //     'detail' => 'required',
         // ]);
     
-        Ministerio::create($request->all());
+        Cat::create($request->all());
     
-         return redirect()->route('ministerio.index')
-                         ->with('success','Ministerio criado com sucesso!');
+         return redirect()->route('cat.index')
+                         ->with('success','Polo criado com sucesso!');
      }
     
 //     /**
@@ -81,9 +82,9 @@ class MinisterioController extends Controller
 //      * @param  \App\Product  $product
 //      * @return \Illuminate\Http\Response
 //      */
-    public function show(Ministerio $ministerio)
+    public function show(Cat $cat)
     {
-        return view('ministerio.show',compact('ministerio'));
+        return view('cat.show',compact('cat'));
     }
     
 //     /**
@@ -92,9 +93,11 @@ class MinisterioController extends Controller
 //      * @param  \App\Product  $product
 //      * @return \Illuminate\Http\Response
 //      */
-     public function edit(Ministerio $ministerio)
+     public function edit(Cat $cat)
      {
-         return view('ministerio.edit',compact('ministerio'));
+        $userCount  =  FICHA::where('status_id', '=', auth()->id())
+        ->count();
+         return view('cat.edit',compact('cat', 'userCount'));
      }
     
 //     /**
@@ -104,17 +107,17 @@ class MinisterioController extends Controller
 //      * @param  \App\Product  $product
 //      * @return \Illuminate\Http\Response
 //      */
-     public function update(Request $request, Ministerio $ministerio)
+     public function update(Request $request, Cat $cat)
      {
         //   request()->validate([
         //      'name' => 'required',
         //      'detail' => 'required',
         //  ]);
     
-         $ministerio->update($request->all());
+         $cat->update($request->all());
     
-         return redirect()->route('ministerio.index')
-                         ->with('edit','Atualiazado com sucesso!');
+         return redirect()->route('cat.index')
+                         ->with('edit','Cat Atualiazada com sucesso!');
      }
     
 //     /**
@@ -123,11 +126,11 @@ class MinisterioController extends Controller
 //      * @param  \App\Product  $product
 //      * @return \Illuminate\Http\Response
 //      */
-     public function destroy(Ministerio $ministerio)
+     public function destroy(Cat $cat)
      {
-         $ministerio->delete();
+         $cat->delete();
     
-         return redirect()->route('ministerio.index')
-                         ->with('delete','Ministério deletado com sucesso!');
+         return redirect()->route('cat.index')
+                         ->with('delete','Polo deletado com sucesso!');
      }
  }

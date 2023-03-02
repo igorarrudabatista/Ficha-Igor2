@@ -46,23 +46,19 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Código do Aluno</th>
                             <th>Nome do Aluno</th>
                             <th>Data de Nascimento</th>
                             <th>CPF</th>
                             <th>Nome da Mãe</th>
                             <th>Nome do Pai</th>
                             <th>Telefone</th>
-                            <th>Cadastro atualizado em</th>
+                            <th>Ação</th>
                         </tr>
                     </thead>
                     @foreach ($aluno as $key => $alunos)
 
-                    <tbody>
-                        <tr>
-                            <td>{{ ++$i }}</td>
-                            <td>Código do Aluno</td>
-                            <td> {{$alunos->AlunoNome ?? 'Não encontrado' }}  </td>
+                            <td>{{$alunos->id}}</td>
+                            <td>{{$alunos->AlunoNome ?? 'Não encontrado' }}  </td>
                             <td>{{$alunos->AlunoDataNascimento	?? 'Sem registros'  }}</td>
                             <td>{{$alunos->AlunoCPF	?? 'Sem registros'  }}</td>
                             <td>{{$alunos->AlunoFiliacao1	?? 'Sem registros'  }}</td>
@@ -76,15 +72,13 @@
 
                            {!! Form::close() !!}
                             </td>
-                        </tr>
                   
-                        @endforeach
-
-         
-                            </td>
-                        </tr>
+                            
+                            
+                        </td>
+                    </tr>
+                    @endforeach
                       
-                    </tbody>
                 </table>
             </div>
         </div>

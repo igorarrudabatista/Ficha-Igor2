@@ -5,16 +5,14 @@
     <div class="page-title">
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Edição de Polo</h3>
-                <!-- <a class="btn btn-primary" href="{{ route('categoria.index') }}"> Back</a> -->
+                <h3>Cadastro de Categoria</h3>
 
-                <p class="text-subtitle text-muted">There's a lot of form layout that you can use</p>
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class='breadcrumb-header'>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html">Painel</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Edição de Polo</li>
+                        <li class="breadcrumb-item active" aria-current="page">Cadastro de Categoria</li>
                     </ol>
                 </nav>
             </div>
@@ -30,8 +28,8 @@
             @endforeach
         </ul>
     </div>
-    @endif
-    
+@endif
+
 <section id="multiple-column-form">
     <div class="row match-height">
         <div class="col-12">
@@ -42,12 +40,11 @@
 
                 <div class="text-center mb-5">
                     <img src="{{asset('/images/search-student.png')}}" height="48" class='mb-4'>
-                    <h3>Edição do polo - <b> {{$categoria->FichaCatNome?? 'Sem registros'  }} </b></h3>
+                    <h3>Cadastro de Categoria</h3>
                     <p></p>
                 </div>
 
-                {!! Form::model($categoria, ['method' => 'PATCH','route' => ['categoria.update', $categoria->id]]) !!}
-
+                {!! Form::open(array('route' => 'cat.store','method'=>'POST')) !!}
 
 
                 <div class="card-content">
@@ -56,10 +53,9 @@
                             <div class="row">
                                 <div class="col-md-6 col-12">
                                    
-                                        <label for="first-name-column">Nome do Polo</label>
-                                        {!! Form::text('FichaCatNome', null, array('placeholder' => 'Nome Polo','class' => 'form-control')) !!}
+                                        <label for="first-name-column">Nome da Categoria</label>
+                                        {!! Form::text('Categoria_Nome', null, array('placeholder' => 'Nome da Categoria','class' => 'form-control')) !!}
 
-                                        <!-- <input type="text" id="first-name-column" name="name" class="form-control" placeholder="Nome completo"> -->
                                    </div>
 
                                 <div class="col-md-6 col-12">
@@ -67,7 +63,7 @@
                                         <label for="email-id-column">Status</label>
                                         <div class="position-relative">
 
-                                            {!! Form::select('FichaCatSts', ['Ativa' => 'Ativa', 'Inativa' => 'Inativa'], null, ['class' => 'choices form-select']) !!}
+                                            {!! Form::select('Catregoria_Status', ['Ativa' => 'Ativa', 'Inativa' => 'Inativa'], null, ['class' => 'choices form-select']) !!}
 
                                            
                                             

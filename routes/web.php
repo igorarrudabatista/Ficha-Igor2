@@ -9,9 +9,9 @@ use App\Http\Controllers\
     HomeController, AlunosController, APIController, FichaController, PainelGerencialController,
     UsuariosController, RoleController, UserController, ProductController,
     MinisterioController, PoloController, EscolaController, PessoaController,
-    CategoriaController, PrazoController, ConselhoController,
+    PrazoController, ConselhoController,
     Ficha_Ministerio, Ficha_Conselho, ViolenciaController, CalendarController,
-    ObjetosController
+    ObjetosController, CatController
 };
 
  Route::get('/escola/teste',      [PessoaController::class, 'index']);
@@ -56,7 +56,6 @@ Route::get('/painel/consulta_aluno',  [AlunosController::class, 'search']);
 Route::post('/painel/consulta_aluno/', [AlunosController::class, 'search']);
 
 Route::get('/painel/cadastro/cadastro_aluno',      [PainelGerencialController::class, 'cadastro_aluno']);
-//Route::get('/painel/cadastro/cadastro_categoria',  [PainelGerencialController::class, 'cadastro_categoria']);
 Route::get('/painel/cadastro/cadastro_conselho',   [PainelGerencialController::class, 'cadastro_conselho']);
 Route::get('/painel/cadastro/cadastro_escola',     [PainelGerencialController::class, 'cadastro_escola']);
 Route::get('/painel/cadastro/cadastro_ministerio', [PainelGerencialController::class, 'cadastro_ministerio']);
@@ -79,7 +78,7 @@ Route::get('/usuarios/form_usuarios',                 [UsuariosController::class
     Route::resource('polo',                      PoloController::class);
     Route::resource('aluno',                     AlunosController::class);
     Route::resource('escola',                    EscolaController::class);
-    Route::resource('categoria',                 CategoriaController::class);
+    Route::resource('cat',                       CatController::class);
     Route::resource('ficha',                     FichaController::class);
     Route::resource('ficha_ministerio',          Ficha_Ministerio::class);
     Route::resource('ficha_conselho',            Ficha_Conselho::class);
