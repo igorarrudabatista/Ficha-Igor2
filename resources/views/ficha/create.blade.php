@@ -149,7 +149,7 @@
                                                                                     <select name="categoria_id" id="categoria_id" class="form-control">
                                                                                         <option value="" disabled> Selecionar Aluno </option>
                                                                                         @foreach ($categoria as $categorias)
-                                                                                        <option value="{{ $categorias->id}}"> {{$categorias->FichaCatNome}} </option>
+                                                                                        <option value="{{ $categorias->id}}"> {{$categorias->Categoria_Nome}} </option>
                                                                                         @endforeach
                                                                                     </select>
 

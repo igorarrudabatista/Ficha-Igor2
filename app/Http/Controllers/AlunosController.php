@@ -50,6 +50,26 @@ class AlunosController extends Controller
         );
     }   
 
+    
+    public Function search(Request $request) {
+
+        $userCount  =  FICHA::where('status_id', '=', auth()->id())
+        ->count(); 
+        $search = $request->input('search');
+        $response = ALUNO::query()
+            ->where('AlunoCPF', 'LIKE', "%{$search}%")
+            ->get();
+
+      return view('painel.consulta_aluno', ['search'    => $search,
+                                            'userCount' => $userCount,
+                                            'response' => $response
+                                        ]);
+
+      }
+
+
+
+
    public function create()
    {
     $userCount  =  FICHA::where('status_id', '=', auth()->id())
@@ -118,25 +138,6 @@ class AlunosController extends Controller
 
 
 
-      public Function search() {
 
-        $userCount  =  FICHA::where('status_id', '=', auth()->id())
-        ->count(); 
-            $search = request('search');
-            $response = Http::post('http://consultaficai.des.seduc.mt.gov.br/rest/retornalistaalunos', [
-            'chaveautenticacao' => '10221210000',
-            'cpf' =>  $search
-            ]);
-
-
-            $data = json_decode($response); // convert JSON into objects 
-
-      return view('painel.consulta_aluno', ['search'    => $search,
-                                            'data'      =>$data,
-                                            'userCount' => $userCount
-                                        ]);
-      }
-
-
-
+      
 }

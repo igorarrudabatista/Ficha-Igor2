@@ -11,7 +11,7 @@ use App\Http\Controllers\
     MinisterioController, PoloController, EscolaController, PessoaController,
     PrazoController, ConselhoController,
     Ficha_Ministerio, Ficha_Conselho, ViolenciaController, CalendarController,
-    ObjetosController, CatController
+    ObjetosController, CatController, SiteController
 };
 
  Route::get('/escola/teste',      [PessoaController::class, 'index']);
@@ -120,5 +120,8 @@ Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])
 ->name('logout');
 
 });
+
+
+Route::get('/Site',                 [SiteController::class, 'index']);
 
 require __DIR__.'/auth.php';

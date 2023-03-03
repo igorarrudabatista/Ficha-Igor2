@@ -36,20 +36,21 @@
                             </div>
 <br>
                             @if ($search)
+                            
+                            @foreach ($response as $results)  
+                            <p><b> Nome do Aluno:  </b>    {{ $results->AlunoNome }}</p> 
+                            <p><b> Data Nascimento:  </b>  {{ $results->AlunoDataNascimento }}</p> 
+                            <p><b> CPF:  </b>              {{ $results->AlunoCPF }}</p> 
+                            <p><b> Filiação 1:  </b>       {{ $results->AlunoFiliacao1 }}</p> 
+                            <p><b> Filiação 2:  </b>       {{ $results->AlunoFiliacao2 }}</p> 
+                 
 
-                            @foreach ($data->alunos as $result)  
-                                <p><b> Código INEP:  </b>   {{ $result->GedAluIdINEP }} - Sexo: {{ $result->GerPesSexo }}</p> 
-                                <p><b> Nome do Aluno:</b>   {{ $result->NomeAluno }}</p> 
-                                <p><b> Data Nascimento:</b> {{ $result->DataNascAluno }}</p> 
-                                <p><b> Filiação 1:</b>      {{ $result->GerPesNomPai }}</p> 
-                                <p><b> Filiação 2:</b>      {{ $result->GerPesNomMae }}</p> 
-                                <p><b> Endereço:</b>        {{ $result->GerPesEnd }} - {{ $result->GerPesCmpLog }} - 
-                                {{ $result->GerPesBairro }}  {{ $result->GerPesCEP }}</p> 
+                            
+                            @endforeach
+                            
 
-                            @endforeach 
+                            <td> <a class="btn btn-warning float-end" href="{{ route('ficha.create',$results->id) }}">Criar Ficha</a>
 
-                            <button class="btn btn-warning float-end">Limpar pesquisa</button> </a>
-                            <button class="btn btn-primary float">Limpar pesquisa</button> </a>
                             @else
                          
                                       @endif

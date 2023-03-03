@@ -2,7 +2,7 @@
     
 namespace App\Http\Controllers;
 
-use App\Models\CATEGORIA;
+use App\Models\Cat;
 use App\Models\FICHA;
 use App\Models\ESCOLA;
 use App\Models\ALUNO;
@@ -151,7 +151,7 @@ class FichaController extends Controller
     
 
     $user = User::pluck('name','id');
-    $categoria = CATEGORIA::all();
+    $categoria = cat::all();
     $escola = ESCOLA::all();
     $aluno = ALUNO::all();
 
