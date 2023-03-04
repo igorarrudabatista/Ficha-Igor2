@@ -76,43 +76,19 @@
                                                 
                                                             {!! Form::open(array('route' => 'ficha.store','method'=>'POST')) !!}
 
-                                                <h5 class="card-title justify-content-md-center">IDENTIFICAÇÃO DA ESCOLA</h5>
-                                                </div>
-                                                <div class="card-body">
-                                                    <code> Lotação: </code>
-
-
-                                                    <select name="escola_id" id="escola_id" class="form-control">
-                                                        <option value="" disabled> Selecionar Escola </option>
-                                                        @foreach ($escola as $escolas)
-                                                        <option value="{{ $escolas->id}}"> {{$escolas->EscolaNome}} </option>
-                                                        @endforeach
-                                                    </select>
-                                               
-                                                     <code> Endereço:  </code> Endereço aqui</code> 
-                                                    <code>Telefone: </code> 65 99999 <code> Município: </code> Cuiabá <code> UF: </code> MT   </p>
-
-                                                </div>
+          
                                                 <hr>
                                                 <div class="card-header">
-                                                    <h6 class="card-title">IDENTIFICAÇÃO DO ESTUDANTE</h5>
+                                                    <h6 class="card-title">IDENTIFICAÇÃO DO ESTUDANTE: </h5>
                                                 </div>
                                                 <div class="card-body">
-                                                <select name="aluno_id" id="aluno_id" class="form-control">
-                                                        <option value="" disabled> Selecionar Aluno </option>
-                                                        @foreach ($aluno as $alunos)
-                                                        <option value="{{ $alunos->id}}"> {{$alunos->AlunoNome}} </option>
-                                                        @endforeach
-                                                    </select>
-
-                                                    <code> Endereço: </code> Endereço
-                                                    <code> Telefone: </code> Telefone
-                                                    <code> Município: </code> Municipio
-                                                    <code> UF: </code> MT
-                                                    <code> Filiação: </code> Maria das Graças 
-                                                    <code> Data de Nascimento: </code> 13/10/1985
-                                                    <code> Ano: </code> 6a Série 
-                                                    <code> Turno: </code> Matutino 
+                                                   
+                                                    <code> Nome: </code> {{ $id_aluno->AlunoNome ?? 'Não encontrado' }} 
+                                                    <code> Data de Nascimento: </code> {{ $id_aluno->AlunoDataNascimento ?? 'Não encontrado' }} <br>
+                                                    <code> Filiação: </code> {{ $id_aluno->AlunoFiliacao1 ?? 'Não encontrado' }} <br>
+                                                    <code> Endereço: </code> {{ $id_aluno->AlunoEndereco ?? 'Não encontrado' }} 
+                                                    <code> Telefone: </code> {{ $id_aluno->AlunoTelefone ?? 'Não encontrado' }}<br>
+                                                    <code> Município: </code> {{ $id_aluno->AlunoCidade ?? 'Não encontrado' }}
                                                 </div>
                                             </div>
                                             <hr>

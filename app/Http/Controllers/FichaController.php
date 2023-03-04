@@ -140,12 +140,13 @@ class FichaController extends Controller
         }
 
   
-   public function create()
+   public function create($id)
    {
+  //  $search = $request->input('search');
 
-         
+  $id_aluno = ALUNO::findOrFail($id);
 
-    $ficha = Ficha::with('categoria', 'escola', 'aluno', 'user', 'users')->get();
+    $ficha =       FICHA::with('categoria', 'escola', 'aluno', 'user', 'users')->get();
     $userCount  =  FICHA::where('status_id', '=', auth()->id())
     ->count();
     
@@ -155,7 +156,20 @@ class FichaController extends Controller
     $escola = ESCOLA::all();
     $aluno = ALUNO::all();
 
-       return view('ficha.create', compact('categoria','escola','aluno','user', 'userCount'));
+
+    return view(
+        'ficha.create',
+        [
+            'categoria'    => $categoria,
+            'escola'       => $escola,
+            'aluno'        => $aluno,
+            'user'         => $user,
+            'userCount'    => $userCount,
+            'ficha'        => $ficha,
+            'id_aluno' =>     $id_aluno
+
+        ]  );
+   
    }
     
     public function store(Request $request)

@@ -37,7 +37,6 @@
 
 
 
-@foreach($produtos as $Produto )
 <div id="modal-window" class="shadow">
     <div class="main-modal">
       <div class="modal-left">
@@ -102,29 +101,28 @@
             </div>
           </div>
         </div>
-        </div>
-        @endforeach
+      </div>
+      
 
        <div class="modal-right">
          <div class="app-main-right-header">
           <span>Produtos</span>
           <a href="#">Ver todos</a>
-        </div>
 
-        @foreach($produtos as $Produto )
-
-         <div class="card-wrapper">
-           <div class="card">
-             <div class="profile-info-wrapper">
-               <div class="profile-img-wrapper">
-                 <img src="{{asset('/img/produtos/')}}/{{$Produto->image}}" alt="Review">
-               </div>
-               <p>{{$Produto->Name}}</p>
-             </div>
-             <p> {{$Produto->Name}}</p>
-           </div>
         </div>
-        @endforeach
+              @foreach($produtos as $Produto )
+                <div class="card-wrapper">
+                  <div class="card">
+                    <div class="profile-info-wrapper">
+                      <div class="profile-img-wrapper">
+                        <img src="{{asset('/img/produtos/')}}/{{$Produto->image}}" alt="Review">
+                      </div>
+                      <p>{{$Produto->Name}}</p>
+                    </div>
+                    <p> {{$Produto->Name}}</p>
+                  </div>
+                </div>
+                @endforeach
 
         
         </div>

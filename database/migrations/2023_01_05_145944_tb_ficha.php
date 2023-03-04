@@ -52,7 +52,7 @@ return new class extends Migration
          $table->foreign(columns:'status_id')->references(columns:'id')->on(table: 'users');
 
         $table->unsignedInteger('categoria_id');
-        $table->foreign('categoria_id')->references('id')->on('categoria')->onDelete('cascade');
+        $table->foreign('categoria_id')->references('id')->on('tb_categoria')->onDelete('cascade');
 
         $table->unsignedInteger('escola_id');
         $table->foreign('escola_id')->references('id')->on('escola')->onDelete('cascade');

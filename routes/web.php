@@ -34,6 +34,7 @@ Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.
 
 ////// FICHAS
 Route::get('/ficha/atender',             [FichaController::class, 'index_atender']);
+Route::get('/ficha/create/{id}',         [FichaController::class, 'create']);
 Route::get('/ficha/todasfichas',         [FichaController::class, 'index_todas_fichas']);
 Route::get('/ficha/editconselho/{id}',   [FichaController::class, 'editconselho']);
 

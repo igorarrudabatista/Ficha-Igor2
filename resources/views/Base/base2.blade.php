@@ -85,10 +85,13 @@
     
   </section>
 
+  <div class="container-fluid">
+
+  @yield('content')
+
 
   
 
-  @yield('content')
 
 
 
