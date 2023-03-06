@@ -9,7 +9,8 @@ class SiteController extends Controller
 {
     public function index() {
 
-        
+        $ultimos_produtos = Product::orderBy('id', 'DESC')->get();
+
         $produtos = Product::all();
         $produtos = Product::paginate(10);
 
@@ -23,8 +24,11 @@ class SiteController extends Controller
             }
        
 
-       return view('Site.index', ['produtos'=> $produtos, 'search' => $search]);
-
+       return view('Site.index', [
+        'produtos'=> $produtos,
+        'search' => $search,
+        'ultimos_produtos' => $ultimos_produtos
+    ]);
    }
 
 
