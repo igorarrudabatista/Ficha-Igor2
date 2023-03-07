@@ -30,6 +30,7 @@
     </div>  
   </section>
 
+  <form action="{{asset('/Site')}}" method="GET" enctype="multipart/form-data">
 
 
   <section class="app-actions">
@@ -41,9 +42,19 @@
             <circle cx="12" cy="10" r="3"/>
           </svg>
         </button>
-        <input type="text" class="search-input" value="San Francisco, Stockton Street">
+        <input type="text" name="search" class="search-input">
         <button class="search-btn">Procurar</button>
       </div>
+
+            @if ($search)
+                            
+
+
+
+
+
+
+          @endif
       <div class="contact-actions-wrapper">
          <div class="contact-actions">
         <span>Contato: </span>
