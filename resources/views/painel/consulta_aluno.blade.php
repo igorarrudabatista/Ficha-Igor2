@@ -45,7 +45,8 @@
                             <p><b> Filiação 2:  </b>       {{ $results->AlunoFiliacao2 }}</p> 
                  
 
-                            <td> <a class="btn btn-warning float-end" href="{{ route('ficha.create',$results->id) }}">Criar Ficha</a>
+                            {{-- <td> <a class="btn btn-warning float-end" href="{{ route('ficha.create', $results->id) }}">Criar Ficha</a> --}}
+                            <td> <a class="btn btn-warning float-end" href="{{asset('/ficha/create/')}}/{{$results->id}}">Criar Ficha</a>
                             
                             @endforeach
                             

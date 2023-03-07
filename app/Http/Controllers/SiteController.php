@@ -9,10 +9,10 @@ class SiteController extends Controller
 {
     public function index() {
 
-        $ultimos_produtos = Product::orderBy('id', 'DESC')->get();
+        $ultimos_produtos = Product::orderBy('id', 'DESC')->limit(8)->get();
 
-        $produtos = Product::all();
-        $produtos = Product::paginate(10);
+     $produtos = Product::limit(2)->get();
+     //   $produtos = Product::paginate(10);
 
         $search = request('search');
 

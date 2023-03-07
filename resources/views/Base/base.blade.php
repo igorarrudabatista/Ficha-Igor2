@@ -139,11 +139,11 @@
                                     <ul class="submenu ">
 
                                         <li>
-                                            <a href="/categoria">Ver Categoria</a>
+                                            <a href="/cat">Ver Categoria</a>
                                         </li>
 
                                         <li>
-                                            <a href="/categoria/create">Criar Categoria</a>
+                                            <a href="/cat/create">Criar Categoria</a>
                                         </li>
 
 

@@ -82,17 +82,35 @@
                                                     <h6 class="card-title">IDENTIFICAÇÃO DO ESTUDANTE: </h5>
                                                 </div>
                                                 <div class="card-body">
-                                                   
-                                                    <code> Nome: </code> {{ $id_aluno->AlunoNome ?? 'Não encontrado' }} 
-                                                    <code> Data de Nascimento: </code> {{ $id_aluno->AlunoDataNascimento ?? 'Não encontrado' }} <br>
-                                                    <code> Filiação: </code> {{ $id_aluno->AlunoFiliacao1 ?? 'Não encontrado' }} <br>
-                                                    <code> Endereço: </code> {{ $id_aluno->AlunoEndereco ?? 'Não encontrado' }} 
-                                                    <code> Telefone: </code> {{ $id_aluno->AlunoTelefone ?? 'Não encontrado' }}<br>
-                                                    <code> Município: </code> {{ $id_aluno->AlunoCidade ?? 'Não encontrado' }}
+                                                    <input type="text" class="form-control" id="name" value="{{$id_aluno->id}}" >
+
+
+                                                    
+                                                        <code> Nome: </code> {{ $id_aluno->AlunoNome ?? 'Não encontrado' }} 
+                                                        <code> Data de Nascimento: </code> {{ $id_aluno->AlunoDataNascimento ?? 'Não encontrado' }} <br>
+                                                        <code> Filiação: </code> {{ $id_aluno->AlunoFiliacao1 ?? 'Não encontrado' }} <br>
+                                                        <code> Endereço: </code> {{ $id_aluno->AlunoEndereco ?? 'Não encontrado' }} 
+                                                        <code> Telefone: </code> {{ $id_aluno->AlunoTelefone ?? 'Não encontrado' }}<br>
+                                                        <code> Município: </code> {{ $id_aluno->AlunoCidade ?? 'Não encontrado' }}
+
+                                           
+                                            
                                                 </div>
                                             </div>
-                                            <hr>
 
+                                            <hr>
+                                            <div class="card-header">
+                                                <h6 class="card-title">IDENTIFICAÇÃO DA ESCOLA: </h5>
+                                            </div>
+                                            <div class="card-body">
+
+                                                <select name="escola_id" id="escola_id" class="form-control">
+                                                    <option value="" disabled> Selecione a Escola do Aluno</option>
+                                                    @foreach ($escola as $escolas)
+                                                    <option value="{{ $escolas->id}}">{{$escolas->id}} - {{$escolas->EscolaNome}} </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
 
                                                     <div class="card-content">
                                                         <div class="card-body">
