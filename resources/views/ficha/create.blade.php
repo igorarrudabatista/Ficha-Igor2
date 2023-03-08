@@ -82,7 +82,8 @@
                                                     <h6 class="card-title">IDENTIFICAÇÃO DO ESTUDANTE: </h5>
                                                 </div>
                                                 <div class="card-body">
-                                                    <input type="text" class="form-control" id="name" value="{{$id_aluno->id}}" >
+
+                                                <input type="text" class="form-control" id="aluno_id" name="aluno_id" value="{{$id_aluno->id}}"> 
 
 
                                                     
