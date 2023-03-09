@@ -43,7 +43,7 @@ class FichaController extends Controller
 
         $userCount  =  FICHA::where('status_id', '=', auth()->id())
         ->count();
-        $ficha = Ficha::with('categoria', 'escola', 'aluno', 'user', 'users');
+        $ficha = Ficha::with('cat', 'escola', 'aluno', 'user', 'users');
         $users = User::all();
         $conselho = Conselho::all();
      // $categoria = CATEGORIA::with('ficha')->get();
@@ -77,7 +77,7 @@ class FichaController extends Controller
         $userCount  =  FICHA::where('status_id', '=', auth()->id())
         ->count();
         
-        $ficha = Ficha::with('categoria', 'escola', 'aluno', 'user', 'users')->get();
+        $ficha = Ficha::with('Cat', 'escola', 'aluno', 'user', 'users')->get();
         $users = User::all();
         $conselho = Conselho::all();
         $escola = ESCOLA::all();
@@ -109,7 +109,7 @@ class FichaController extends Controller
 
         $userCount  =  FICHA::where('status_id', '=', auth()->id())
         ->count();   
-        $ficha = Ficha::with('categoria', 'escola', 'aluno', 'user', 'users')->get();
+        $ficha = Ficha::with('cat', 'escola', 'aluno', 'user', 'users')->get();
         $users = User::all();
         $conselho = Conselho::all();
      // $categoria = CATEGORIA::with('ficha')->get();
@@ -144,9 +144,8 @@ class FichaController extends Controller
    {
   //  $search = $request->input('search');
 
-  $id_aluno = ALUNO::findOrFail($id);
-
-    $ficha =       FICHA::with('categoria', 'escola', 'aluno', 'user', 'users')->get();
+    $id_aluno = ALUNO::findOrFail($id);
+    $ficha =       FICHA::with('cat', 'escola', 'aluno', 'user', 'users')->get();
     $userCount  =  FICHA::where('status_id', '=', auth()->id())
     ->count();
     
@@ -195,7 +194,7 @@ class FichaController extends Controller
         ->count();
         $user = User::pluck('name','id');
 
-        $categoria = CATEGORIA::all();
+        $categoria = Cat::all();
         $escola = ESCOLA::all();
         $aluno = ALUNO::all();
         

@@ -83,7 +83,10 @@
                                                 </div>
                                                 <div class="card-body">
 
-                                                <input type="text" class="form-control" id="aluno_id" name="aluno_id" value="{{$id_aluno->id}}"> 
+                                                <input type="hidden" class="form-control" id="aluno_id" name="aluno_id" value="{{$id_aluno->id}}" > 
+                                                
+                                                
+                                                
 
 
                                                     

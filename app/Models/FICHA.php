@@ -52,8 +52,8 @@ class FICHA extends Model
         
      ];
 
-      public function CATEGORIA() {
-          return $this->belongsTo(CATEGORIA::class, 'categoria_id');
+      public function Cat() {
+          return $this->belongsTo(Cat::class, 'categoria_id');
           
           }    
         
